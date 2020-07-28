@@ -1,0 +1,3 @@
+<design:component>
+	<design:attribute name="bgColour" label="Background colour" placeholder="Ex: 'White' or '#f0f8fc'"/>
+</design:component>

@@ -1,0 +1,26 @@
+.THIS .fc-state-active{
+    background-color: #494542;
+    background-image: none;
+    color: white !important;
+}
+
+.THIS .fc-button{
+    font-family: inherit !important;
+    text-shadow: none !important;
+    text-transform: uppercase !important;
+    color: black;
+    border-radius: inherit !important;
+    font-size: 1rem !important;
+    border: 1px solid #D7DAE2;
+    box-shadow: none!important;
+}
+
+.THIS .fc-center{
+    font-size: 2rem !important;
+}
+
+.THIS .fc-row thead tr .fc-day-header{
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    background-color: #e5e5e5;
+}

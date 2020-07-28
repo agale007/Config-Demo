@@ -1,0 +1,129 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="header" type="String" />
+    <aura:attribute name="collapasibleTitle" type="String" />
+    <aura:attribute name="collapasibleText" type="String" />
+    <aura:attribute name="collapasibleTitle2" type="String" />
+    <aura:attribute name="collapasibleText2" type="String" />
+    <aura:attribute name="collapasibleTitle3" type="String" />
+    <aura:attribute name="collapasibleText3" type="String" />
+    <aura:attribute name="collapasibleTitle4" type="String" />
+    <aura:attribute name="collapasibleText4" type="String" />
+    <aura:attribute name="collapasibleTitle5" type="String" />
+    <aura:attribute name="collapasibleText5" type="String" />
+    
+    <aura:attribute name="iconName1" type="String" default="action:new"/>
+    <aura:attribute name="iconName2" type="String" default="action:new"/>
+    <aura:attribute name="iconName3" type="String" default="action:new"/>
+    <aura:attribute name="iconName4" type="String" default="action:new"/>
+    <aura:attribute name="iconName5" type="String" default="action:new"/>
+    
+	<div class="c-container">
+    	
+        <h3 class="header">{!v.header}</h3>
+        <div class="slds-grid slds-grid--align-center">
+            
+            <div class="slds-section slds-is-close" aura:id="colorSection1" >
+                <!--section header-->
+                <h3 class="slds-section__title" onclick="{!c.toggleSection}" data-auraId="colorSection1">
+                    <button aria-controls="VegetablesId" class="slds-button slds-section__title-action">
+                        <span class="slds-truncate" title="Vegetables">{!v.collapasibleTitle}</span>
+                        <span>
+                            <lightning:icon iconName="{!v.iconName1}"
+                                            alternativeText="button icon"
+                                            size="x-small"
+                                            class="collapsibleButton slds-section__title-action-icon slds-button__icon_right"/>
+                        </span>
+                    </button>
+                </h3>
+                <!--section body-->
+                <div class="slds-section__content" id="VegetablesId">
+                    {!v.collapasibleText}
+                </div>
+            </div>
+           
+        	<aura:if isTrue="{!not(empty(v.collapasibleTitle2))}">
+                <div class="slds-section slds-is-close" aura:id="colorSection2" >
+                    <!--section header-->
+                    <h3 class="slds-section__title" onclick="{!c.toggleSection}" data-auraId="colorSection2">
+                        <button aria-controls="VegetablesId" class="slds-button slds-section__title-action">
+                            <span class="slds-truncate" title="Vegetables">{!v.collapasibleTitle2}</span>
+                            <span>
+                                <lightning:icon iconName="{!v.iconName2}"
+                                                alternativeText="button icon"
+                                                size="x-small"
+                                                class="collapsibleButton slds-section__title-action-icon slds-button__icon_right"/>
+                            </span>
+                        </button>
+                    </h3>
+                    <!--section body-->
+                    <div class="slds-section__content" id="VegetablesId">
+                        {!v.collapasibleText2}
+                    </div>
+                </div>
+            </aura:if>
+            
+            <aura:if isTrue="{!not(empty(v.collapasibleTitle3))}">
+                <div class="slds-section slds-is-close"  aura:id="colorSection3" >
+                    <!--section header-->
+                    <h3 class="slds-section__title" onclick="{!c.toggleSection}" data-auraId="colorSection3">
+                        <button aria-controls="VegetablesId" class="slds-button slds-section__title-action">
+                            <span class="slds-truncate" title="Vegetables">{!v.collapasibleTitle3}</span>
+                            <span >
+                                <lightning:icon iconName="{!v.iconName3}"
+                                                alternativeText="button icon"
+                                                size="x-small"
+                                                class="collapsibleButton slds-section__title-action-icon slds-button__icon_right"/>
+                            </span>
+                        </button>
+                    </h3>
+                    <!--section body-->
+                    <div class="slds-section__content" id="VegetablesId">
+                        {!v.collapasibleText3}
+                    </div>
+                </div>
+            </aura:if>
+            
+            <aura:if isTrue="{!not(empty(v.collapasibleTitle4))}">            
+                <div class="slds-section slds-is-close" aura:id="colorSection4" >
+                    <!--section header-->
+                    <h3 class="slds-section__title" onclick="{!c.toggleSection}" data-auraId="colorSection4">
+                        <button aria-controls="VegetablesId" class="slds-button slds-section__title-action">
+                            <span class="slds-truncate" title="Vegetables">{!v.collapasibleTitle4}</span>
+                            <span >
+                                <lightning:icon iconName="{!v.iconName4}"
+                                                alternativeText="button icon"
+                                                size="x-small"
+                                                class="collapsibleButton slds-section__title-action-icon slds-button__icon_right"/>
+                            </span>
+                        </button>
+                    </h3>
+                    <!--section body-->
+                    <div class="slds-section__content" id="VegetablesId">
+                        {!v.collapasibleText4}
+                    </div>
+                </div>
+            </aura:if>
+            
+            <aura:if isTrue="{!not(empty(v.collapasibleTitle5))}">
+                <div class="slds-section slds-is-close" aura:id="colorSection5" >
+                    <!--section header-->
+                    <h3 class="slds-section__title" onclick="{!c.toggleSection}" data-auraId="colorSection5">
+                        <button aria-controls="VegetablesId" class="slds-button slds-section__title-action">
+                            <span class="slds-truncate" title="Vegetables">{!v.collapasibleTitle5}</span>
+                            <span >
+                                <lightning:icon iconName="{!v.iconName5}"
+                                                alternativeText="button icon"
+                                                size="x-small"
+                                                class="collapsibleButton slds-section__title-action-icon slds-button__icon_right"/>
+                            </span>
+                        </button>
+                    </h3>
+                    <!--section body-->
+                    <div class="slds-section__content" id="VegetablesId">
+                        {!v.collapasibleText5}
+                    </div>
+                </div>
+            </aura:if>
+        </div>
+    </div>
+</aura:component>

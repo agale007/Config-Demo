@@ -1,0 +1,293 @@
+<aura:component controller="SFMC_EventListPageMethods" implements="flexipage:availableForRecordHome,flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId,lightning:actionOverride">
+    <!-- Lightning Spinner -->
+    <aura:if isTrue="{!v.showSpinner}">
+        <div class="demo-only demo-only demo-only_viewport demo--inverse" style="height:6rem">
+            <div class="slds-spinner_container slds-is-fixed">
+                <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </div>
+    </aura:if>
+    
+    <!--Public attributes                   -->
+    <aura:attribute name="Events" type="List" />
+    <aura:attribute name="inactiveEvents" type="List" />
+    <aura:attribute name="Eventid" type="Id" />
+    <aura:attribute name="campid" type="Id" />
+    <aura:attribute name="campName" type="String" />
+    <aura:attribute name="isRegistered" type="boolean" default="false"/>
+    <aura:attribute name="isActive" type="boolean" default="false"/>
+    <aura:attribute name="PublicEvent" type="EventAndWebinar__c[]"/>
+    <aura:attribute name="EventStatus" type="EventAndWebinar__c[]" />
+    <aura:attribute name="States" type="EventAndWebinar__c[]" />
+    <aura:attribute name="TargetAccType" type="Campaign[]"/>
+    <aura:attribute name="TargetProCode" type="Campaign[]"/>
+    <aura:attribute name="EventType" type="Campaign[]"/>
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="isRegisterants" type="boolean" default="false"/>
+    <aura:attribute name="isInactiveShow" type="boolean" default="True"/>
+    <aura:attribute name="isDelete" type="boolean" default="false"/>
+    <aura:attribute name="isEdit" type="boolean" default="false"/>
+    <aura:attribute name="isClone" type="boolean" default="false"/>
+    <aura:attribute name="isMessage" type="boolean" default="false"/>
+    <aura:attribute name="Message" type="string" />
+    <aura:attribute name="displayedSection" type="string" default="section1"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="showSpinner" type="boolean"/>
+    <aura:attribute name="eventRecord" type="EventAndWebinar__c"
+                    default="{'sobjectType': 'EventAndWebinar__c',
+                             'Name':'',
+                             'Name__c':'',
+                             'Start_Date_Time__c':'',
+                             'End_Date_Time__c':'',
+                             'Event_Time_Display__c':'',
+                             'Public__c':'',
+                             'Status__c':'',
+                             'Event_Speakers__c':'',
+                             'Venue_Hotel_Name__c':'',
+                             'Venue_Hotel_Address__c':'',
+                             'Venue_Hotel_City__c':'',
+                             'Venue_Hotel_Territory__c':'',
+                             'Venue_Hotel_state__c':'',
+                             'Venue_Hotel_Zipcode__c':'',
+                             'Meeting_Room__c':'',
+                             'Parking_Information__c':'',
+                             'Venue_Hotel_Map_URL__c':'',
+                             'Campaign__c':'',
+                             'Description__c':''
+                             }" />
+    <aura:attribute name="campaignRecord" type="Campaign"
+                    default="{ 'sobjectType': 'Campaign',
+                             'Name':'',
+                             'Description':'',
+                             'Type':'',
+                             'Target_Account_Type__c':'',
+                             'Target_Product_Code__c':'',
+                             'StartDate':'',
+                             'EndDate':'',
+                             'Target_Product__c':''
+                             }"
+                    />
+    <!-- Date validation attribute  -->
+    
+    <aura:attribute name="startDateValidator" type="boolean"/>
+    <aura:attribute name="endDateValidator" type="boolean"/>
+    <aura:attribute name="eventStartDateValidator" type="boolean"/>
+    <aura:attribute name="eventEndDateValidator" type="boolean"/>
+    
+    <!--Initalisation methods -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:SFMC_HomePageCompSet" action="{!c.handleApplicationEvent}"/>
+    <aura:method name="updateEventList" action="{!c.doInit}" description="method for rendered list after add new Event "/>
+    <aura:handler name="componentEvent" event="c:EditEvent" action="{!c.handleComponentEvent}"/> 
+    <aura:handler name="HideACtiveEvent" event="c:SFMC_HideActiveEvent" action="{!c.handleActiveEvent}"/>
+    
+    
+    <!--Active and Inactive event show -->
+    <div class="slds-p-left_small slds-p-right_small">
+        <aura:if isTrue="{!v.isRegistered}">
+            <c:SFMC_RegistrantsListViewPage campid="{!v.campid}" campName="{!v.campName}" Eventid="{!v.Eventid}" displayedbuttonandstatus ="{!v.isActive}"/>
+            <aura:set attribute="else">
+                <div class="col-md-12 title">
+                    <h1>{!$Label.c.Current_Events_Workshops}</h1>
+                    <hr/>
+                </div>
+                <aura:if isTrue="{!v.isMessage}">
+                    <div class="message">
+                        <ui:message title=" " severity="confirm" closable="true">
+                            {!v.Message}
+                        </ui:message>
+                    </div>
+                </aura:if>
+                <div align="right">
+                    <lightning:button label="{!$Label.c.Add_Event}" 
+                                      class="customButtonsize"
+                                      iconName="utility:add" 
+                                      variant="Success"
+                                      onclick="{!c.addEvent}"
+                                      /></div>
+                <c:SFMC_EventActiveInactiveList isActive="true" Events="{!v.Events}"/>
+                <br/>
+                
+                <!--  Inactive Event List -->
+                
+                <div>         
+                     <aura:if isTrue="{!v.isInactiveShow}" >
+                        <br/><br/>
+                        <c:SFMC_EventActiveInactiveList isActive="false" Events="{!v.inactiveEvents}"/>
+                    </aura:if> 
+                </div>
+                <br/>
+            </aura:set>
+        </aura:if>     
+    </div>
+    
+    <!--Add Event pop modal open -->
+    <aura:if isTrue="{!v.isOpen}" >
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <div align ="right">  
+                    <lightning:buttonIcon alternativeText="Close"
+                                          class="closeicon"
+                                          variant="bare" size="large" iconName="utility:close" value="addEstimate" onclick="{!c.hideModal}"/>
+                </div>
+                <div class="slds-modal__content slds-p-horizontal_medium" id="modal-content-id-1">
+                    <div align="center">
+                        <h1>{!$Label.c.Add_Event_Workshop}</h1></div>
+                    <div aria-labelledby="newexpenseform ">
+                        <body>
+                            <form name="demo" class="slds-form--stacked" aura:id="form">
+                                <div class="col-md-6 column">
+                                    
+                                    <h4 style="padding-top: 5px;">{!$Label.c.Campaign_Details}</h4><br/>
+                                    <div class="well">
+                                        <label class="labels"><span class="requirdField"></span>{!$Label.c.Campaign_Name}</label>
+                                        <lightning:input aura:id="formfields" class="fieldMargins" type="Text" name="input1" label="" value="{!v.campaignRecord.Name}" required="true"
+                                                         messageWhenValueMissing="{!$Label.c.SFMC_CampaignNameValidate}" /><br/>
+                                        
+                                        
+                                        <label class="labels"><span class="requirdField"> </span>{!$Label.c.Description}</label>
+                                        <lightning:textarea name="input2" class="fieldMarginss" label=" " 
+                                                            value="{!v.campaignRecord.Description}" /><br/> 
+                                        
+                                    </div>
+                                    <h4>{!$Label.c.Event_Information}</h4>
+                                    <br/>
+                                    <div class="well">
+                                        <label class="labels"><span class="requirdField"></span>{!$Label.c.Event_Name}</label>
+                                        <lightning:input aura:id="formfields"  type="Text" name="input1" label=" " value="{!v.eventRecord.Name__c}"  class="fieldMargins"  required="true"
+                                                         messageWhenValueMissing="{!$Label.c.SFMC_EventNamevalidate}" /><br/>
+                                        <div class="slds-grid slds-gutters">
+                                            <div class="slds-col">
+                                                <label class="labels"><span class="requirdField"></span>{!$Label.c.Event_Date_Time}</label><br/>
+                                                <lightning:input aura:id="formfields" class="{!v.eventStartDateValidator ? 'slds-has-error fieldMargins' : 'fieldMargins'}" type="datetime" name="input1" label=" " value="{!v.eventRecord.Start_Date_Time__c}" required="true"
+                                                                 messageWhenValueMissing="{!$Label.c.SFMC_EventStartDateTimevalidate}" onchange="{!c.eventStartDateVlidater}"/><br/>
+                                                <aura:if isTrue="{!v.eventStartDateValidator}">
+                                                    <div class="slds-text-color_error slds-p-left_x-small">
+                                                        {!$Label.c.SFMC_StartDateTimeValidate}
+                                                    </div>
+                                                </aura:if> 
+                                            </div>
+                                            <div class="slds-col">
+                                                <label class="labels"><span class="requirdField"></span>{!$Label.c.Event_Time_Display}</label>
+                                                <lightning:input aura:id="formfields" class="{!v.eventEndDateValidator ? 'slds-has-error fieldMargins' : 'fieldMargins'}" type="datetime" name="input1" label=" " value="{!v.eventRecord.End_Date_Time__c}" required="true"
+                                                                 messageWhenValueMissing="{!$Label.c.SFMC_EventEndDateTimevalidate}" onchange="{!c.eventEndDateVlidater}"/><br/>
+                                                <aura:if isTrue="{!v.eventEndDateValidator}">
+                                                    <div class="slds-text-color_error slds-p-left_x-small">
+                                                        {!$Label.c.SFMC_EndDateTimeValidate}
+                                                    </div>
+                                                </aura:if> 
+                                            </div></div>
+                                        <label class="labels"><span class="requirdField"></span>{!$Label.c.sfmc_eventtimedisplay}</label>
+                                        <lightning:input aura:id="formfields"  type="Text" name="input1" label=" " value="{!v.eventRecord.Event_Time_Display__c}"  class="fieldMargins"  required="true"
+                                                         messageWhenValueMissing="{!$Label.c.sfmc_eventtimedisplayvalidate}" /><br/>
+                                        <div class="slds-grid slds-gutters">
+                                            <div class="slds-col">
+                                                <label class="labels"><span class="requirdField"></span>{!$Label.c.Public_Event}</label>
+                                                <lightning:select aura:id="formfields" class="fieldMargins" label=" "  value="{!v.eventRecord.Public__c}" required="true"
+                                                                  messageWhenValueMissing="{!$Label.c.SFMC_EventPublicvalidate}">
+                                                    <option value="" text="{!$Label.c.SFMC_None}" />
+                                                    <aura:iteration items="{!v.PublicEvent}" var="record">
+                                                        <option value="{!record}" text="{!record}" />   
+                                                    </aura:iteration>
+                                                </lightning:select></div>
+                                            <div class="slds-col">
+                                                <label class="labels"><span class="requirdField"></span>{!$Label.c.Active}</label>
+                                                
+                                                <lightning:select aura:id="formfields" class="fieldMargins" label=" "  value="{!v.eventRecord.Status__c}" required="true"
+                                                                  messageWhenValueMissing="{!$Label.c.SFMC_EventActivevalidate}">
+                                                    <option value="" text="{!$Label.c.SFMC_None}" />
+                                                    <option value="Active" text="Active" />
+                                                    <option value="Inactive" text="Inactive" />
+                                                </lightning:select>
+                                            </div></div>
+                                        <br/>
+                                        <label class="labels"><span class="requirdField"></span>{!$Label.c.Description}</label>
+                                        <lightning:textarea name="input2" class="fieldMarginss" label=" " 
+                                                            value="{!v.eventRecord.Description__c}" /><br/>
+                                        <label class="labels"><span class="requirdField"></span>{!$Label.c.Event_Speakers}</label>
+                                        <lightning:textarea aura:id="formfields" name="input2" class="fieldMargins" label=" " 
+                                                            value="{!v.eventRecord.Event_Speakers__c}" required="true"
+                                                            messageWhenValueMissing="{!$Label.c.SFMC_EventSpeakersvalidate}"/><br/>
+                                        
+                                        <label class="labels"><span class="requirdField"></span>{!$Label.c.Venue_Hotel_Name}</label>
+                                        <lightning:input aura:id="formfields" class="fieldMargins" type="Text" name="input1" label=" " value="{!v.eventRecord.Venue_Hotel_Name__c}" required="true"  
+                                                         messageWhenValueMissing="{!$Label.c.SFMC_HotelNamevalidate}"/><br/>
+                                        <label class="labels"><span class="requirdField"></span>{!$Label.c.Venue_Hotel_Address}</label>
+                                        <lightning:input aura:id="formfields" class="fieldMargins" type="Text" name="input1" label=" " value="{!v.eventRecord.Venue_Hotel_Address__c}" required="true"  
+                                                         messageWhenValueMissing="{!$Label.c.SFMC_HotelAddressvalidate}"/><br/>
+                                        <label class="labels"><span class="requirdField"></span>{!$Label.c.Venue_Hotel_City}</label>
+                                        <lightning:input aura:id="formfields" class="fieldMargins"  type="Text" name="input1" label=" " value="{!v.eventRecord.Venue_Hotel_City__c}" required="true"
+                                                         messageWhenValueMissing="{!$Label.c.SFMC_HotelCityvalidate}"/><br/>
+                                        <label class="labels"><span class="requirdField"></span>{!$Label.c.Venue_Hotel_Territory}</label>
+                                        <lightning:input aura:id="HotelTerritory" class="fieldMarginss" type="Text" name="input1" label=" " value="{!v.eventRecord.Venue_Hotel_Territory__c}" /><br/>  
+                                        <label class="labels"><span class="requirdField"></span>{!$Label.c.Venue_Hotel_State}</label>
+                                        
+                                        <lightning:select aura:id="formfields" class="fieldMargins" label=" "  value="{!v.eventRecord.Venue_Hotel_state__c}" required="true"
+                                                          messageWhenValueMissing="{!$Label.c.SFMC_HotelStatevalidate}">
+                                            <aura:iteration items="{!v.States}" var="record">
+                                                <option value="{!record}" text="{!record}" />   
+                                            </aura:iteration>
+                                        </lightning:select><br/>
+                                        <label class="labels"><span class="requirdField"></span>{!$Label.c.Venue_Hotel_Zip_Code}</label>
+                                        <lightning:input aura:id="HotelzipCode" class="fieldMarginss" type="Text" name="input1" label=" " value="{!v.eventRecord.Venue_Hotel_Zipcode__c}"
+                                                         pattern="^(\s*\d\s*){5}$" maxlength="5" 
+                                                         messageWhenBadInput="Zip Code is not valid"
+                                                         messageWhenPatternMismatch="Zip Code is not valid"/><br/>
+                                        <label class="labels"><span class="requirdField"></span>{!$Label.c.Meeting_Room}</label>
+                                        <lightning:input aura:id="meeting room" class="fieldMarginss" type="Text" name="input1" label=" " value="{!v.eventRecord.Meeting_Room__c}"  /><br/> 
+                                        <label class="labels"><span class="requirdField"></span>{!$Label.c.Parking_Information}</label>
+                                        <lightning:input aura:id="parking info" class="fieldMarginss"  type="Text" name="input1" label=" " value="{!v.eventRecord.Parking_Information__c}" /><br/> 
+                                        <label class="labels"><span class="requirdField"></span>{!$Label.c.Venue_Hotel_Map_URL}</label>
+                                        
+                                        <lightning:textarea name="input2" class="fieldMarginss" label=" " 
+                                                            value="{!v.eventRecord.Venue_Hotel_Map_URL__c}"
+                                                            required="true"
+                                                            messageWhenValueMissing="{!$Label.c.SFMC_HotelMapUrlvalidate}"
+                                                            
+                                                            />
+                                        <br/>
+                                        
+                                    </div>
+                                    <br/>
+                                    <div class="well pull-right text-right">
+                                        
+                                        <lightning:button
+                                                          label="{!$Label.c.Save_This_Event}"
+                                                          variant="Success"
+                                                          type="submit"
+                                                          onclick="{!c.save}"
+                                                          class="customsaveButtonsize"
+                                                          />
+                                    </div>
+                                    <br/>
+                                    <br/>
+                                    
+                                    
+                                    
+                                    
+                                </div><br/>
+                                
+                            </form><br/>
+                            
+                        </body>
+                        
+                    </div>
+                    
+                </div>
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick="{!c.cancel}">{!$Label.c.Close}</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    
+    
+    
+    
+</aura:component>

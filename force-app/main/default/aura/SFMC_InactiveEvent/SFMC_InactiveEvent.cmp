@@ -1,0 +1,150 @@
+<aura:component controller="SFMC_EventListPageMethods" implements="flexipage:availableForRecordHome,flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId,lightning:actionOverride">
+     <!-- Public attributes -->
+    <aura:attribute name="Events" type="List" />
+    <aura:attribute name="Eventid" type="Id" />
+    <aura:attribute name="campid" type="Id" />
+    <aura:attribute name="campName" type="String" />
+    <aura:attribute name="displayedSection" type="string" default="section1"/>
+    <aura:attribute name="isEdit" type="Boolean" />
+    <aura:attribute name="isClone" type="boolean" default="false"/>
+    <aura:attribute name="isDelete" type="boolean" default="false"/>
+    <aura:attribute name="isRegisterants" type="boolean" default="false"/>
+    <aura:attribute name="isMessage" type="boolean" default="false"/>
+    <aura:attribute name="Message" type="string" default="" />
+    
+    <ltng:require styles="/resource/slds_resource/assets/styles/salesforce-lightning-design-system.css?v=1" />
+     <!--Inialisation methods-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:method name="updateEventList" action="{!c.doInit}" description="method for rendered list after add / delete Event "/>
+    <aura:handler name="componentEvent" event="c:EditEvent" action="{!c.handleComponentEvent}"/>
+    <aura:registerEvent name="HideACtiveEvent" type="c:SFMC_HideActiveEvent"/>
+    
+    <!--                Inactive events table                                                 -->
+    <div aura:id="firstsection" class="{!if(v.displayedSection == 'section1','slds-show','slds-hide')}">
+        <br/><br/>
+        <aura:if isTrue="{!v.isMessage}">
+            <div class="message">
+                <ui:message title="Error!" severity="error" closable="true">
+                    {!v.Message}
+                </ui:message>
+            </div>
+        </aura:if>
+        <div class="col-md-12 title">
+        <h2>{!$Label.c.Inactive_Events}</h2>
+    </div>
+     <div class="slds">
+        <table class="slds-table--cell-buffer  slds-table slds-table_cell-buffer  slds-table_col-bordered slds-border_left slds-border_right slds-table_bordered slds-table_col-bordered slds-border_to" style="table-layout:fixed ">
+            <col width="15%"/>
+            <col width="20%"/>
+            <col width="15%"/>
+            <col width="15%"/>
+            <col width="8%"/>
+            <col width="30%"/>
+           <thead>
+            <tr class=" slds-text-heading--label slds-border_left slds-border_right">
+                <th scope="col"  class="location-size slds-truncate" title="Name"><div class="slds-truncate demo">{!$Label.c.Event_Location}</div></th>
+                <th scope="col"  class="campaign-size slds-truncate" title="Name"><div class="slds-truncate demo">{!$Label.c.Campaign_Name_ID}</div></th>
+                <th scope="col" class="registration-size slds-truncate" title="Name"><div class="slds-truncate demo" >{!$Label.c.Registration_Link}</div></th>
+                <th scope="col"  class="eventdate-size slds-truncate" title="Name"><div class="slds-truncate demo" >{!$Label.c.Event_Date}</div></th>
+                <th scope="col"  class="public-size slds-truncate" title="Name"><div class="slds-truncate demo" >{!$Label.c.Public}</div></th>
+                <th scope="col"  class="action-size slds-truncate" title="Name"><div class="slds-truncate demo">{!$Label.c.Action}</div></th>
+            </tr>
+        </thead>
+            <tbody>
+                <aura:iteration items="{!v.Events}" var="Events">
+                    <tr class="slds-border_left slds-border_right">
+                         <td data-label="Name">
+                    
+                        <div class="slds-truncate demo1" title="{!Events.Venue_Hotel_City__c}">{!Events.Venue_Hotel_City__c}, {!Events.Venue_Hotel_state__c}</div></td>
+                    <td >
+                        <div class="slds-truncate" title="{!Events.Campaign__r.Name}">{!Events.Campaign__r.Name}</div>
+                        <div class="slds-truncate">{!Events.Campaign__c}</div>
+                    </td>
+                    <td data-label="Name">
+                        <a href="{!Events.Registration_Page_Url__c}"   target="_blank"><div class="slds-truncate" title="{!Events.Id}">{!Events.Id}</div></a>
+                    </td>
+                    <td data-label="Name"><div class="event_date" title="{!Events.Start_Date_Time__c}">{!Events.Start_Date_Time__c}
+                               
+                                </div></td>
+                    <td data-label="Name"><div class="" title="{!Events.PublicEvent__c}">{!Events.Public__c}</div>
+                    	
+                        
+                    </td>
+                    <td class="" data-label="Name">
+                        <input type="hidden" value="{!Events.Id}" class="Event-Id" />
+                        <input type="hidden" value="{!Events.Campaign__c}" class="Event-WhatId" />
+                        <input type="hidden" value="{!Events.Campaign__r.Name}" class="Event-CampName" />
+                   		<lightning:button
+                                          label="{!$Label.c.Registrants}"
+                                          class="custom_button registrants custom_button_size "
+                                          type="submit"
+                                          onclick="{!c.gotoregistrants}"
+                                          />
+                        <lightning:button
+                                          label="{!$Label.c.Edit}"
+                                          
+                                          class="custom_button edit custom_button_size" 
+                                          type="submit"
+                                          onclick="{!c.edit}"
+                                          value="{!Events.Id}"
+                                          />
+                     	<lightning:button
+                                                  label="{!$Label.c.Sfmc_clone}"
+                                                 
+                                                  class="custom_button clone custom_button_size" 
+                                                  type="submit"
+                                                  onclick="{!c.clone}"
+                                                  value="{!Events.Id}"
+                                                  />
+                        <lightning:button
+                                          label="{!$Label.c.Delete}"
+                                          iconPosition="left"
+                                          
+                                           class="delete custom_button_size" 
+                                          variant="destructive"
+                                          type="submit"
+                                          onclick="{!c.deleteEvent }"
+                                          />
+                        
+                    </td>
+                    
+                    </tr> 
+                </aura:iteration>
+            </tbody>
+            </table>
+            </div>
+          
+         </div>
+    
+    <!-- Delete popup           -->
+    <aura:if isTrue="{!v.isDelete}">
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <br/>
+                 <h2 id="modal-heading-01" class=" slds-hyphenate headersize">{!$Label.c.Please_Confirm}</h2>
+                </header>
+                <body class="slds-theme_default">
+                    <div class="slds-box">
+                    <p class="textsize"> {!$Label.c.Delete_message} </p>
+                    </div>   
+                </body>
+               <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick="{!c.cancel}">{!$Label.c.Cancel}</button>
+                    <button class="slds-button slds-button_brand" onclick="{!c.Delete}">{!$Label.c.Ok}</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+     
+    <!-- Registrants component call    -->
+    <aura:if isTrue="{!v.isRegisterants}" >
+        <c:SFMC_RegistrantsListViewPage campid="{!v.campid}" campName="{!v.campName}" Eventid="{!v.Eventid}" displayedbuttonandstatus ="No"/>
+    </aura:if>
+     
+    <!-- Edit Event component call-->
+    <aura:if isTrue="{!v.isEdit}">
+        <c:SFMC_EditEvent Eventid="{!v.Eventid}" isClone="{!v.isClone}" /> 
+    </aura:if>
+</aura:component>

@@ -1,0 +1,13 @@
+.THIS .formStyle{
+   background-color: #e2f3ff;
+}
+
+.THIS .formTitle{
+    margin-left: 20px;
+    font-size: 22px;
+    margin-right:20px;
+}
+
+.THIS .slds-form-element__label{
+    font-size : 15px;
+}

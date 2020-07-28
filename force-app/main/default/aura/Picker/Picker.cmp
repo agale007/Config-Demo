@@ -1,0 +1,47 @@
+<aura:component controller="ScheduleAppointmentHelper">
+  <aura:handler name="init" value="{!this}" action="{!c.init}" />
+  <aura:attribute name="slots" type="List" access="PRIVATE" />
+  <aura:attribute name="loading" type="Boolean" access="PRIVATE" />
+
+  <aura:method
+    name="checkSlots"
+    action="{!c.checkSlots}"
+    description="To check Slots"
+  />
+  <aura:if isTrue='{!v.loading}'>
+    <lightning:spinner alternativeText="Loading..." size="small" />
+    </aura:if>
+  <div aura:id="slots">
+    <aura:if isTrue="{!v.slots.length > 0}">
+      <fieldset class="slds-form-element">
+        <legend class="slds-form-element__legend slds-form-element__label">
+          Select a Slot
+        </legend>
+        <div class="slds-form-element__control">
+          <aura:iteration items="{!v.slots}" var="slot">
+            <c:VisualPicker
+              Time="{!slot.startTime + '-' + slot.endTime}"
+              Date="{!slot.slotDate}"
+              Value="{! 'visual-picker-' + slot.id}"
+            />
+            <!--
+            <c:VisualPicker
+              Time="2PM-3PM"
+              Date="02-Feb-2020"
+              Value="visual-picker-83"
+            />
+            <c:VisualPicker
+              Time="3PM-4PM"
+              Date="02-Feb-2020"
+              Value="visual-picker-84"
+            /> -->
+          </aura:iteration>
+        </div>
+      </fieldset>
+
+      <aura:set attribute="else">
+        No Slots Available!!
+      </aura:set>
+    </aura:if>
+  </div>
+</aura:component>

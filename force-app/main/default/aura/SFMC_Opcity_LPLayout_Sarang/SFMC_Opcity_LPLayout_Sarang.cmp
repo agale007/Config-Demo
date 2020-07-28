@@ -1,0 +1,30 @@
+<aura:component implements="forceCommunity:layout,forceCommunity:availableForAllPageTypes,forceCommunity:themeLayout" description="Custom Content Layout" access="global">
+	<aura:attribute name="header" type="Aura.Component[]" />
+    <aura:attribute name="content" type="Aura.Component[]" />
+    <aura:attribute name="contentSection" type="Aura.Component[]" />
+    <aura:attribute name="contentHeader" type="Aura.Component[]" />
+    <aura:attribute name="richTextSection" type="Aura.Component[]" />
+    <aura:attribute name="formSection" type="Aura.Component[]"/>
+    
+    <lightning:layout>
+        <lightning:layoutItem size="12" class="headerClass">
+            {!v.header}
+        </lightning:layoutItem>
+    </lightning:layout>
+    <lightning:layout horizontalAlign="center">
+        <lightning:layoutItem size="4" padding="around-small">
+            	<ul>
+                    <li>{!v.contentHeader}</li>
+                    <li>{!v.contentSection}</li>
+            	</ul>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="2" padding="around-small">
+                {!v.formSection}
+        </lightning:layoutItem>       
+    </lightning:layout>
+    <lightning:layout>
+        <lightning:layoutItem size="12" class="headerClass">
+            {!v.footerSection}
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

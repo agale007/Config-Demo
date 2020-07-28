@@ -1,0 +1,34 @@
+<template>
+    <lightning-card title={cardTitle}
+        icon-name="custom:custom85">
+        <div class="slds-m-around_medium">
+            <lightning-record-edit-form object-api-name="Opportunity" onsuccess={handleSuccess}>
+                <lightning-messages>
+                </lightning-messages>
+                <lightning-input-field field-name="Name" class="validValue OppName"
+                 placeholder="Name" message-when-value-missing="Please enter your Opp Name"
+                required>
+                </lightning-input-field>
+                <lightning-input-field field-name="Description" class="validValue "
+                required>
+                </lightning-input-field>
+                <lightning-input-field field-name="Amount" class="validValue ">
+                </lightning-input-field>
+                <lightning-input-field field-name="Type">
+                </lightning-input-field>
+                <lightning-input-field field-name="StageName" >
+                </lightning-input-field>
+                <lightning-input-field field-name="Reason__c" >
+                </lightning-input-field>
+                <lightning-input-field field-name="CloseDate" >
+                </lightning-input-field>
+                 <lightning-button
+                        class="slds-m-top_small"
+                        type="submit"
+                        label="Create new" 
+                        onclick={handleValidation}>
+                    </lightning-button>
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+</template>

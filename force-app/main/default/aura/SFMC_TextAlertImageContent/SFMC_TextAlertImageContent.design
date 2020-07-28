@@ -1,0 +1,4 @@
+<design:component>
+    <design:attribute name="formImage" label="Select Image" datasource="text-alert1.gif"/>
+    <design:attribute name="formImageSize" label="Image Size"/>
+</design:component>

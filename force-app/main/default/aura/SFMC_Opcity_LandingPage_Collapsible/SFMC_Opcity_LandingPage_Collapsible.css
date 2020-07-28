@@ -1,0 +1,54 @@
+.THIS .collapsibleButton{
+    float: right;    
+}
+.THIS .slds-truncate{
+    width : 100%
+}
+.THIS.c-container{
+    background-color: #f0f8fc;
+	padding-bottom: 1rem;    
+}
+.THIS.c-container .header{    
+    text-align: center;
+    line-height: 1.25;
+    color: #1c1c1c;
+    font-size: 1.5rem;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+}
+.THIS .slds-grid{
+    display: block;
+    margin: 0 20%;
+}
+.THIS .slds-section__title-action{
+    font-size: 1.20em;
+    padding: 0.5rem;
+    cursor: pointer;
+    border: 0 none;    
+    border-radius: 0;
+    background-color: transparent;    
+    color: #444;    
+    text-align: left;    
+}
+.THIS .slds-section{    
+    border-bottom: 1px solid #c6e4f4;
+    border-radius: 0;
+    background-color: transparent;
+}
+.THIS .slds-button:focus{
+    outline : none;
+    box-shadow : 0px;
+}
+.THIS .slds-section__content{
+    line-height: 1.25;
+    color: #4f4f4f;
+    padding: 0.5rem;    
+    font-size: 1rem;
+    font-weight: 400;
+}
+@media only screen and (max-device-width : 480px) {
+	.THIS .slds-grid{
+        margin: 0 5%;
+    }    
+    
+}

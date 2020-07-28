@@ -1,0 +1,75 @@
+.THIS .logo_img{
+    width: 9.4rem;
+}
+
+.THIS ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+}
+
+.THIS li {
+  float: left;
+}
+ 
+.THIS li a {
+  display: inline-block;
+  color: #707070;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+.THIS li a:hover {
+  color: red;
+}
+
+.THIS .navBar
+{
+    margin-left: 7rem;
+}
+
+.THIS .padding-li-element
+{
+    padding-left:6rem;
+}
+
+.THIS .viewCalenderDiv
+{
+    background-color: #EA0029;
+    border:1px solid #EA0029;
+    width: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    width: 16rem;
+    height: 4rem;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
+.THIS .viewCalenderDiv:hover
+{
+    background-color:#fafaf9;
+    border:0px #fafaf9;
+}
+
+.THIS .viewCalenderDiv:hover .viewCalenderDivContent
+{
+    background-color:#fafaf9;
+    color:red; 
+    border:0px #fafaf9;
+}
+
+
+.THIS .viewCalenderDivContent
+{   
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    color:white;
+    margin-left:-1rem;
+}

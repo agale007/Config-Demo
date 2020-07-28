@@ -1,0 +1,21 @@
+<aura:component implements="force:appHostable,forceCommunity:availableForAllPageTypes" access="global">
+  <ltng:require
+
+	scripts="{!join(',', 
+    $Resource.fullcalendar + '/core/main.css', 
+    $Resource.fullcalendar + '/daygrid/main.css')}"
+	
+	styles="{!join(',',
+		$Resource.fullcalendar + '/core/main.js',
+		$Resource.fullcalendar + '/daygrid/main.js'
+	)}"
+    afterScriptsLoaded="{!c.scriptsLoaded}" />
+  
+ 
+	
+	<body>
+
+    <div id='calendar'></div>
+
+  </body>
+</aura:component>

@@ -1,0 +1,22 @@
+<aura:component implements="forceCommunity:layout,forceCommunity:availableForAllPageTypes,forceCommunity:themeLayout" description="Layout for content text and image." access="global">
+    <aura:attribute name="imageName" type="String" />
+    <aura:attribute name="richText" type="String" />
+    <aura:attribute name="prefixString" type="String" />    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    
+    <lightning:layout class="slds-m-bottom_small">
+        <aura:if isTrue="{!!empty(v.imageName)}">
+        <lightning:layoutItem size="3" padding="horizontal-medium">
+            <img src="{!(v.prefixString + v.imageName)}" class="imageClass"/>
+        </lightning:layoutItem>
+            <aura:set attribute="else">
+                <ul><li></li></ul>
+            </aura:set>
+            </aura:if>
+        <lightning:layoutItem size="9">
+            <ui:outputRichText value="{!v.richText}" linkify="true"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+    
+</aura:component>

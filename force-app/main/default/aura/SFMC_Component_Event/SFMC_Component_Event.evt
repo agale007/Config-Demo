@@ -1,0 +1,6 @@
+<aura:event type="COMPONENT" description="Event template">
+
+    <!-- Aura Attribute -->
+    <aura:attribute name="showModal" type="boolean"/>
+    <aura:attribute name="context" type="String"/>
+</aura:event>

@@ -1,0 +1,40 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+
+        <aura:attribute name="imagePath" type="String"/>
+        <aura:attribute name="bgColour" type="String"/>
+        <aura:attribute name="brandAlignmentClass" type="String"/>
+        <aura:attribute name="brandImageAlignment" type="String" default="left"/>
+        <aura:attribute name="brandImageHeight" type="String"/>
+        <aura:attribute name="brandImageWidth" type="String"/>
+        <aura:attribute name="contentHeaderTextSize" type="String"/>
+    	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- "fixed" is used to make Header Fixed on Page --> 
+	<div aura:id="myHeader" class="fixed slds-grid slds-grid_align-spread headerStick" style="{!'background-position: center;background-size: cover;background: ' + v.bgColour + ';'}" >
+        <lightning:layoutItem size="4" largeDeviceSize="4" mediumDeviceSize="4" class="{!'slds-m-around_x-large slds-col ' + (v.brandImageAlignment == 'left' ?
+                                                                   'slds-float_left' + ($Browser.formFactor == 'DESKTOP' ? ' leftPaddingDesktop': ''):
+                                                                   v.brandImageAlignment == 'right' ?
+                                                                   'slds-float_right ' : '')}" aura:id="mainHeader">
+            <img aura:id="myImg" src="https://www.opcity.com/hubfs/Opcity_February2018/images/logo-opcity-white-horiz.svg" width="{!v.brandImageWidth}" height="{!v.brandImageHeight}"/>
+        </lightning:layoutItem >
+    </div>
+    <div class="slds-grid slds-grid_align-spread headerStick" style="{!'background-position: center;background-size: cover;background: ' + v.bgColour + 'font-size:'+v.contentHeaderTextSize+'em;' + ';'}">
+        <!--  <h1>Opcity Hit the Century Mark with CENTURY 21
+        <sup>®</sup>
+            "!"</h1>
+        <p>Over 265 CENTURY 21 Brokerages who have joined our platform to date.</p>-->
+     </div>
+    <!-- "height" class is to maintain space between two Divs -->
+     <div class="height">        
+     </div>
+    <!-- "page-center" class is used for background color -->
+    <div class="page-center">          
+        <!-- "banner-content" class is used for Font Color and Font Size -->
+        <div class="h1">
+                <h1>Opcity Hit the Century Mark with CENTURY 21<sup>®</sup>!</h1>
+       </div>  
+       <div class="p">
+        <p>Over 265  CENTURY 21 Brokerages who have joined our platform to date.</p>
+       </div>
+    </div>
+</aura:component>

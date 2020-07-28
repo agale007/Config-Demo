@@ -1,0 +1,47 @@
+<template>
+   
+        <article>
+            <div class="slds-float_left logo">
+                <img src={fortisLogoUrl} alt="Fortis Health Care"/>
+            </div>
+            <div class="slds-float_right phonePosition"><span class="call-icon"></span>
+                <h3><span class="hide480">Helpline Number </span>
+
+                            <a href="" class="phoneColor">18002024444</a>
+                </h3>
+
+            </div>
+           <hr>
+           </article>
+           
+    <div class="slds-size_4-of-4">
+        <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">Basic Carousel
+            <lightning-carousel>
+                <lightning-carousel-image
+                    src = {carouselFirst}
+                    header = "First Card"
+                    description = "First card description."
+                    alternative-text = "First card accessible description."
+                    href = "https://www.salesforce.com">
+                </lightning-carousel-image>
+                <lightning-carousel-image
+                    src = {carouselSecond}
+                    header = "Second Card"
+                    description = "Second card description."
+                    alternative-text = "Second card accessible description."
+                    href = "https://www.salesforce.com">
+                </lightning-carousel-image>
+                <lightning-carousel-image
+                    src = {carouselThird}
+                    header = "Third Card"
+                    description = "Third card description."
+                    alternative-text = "Third card accessible description."
+                    href = "https://www.salesforce.com">
+                </lightning-carousel-image>
+            </lightning-carousel>
+        </div>
+    </div>
+    
+    
+	
+</template>

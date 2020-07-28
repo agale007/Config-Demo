@@ -1,0 +1,33 @@
+<aura:component>
+  <aura:attribute name="Time" type="String" default="" />
+  <aura:attribute name="Date" type="String" default="" />
+  <aura:attribute name="Value" type="String" default="visual-picker-82" />
+
+  <div class="slds-visual-picker slds-visual-picker_medium">
+    <input
+      type="radio"
+      id="{!v.Value}"
+      value="{!v.Value}"
+      name="options"
+    />
+    <label for="{!v.Value}">
+
+
+  <div>
+    <span
+      class="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center"
+    >
+      <span>
+        <span class="slds-text-heading_large">{!v.Time}</span>
+        <span class="slds-text-title">{!v.Date}</span>
+      </span>
+    </span>
+    <span class="slds-icon_container slds-visual-picker__text-check">
+      <lightning:icon iconName="utility:check" size="x-small" />
+    </span>
+  </div>
+
+
+</label>
+</div>
+</aura:component>

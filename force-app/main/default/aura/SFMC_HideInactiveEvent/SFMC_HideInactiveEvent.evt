@@ -1,0 +1,6 @@
+<aura:event type="COMPONENT" description="Event template">
+
+    <!-- Aura Attribute -->
+    <aura:attribute name="Hideevent" type="string"/>
+    
+</aura:event>

@@ -1,0 +1,17 @@
+.THIS .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.THIS .footerClass{
+    background-color : #f0f8fc;
+}
+
+.THIS .mainFooter{
+    background-color : #003153;
+}
+
+.THIS .ContentClass{
+    padding-top : 30px;
+}

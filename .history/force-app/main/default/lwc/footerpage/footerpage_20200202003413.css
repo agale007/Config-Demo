@@ -1,0 +1,14 @@
+.sm-group img {
+    height: 35px; }
+  
+   .sm-group li:before {
+    content: " ";
+    padding: 0 2px; }
+  
+   .sm-group li:first-child:before {
+    content: none; }
+  
+
+.footerlinks ul li,  .sm-group ul li {
+list-style-type: none;
+display: inline; }

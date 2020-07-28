@@ -1,0 +1,253 @@
+.THIS .home  {
+    background-color: #bfe8a7;
+    margin-top: 1.0rem !important; 
+}
+
+.THIS .slds-m-top_large, .THIS .slds-m-top--large {
+    margin-top: 0rem !important; 
+}
+.THIS .slds-nav-vertical__action {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+   /* padding: .5rem 1.5rem 0.5rem 2rem;*/
+    padding: .6rem;
+    color: #333;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-radius: 0;
+    box-shadow: inset 0 0 0 #2574a9;
+    cursor: pointer;
+}
+.THIS .navbar-header {
+    color: #7f7f7f;
+    width: 100%;
+}
+.THIS .templatemo-content-wrapper {
+    float: left;
+    width: 100%;
+}
+.THIS .margin-bottom-30 {
+    margin-bottom: 30px;
+}
+.THIS .templatemo-content {
+    margin-left: 235px;
+    margin-top: 0px;
+    min-height: 600px;
+    padding: 25px 20px 0 20px;
+    background-color: white;
+    overflow-x: hidden;
+}
+
+@media only screen and (width: 1024px){
+    
+    .THIS .navbar-inverse
+    {
+        width:99.8vw !important;
+    }
+}
+@media only screen and (min-width: 1025px){
+    
+    .THIS .all-container
+    {
+        max-width: 2440px;
+    }
+}
+
+@media only screen and (min-width: 1440px){
+    .THIS .dd
+    {
+        margin-left: -15px;
+    }
+    .THIS div > .cSFMC_WebinarRegistrantsList {
+        width:100% !important;
+    }
+    .THIS div > .cSFMC_EventListPage {
+        width:100% !important;
+    }
+    .THIS .cSFMC_RegistrantsListViewPage {
+        width:99% !important;
+    }
+    .THIS div > .cSFMC_CalendarPage {
+        width:100% !important;
+    }   
+    .THIS div > .cSFMC_CalendarPage .fc-toolbar.fc-header-toolbar{
+        width: 79.5vw !important;
+    }
+    
+    .THIS div > .cSFMC_CalendarPage .fc-list-table {
+    width: 79.5vw  !important;;
+}
+}
+
+
+@media only screen and (max-width: 768px){
+    .THIS .navbar-collapse.collapse {
+        display: block!important;
+        height: auto!important;
+        padding-bottom: 0;
+        overflow: visible!important;
+    }
+
+    .THIS .navbar-inverse
+    {
+        width:100% !important;
+        margin-left: 16px;
+    }
+    
+    
+}
+@media only screen and (max-width:995px)
+    {
+      .THIS .navbar-inverse
+    {
+         
+        width:105% !important;
+        margin-left: 16px;
+
+    }
+    
+    .THIS div > .cSFMC_RegistrantsListViewPage .table-bordered {
+        width:100% !important;
+    }
+     
+}
+@media only screen and and (max-width: 992px){
+    .THIS .templatemo-sidebar {
+        width: 235px;
+        float: left;
+        position: relative;
+        margin-right: -100%;
+    }
+    .THIS .navbar-inverse
+    {
+        width: 97.8vw !important;
+    }
+    
+
+}
+
+.THIS .templatemo-sidebar {
+    padding: 0;
+    margin-top: 20px;
+}
+.THIS .dd {     
+    background-color: #e3e3e3; 
+    min-height: calc(100vh - 50px);
+    height:100%;
+    margin-top: 0px !important;
+    padding:3px;
+    left:0;
+}
+
+.THIS .templatemo-sidebar .templatemo-sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.THIS  :before,.THIS :after {
+    box-sizing: border-box;
+}
+.THIS .right-gap-10 {
+    margin-right: 10px !important;
+}
+
+.THIS .navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+.THIS .navbar-inverse {
+    background-color: black;
+    border-color: #080808;
+    width: 100%;
+    height:50px;
+}
+.THIS .navbar-toggle .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+}
+.THIS .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+.THIS .navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.THIS .navbar-header {
+    color: #7f7f7f;
+    width: 100%;
+}
+.THIS .text-right {
+    text-align: right;
+}
+.THIS .pull-right {
+    float: right!important;
+}
+.THIS .top-gap-10 {
+    margin-top: 10px !important;
+}
+.THIS .logo {
+    display: inline-block;
+}
+.THIS .logo h1 {
+    font-size: 24px;
+    margin: 10px 15px;
+}
+.THIS  .col-md-5 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-size: 15px;
+}
+.THIS .row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.THIS .navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+.THIS .navbar-inverse {
+    background-color: #222;
+    border-color: #080808;
+   /* margin-top:-44px;
+    margin-left:-15px;
+    width:97.8vw;*/
+    
+}
+.THIS .navbar {
+    position: relative;
+    min-height: 50px;
+    
+    border: 1px solid transparent;
+}
+.THIS .nav-menu{
+    font-size:13px;
+    font-weight: bold;
+}
+
+.THIS .nav-layout{
+    width:18%;
+}
+.THIS .body-layout{
+    width:82%;
+}

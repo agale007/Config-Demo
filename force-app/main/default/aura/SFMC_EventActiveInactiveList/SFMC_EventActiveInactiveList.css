@@ -1,0 +1,43 @@
+.THIS .inactive-body {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+  background-color: #f2dede;
+}
+.THIS .action_size
+{
+        padding: 0.25rem;
+}
+.THIS .slds-table_cell-buffer tr>th:first-child,
+.THIS .slds-table_cell-buffer tr>td:first-child,
+.THIS .slds-table--cell-buffer tr>th:first-child,
+.THIS .slds-table--cell-buffer tr>td:first-child{
+    padding-left: 0.5rem;
+}
+.THIS .slds-table_cell-buffer tr>th:last-child,
+.THIS .slds-table_cell-buffer tr>td:last-child,
+.THIS .slds-table--cell-buffer tr>th:last-child,
+.THIS .slds-table--cell-buffer tr>td:last-child{
+    padding-right : 0.25rem;
+}
+@media only screen and (min-width : 768px) and (max-width : 1365px)  {
+
+    .THIS .clone
+    {
+      margin-top:0.25rem;
+      margin-left:0px;  
+    }
+    
+     .THIS .custom_button_size
+    {
+      width:48% !important;
+    }
+ 	.THIS .delete
+    {
+         margin-top:0.25rem;
+    
+    }
+    .THIS .slds-table th,.THIS .slds-table td{
+        padding: 0.25rem !important;
+    }
+}

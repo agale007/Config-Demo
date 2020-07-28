@@ -1,0 +1,68 @@
+<aura:component controller="SFMC_CalendarClass" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    
+    <aura:attribute name="Objectlist" type="List" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    
+    <section>
+        <div id="calendar-stream-wrap">
+            <article class="">
+                <div class="row">
+                    <div class="col-md-12 title">
+                        <h1>&nbsp;&nbsp;THE LIVE SERIES <br/>&nbsp;&nbsp;TOUR DATES</h1>
+                    </div>
+                </div>
+                <div class="row tile-wrap larger-screens ">
+                    <aura:iteration items="{!v.Objectlist}" var="Events">
+                        
+                        <div class="col-md-5 calendar-tile">
+                            <div class="row">
+                                <div class="col-md-4 calendar-date">
+                                    <h1 class="date"> 
+                                        <lightning:formattedDateTime aura:id="dt"
+                                                                     value="{!Events.StartDateTime}"
+                                                                     month="short" 
+                                                                     
+                                                                     /><br/><lightning:formattedDateTime aura:id="dt"
+                                                                                                         value="{!Events.StartDateTime}"
+                                                                                                         day="numeric"
+                                                                                                         /></h1>
+                                    
+                                    
+                                    
+                                </div>
+                                <div class="col-md-8 calendar-location">
+                                    <h1>{!Events.Location}</h1>
+                                    <h3>
+                                        <lightning:formattedDateTime aura:id="dt"
+                                                                     value="{!Events.StartDateTime}"
+                                                                     hour="2-digit"
+                                                                     minute="2-digit"
+                                                                     hour12="true"
+                                                                     timeZone="{!$Locale.timezone}"
+                                                                     /> - 
+                                        <lightning:formattedDateTime aura:id="dt"
+                                                                     value="{!Events.EndDateTime}"
+                                                                     hour="2-digit"
+                                                                     minute="2-digit"
+                                                                     hour12="true"
+                                                                     timeZone="{!$Locale.timezone}"
+                                                                     /></h3>
+                                    <a href="/events/register/2019Q3dallas">LEARN MORE <span style="color:#EA0029;"> ▶</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </aura:iteration>
+                    
+                    
+                    
+                </div>
+                
+            </article>
+        </div>
+    </section>
+    <div class="col-md-12 title">
+        <h1>&nbsp;&nbsp;UPCOMING <br/>&nbsp;&nbsp; WEBINARS</h1>
+    </div>
+
+</aura:component>

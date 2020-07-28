@@ -1,0 +1,71 @@
+.THIS.c-container{
+	letter-spacing: .5px;
+    font-size: 1rem;
+    line-height: 1.5;    
+    font-weight: 400;    
+}
+.THIS .page-header{
+    padding-top: 2em;
+	text-align: center;    
+    line-height: 1.25;
+    color: #1c1c1c;
+    font-size: 1.5rem;
+}
+.THIS .bc-icon-module-icon{
+    text-align: center;
+    margin-top: 1rem;
+}
+.THIS .bc-icon-module-text{
+	text-align: center;
+    margin-top: 1rem;
+}
+.THIS .bc-text-para{ 
+    font-size: 3em; 
+    color: #afdeff; 
+    line-height: 1.15;
+}
+.THIS .bc-text-text{ 
+    color: #4f4f4f;    
+}
+.THIS .page-left .bc-text-text,.THIS .page-right .bc-text-text{
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.THIS .footer-param{
+    color: #4f4f4f; 
+    line-height: 1.75; 
+    font-size: 0.75rem; 
+    text-align: center;
+}
+.THIS.page-footer
+{
+    Padding-top: 2rem;
+    Padding-bottom: 2rem;
+    background-color: #fff;
+}
+@media only screen and (max-device-width : 480px) {
+	.THIS .slds-grid{
+        display:block;
+    }
+    
+    .THIS .layout-item{
+        Width: 100%
+    }
+    .THIS .empty-layout-item{
+        Width: 0%
+    }
+    .THIS .footer-layout-item{
+        Width: 100%
+    }
+}
+@media only screen and (min-device-width : 480px) and (max-device-width : 1024px) {
+	.THIS .layout-item{
+        Width: 33.33%
+    }
+    .THIS .footer-layout-item{
+        Width: 100%
+    }
+    .THIS .empty-layout-item{
+        Width: 0%
+    }
+}

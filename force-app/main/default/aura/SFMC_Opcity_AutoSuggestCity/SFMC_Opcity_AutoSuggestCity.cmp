@@ -1,0 +1,8 @@
+<aura:component controller="InventoryDataService"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes">
+	<c:AutoComplete aura:id="account-record" 
+                    label="Cities / Markets Covered" 
+                    objectApiName="Inventory_Data__c" 
+                    idFieldApiName="Id" 
+                    valueFieldApiName="City__c" />
+</aura:component>

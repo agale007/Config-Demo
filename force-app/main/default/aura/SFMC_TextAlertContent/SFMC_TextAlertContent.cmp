@@ -1,0 +1,182 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="SFMC_SMSPreferenceController">
+    <aura:attribute name="contentHeader" type="String" />
+    <aura:attribute name="contentHeaderFontSize" type="String"/>
+    <aura:attribute name="contentHeaderFont" type="String"/>
+    <aura:attribute name="contentHeaderFontColor" type="String"/>
+    <aura:attribute name="formTopText" type="String" />
+    <aura:attribute name="simpleNewtextAlert" type="Object" />
+	<aura:attribute name="newtextAlert" type="Object"/>
+    <aura:attribute name="newtextAlertError" type="Object"/>
+    <aura:attribute name="formTopTextSize" type="String" />
+    <aura:attribute name="formTopTextFont" type="String" />
+    <aura:attribute name="formTopTextFontColor" type="String" />
+    <aura:attribute name="formBottomText" type="String" />
+    <aura:attribute name="formBottomTextFontSize" type="String" />
+    <aura:attribute name="formBottomTextFont" type="String" />
+    <aura:attribute name="formImage" type="String" />
+    <aura:attribute name="formImageSize" type="String" />
+    <aura:attribute name="imageBottomText" type="String"/>
+    <aura:attribute name="imageTextFontSize" type="String"/>
+    <aura:attribute name="imageTextColor" type="String"/>
+    <aura:attribute name="imageTextFont" type="String"/>
+    <aura:attribute name="contentImage" type="String"/>
+    <aura:attribute name="prefixString" type="String"/>
+    <aura:attribute name="contentImageHeight" type="String"/>
+    <aura:attribute name="contentImageWidth" type="String"/>
+    <aura:attribute name="showPreferenceForm" type="boolean" default="true"/>
+    <aura:attribute name="firstName" type="String"/>
+    <aura:attribute name="lastName" type="String"/>
+    <aura:attribute name="email" type="String"/>
+    <aura:attribute name="phone" type="String" default=""/>
+    <aura:attribute name="sideImage" type="String"/>
+    <aura:attribute name="sideImageSize" type="String"/>
+    <aura:attribute name="imageHeaderText" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">
+        <div style=" max-width: 1080px;    margin: 0 auto;     padding: 0 20px;">
+            <lightning:layout>
+                <lightning:layoutItem size="6" >
+                    <h2 style="{!'font-size:'+ v.contentHeaderFontSize+';line-height: 1.2em;color:'+v.contentHeaderFontColor}" class="padding10">{!v.contentHeader}</h2>
+                    <h2 style="{!'font-size:'+ v.formTopTextSize+';color:'+v.formTopTextFontColor}" class="padding10">{!v.formTopText}</h2>
+                    <div id="formSection">
+                        <aura:if isTrue="{!v.showPreferenceForm}">
+                                <div class="slds-grid slds-gutters_direct padding10">
+                                    <div class="slds-col slds-size_5-of-12">
+                                        <lightning:input aura:id="prefeneceField" value="{!v.firstName}"
+                                                                    placeholder="First Name" required="true" pattern="^[a-zA-Z ]+$"
+                                                                    messageWhenPatternMismatch="{!$Label.c.SFMC_Name_Validation}"
+                                                                    messageWhenValueMissing = "{!$Label.c.SFMC_First_Name_Validation}" variant="label-hidden"/>
+                                    </div>
+                                    <div class="slds-col slds-size_5-of-12">
+                                        <lightning:input aura:id="prefeneceField"
+                                                                    value="{!v.lastName}"
+                                                                    placeholder="Last Name" required="true" pattern="^[a-zA-Z ]+$"
+                                                                    messageWhenPatternMismatch="{!$Label.c.SFMC_Name_Validation}"
+                                                                    messageWhenValueMissing = "{!$Label.c.SFMC_Last_Name_Validation}" variant="label-hidden"/>
+                                    </div>
+                                    
+                                </div>
+                                <div class="slds-col slds-size_10-of-12 padding10">
+                                        <lightning:input aura:id="prefeneceField"
+                                                        type="email" value="{!v.email}"
+                                                        placeholder="Email" pattern="^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$"
+                                                        messageWhenPatternMismatch="{!$Label.c.SFMC_Email_Address_Validation}" required="true" messageWhenValueMissing="{!$Label.c.SFMC_Email_Validation}" variant="label-hidden"/>
+                                    </div>
+                                <div class="slds-grid slds-gutters_direct " >    
+                                    <div class="slds-col slds-size_10-of-12 padding10" style="width: 82%; padding-left: 21px;">
+                                        <lightning:input aura:id="prefeneceField" type=
+                                                            "phone" value="{!v.phone}"
+                                                            placeholder="Phone Number" 
+                                                            maxlength="10" required="true" 
+                                                            messageWhenValueMissing="{!$Label.c.SFMC_Phone_Validation}" 
+                                                            variant="label-hidden" onblur="{!c.changePhoneNumber}"
+                                                            />
+                                    </div>
+                                    <div class="slds-col padding10">                     
+                                        <lightning:button  label="Join" variant="brand" onclick="{!c.saveTextAlertPreference}"/>
+                                    </div>    
+                                </div>
+                            <aura:set attribute="else">
+                                <div id="after-submission" class="afterSubmissionClass">
+                                    <h3 >Thank you for your interest</h3>
+                                    <p>You will receive a text shortly. Follow the simple steps to receive your download link.
+                                    </p>
+                                </div>                
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                    <div class="padding10">
+                        <div><p class="f18">{!v.imageHeaderText}</p></div>
+                        <div class="imageHolder" >
+                            <c:SFMC_LandingPageContentImage imageName="{!v.formImage}" prefixString = "{!v.prefixString}" contentImageWidth="{!v.formImageSize}"/>
+                        </div>
+                        <p>{!v.imageBottomText}</p> 
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="6">
+                    <!--c:SFMC_TextAlertImageContent formImageSize="{!v.sideImageSize}" formImage="{!v.sideImage}"/-->
+                    <img src="//success.realtor.com/cp/uploads/default/files/bf59842b43b703ac3008805cc02fee2a.gif" width="{!v.sideImageSize}"/>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+    </aura:if>
+    <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">
+        <div style=" max-width: 1080px;    margin: 0 auto;     padding: 0 20px;">
+            <lightning:layout>
+                <lightning:layoutItem size="12" >
+                    <h2 style="{!'font-size:'+ v.contentHeaderFontSize+';line-height: 1.2em;color:'+v.contentHeaderFontColor}" class="padding10">{!v.contentHeader}</h2>
+                    <h2 style="{!'font-size:'+ v.formTopTextSize+';color:'+v.formTopTextFontColor}" class="padding10">{!v.formTopText}</h2>
+                    <div id="formSection">
+                        <aura:if isTrue="{!v.showPreferenceForm}">
+                                <div class="slds-grid slds-gutters_direct padding10">
+                                    <div class="slds-col slds-size_6-of-12">
+                                        <lightning:input aura:id="prefeneceField" value="{!v.firstName}"
+                                                                    placeholder="First Name" required="true" pattern="^[a-zA-Z ]+$"
+                                                                    messageWhenPatternMismatch="{!$Label.c.SFMC_Name_Validation}"
+                                                                    messageWhenValueMissing = "{!$Label.c.SFMC_First_Name_Validation}" variant="label-hidden"/>
+                                    </div>
+                                    <div class="slds-col slds-size_6-of-12">
+                                        <lightning:input aura:id="prefeneceField"
+                                                                    value="{!v.lastName}"
+                                                                    placeholder="Last Name" required="true" pattern="^[a-zA-Z ]+$"
+                                                                    messageWhenPatternMismatch="{!$Label.c.SFMC_Name_Validation}"
+                                                                    messageWhenValueMissing = "{!$Label.c.SFMC_Last_Name_Validation}" variant="label-hidden"/>
+                                    </div>
+                                    
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 padding10">
+                                        <lightning:input aura:id="prefeneceField"
+                                                        type="email" value="{!v.email}"
+                                                        placeholder="Email" pattern="^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$"
+                                                        messageWhenPatternMismatch="{!$Label.c.SFMC_Email_Address_Validation}" required="true" messageWhenValueMissing="{!$Label.c.SFMC_Email_Validation}" variant="label-hidden"/>
+                                    </div>
+                                  
+                                <div class="slds-col slds-size_12-of-12 padding10">
+                                        <lightning:input aura:id="prefeneceField" type=
+                                                            "phone" value="{!v.phone}"
+                                                            placeholder="Phone Number" 
+                                                            maxlength="10" required="true" 
+                                                            messageWhenValueMissing="{!$Label.c.SFMC_Phone_Validation}" 
+                                                            variant="label-hidden" onblur="{!c.changePhoneNumber}"
+                                                            />
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 padding10">                     
+                                        <lightning:button  label="Join" variant="brand" onclick="{!c.saveTextAlertPreference}"/>
+                                </div>    
+                                
+                            <aura:set attribute="else">
+                                <div id="after-submission" class="afterSubmissionClass">
+                                    <h3 >Thank you for your interest</h3>
+                                    <p>You will receive a text shortly. Follow the simple steps to receive your download link.
+                                    </p>
+                                </div>                
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                    </lightning:layoutItem>
+            </lightning:layout>
+            <lightning:layout>
+                <lightning:layoutItem size="12">
+                    <!--c:SFMC_TextAlertImageContent formImageSize="{!v.sideImageSize}" formImage="{!v.sideImage}"/-->
+                    <img src="//success.realtor.com/cp/uploads/default/files/bf59842b43b703ac3008805cc02fee2a.gif" width="{!v.sideImageSize}"/>
+                </lightning:layoutItem>
+            </lightning:layout>
+            <lightning:layout>
+                <lightning:layoutItem size="12">
+                    <div class="padding10">
+                        <div>{!v.imageHeaderText}</div>
+                        <c:SFMC_LandingPageContentImage imageName="{!v.formImage}" prefixString = "{!v.prefixString}" contentImageWidth="{!v.formImageSize}"/>
+                        <div class="imageTextStyle" style="{!'font-size:' + v.imageTextFontSize + ';color:' + v.imageTextColor + ';'}">
+                            {!v.imageBottomText}
+                        </div>
+                    </div>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+    </aura:if>
+    <div style=" max-width: 1080px;    margin: 0 auto;     padding: 0 20px;">
+        <lightning:layout>
+            <div><p class="formBottomText">{!v.formBottomText}</p></div>
+        </lightning:layout>
+    </div>
+</aura:component>

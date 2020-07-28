@@ -1,0 +1,455 @@
+.THIS .customButton{
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    color: #fff;
+}
+.THIS .event_sts
+{
+    width:9%;
+}
+.THIS .slds-table_cell-buffer tr > th:last-child,
+.THIS .slds-table_cell-buffer tr > td:last-child,
+.THIS .slds-table--cell-buffer tr > th:last-child,
+.THIS .slds-table--cell-buffer tr > td:last-child {
+    padding-right: 0.5rem;
+}
+.THIS .slds-table_cell-buffer tr>th:first-child,
+.THIS .slds-table_cell-buffer tr>td:first-child, 
+.THIS .slds-table--cell-buffer tr>th:first-child, 
+.THIS .slds-table--cell-buffer tr>td:first-child {
+    padding-left: .5rem !important; 
+}
+.THIS .event_phone{
+    width:15%;
+}
+.THIS .event_dlt{
+    width:8%;
+}
+.THIS .event_ID{
+    width:15%;
+}
+.THIS .event_name{
+    width:15%;
+}
+.THIS .slds-form-element__help {
+    margin-left: 11rem !important;
+}
+.THIS .status_size
+{
+    padding-left: 0.5rem !important;
+}
+
+.THIS .slds-button_neutral,.THIS .slds-button--neutral {
+    
+}
+.THIS .message{
+    width: 50rem;
+    height: 3rem;
+}
+.THIS .truncateh1
+{
+    width: 750px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 15px;
+}
+.THIS .left-gap-10 {
+    margin-left: 10px !important;
+}
+.THIS .pull-right {
+    float: right!important;
+}
+.THIS .well {
+    height: 86px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    margin-top:0px;
+}
+.THIS .labelsfont label
+{
+    font-weight: 900;  
+    color: #000000;
+    font-size:13px;
+    padding-left: 15px;
+}
+
+.THIS .labelsfont input
+{
+    font-weight: 400;
+    font-size:13px;
+}
+.THIS .labelsfont1 
+{
+    font-weight: 400;
+    font-size:13px;
+    
+}
+.THIS .labelsfont1 label
+{
+    font-weight: 900;
+    color: #000000;
+    font-size:13px;
+    padding-left: 20px
+}
+.THIS .selectlabel{
+    
+    font-weight: 400;
+}
+.THIS .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.THIS .form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.THIS .pull-right {
+    float: right!important;
+}
+.THIS .btn-primary {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #357ebd;
+}
+.THIS .btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    
+}
+.THIS .table-bordered {
+    border: 1px solid #ddd;
+}
+.THIS table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+.THIS .btn-sm,.THIS .btn-group-sm>.btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 2px;
+    border-color: #adadad; 
+    margin-bottom: -50;
+    
+}
+.THIS .btn-toolbar>.btn,.THIS .btn-toolbar>.btn-group,.THIS .btn-toolbar>.input-group {
+    margin-left: 5px;
+}
+.THIS.btn-sm,.THIS .btn-group-sm>.btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 2px;
+}
+.THIS .btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.THIS .btn-grp {
+    padding-left: 0.8rem;
+    color: black;
+    /*padding: 0 0.94rem;*/
+    
+    
+}
+.THIS .labelsfont .slds-form-element__control .slds-input{
+    width: 140%;
+}
+
+
+
+.THIS .labelsfont .slds-form-element__help{
+    margin-left: 11rem;
+}
+.THIS .btn-group,.THIS .btn-group-vertical {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+.THIS.btn-toolbar .btn-group,.THIS .btn-toolbar .input-group {
+    float: left;
+}
+
+.THIS table{
+    border-collapse: inherit !important;
+}
+
+.THIS :before,.THIS :after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.THIS .btn-group>.btn,.THIS .btn-group-vertical>.btn {
+    position: relative;
+    float: left;
+}
+.THIS .btn {
+    display: inline-block;
+    padding: 4px 8px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;   
+}
+.THIS * {
+    
+    box-sizing: border-box;
+}
+.THIS hr {
+    height: 1px;
+    margin: 7px 0;
+    background: none;
+    border: 0;
+    border-bottom: 1px dotted #07A7FF;
+}
+.THIS .colorchange{
+    background-color: whitesmoke;
+    
+    
+}
+.THIS .colorchanges{
+    background-color: white;
+    padding: 0px;
+    font-weight: bold; 
+    
+}
+.THIS .customButtonColor{
+    background-color:#428bca;
+    border-color:#357ebd;
+    background-color: #428bca;
+    border-color: #357ebd;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 20px;
+}
+.THIS.btn-default:hover,.THIS .btn-default:focus,.THIS .btn-default:active,.THIS .btn-default.active,.THIS .open>.dropdown-toggle.btn-default {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.THIS .btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.THIS .btn-primary {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #357ebd;
+}
+.THIS .left-gap-10 {
+    margin-left: 10px !important;
+}
+.THIS .pull-right {
+    float: right!important;
+}
+.THIS .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.THIS .customButtonsize{
+    /*height:40px; 
+    color: #fff;
+    font-weight: bolder;
+    font-size: 15px;*/
+}
+.THIS .demo{
+    font-weight: bolder;
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+}
+.THIS .select-auto-width {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+    
+    
+}
+
+
+
+
+.THIS.dots-here{
+    display: flex;
+    width: 100%;
+    border-bottom: 1.75px dotted #07A7FF;
+    flex: 1;
+    
+}
+.THIS :before,.THIS :after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.THIS div {
+    /*display: block;*/
+}
+.THIS .btn-toolbar {
+    margin-left: -5px;
+}
+.THIS .slds-form_horizontal{
+    min-width: 1081px;
+}
+.THIS.myBtn  {
+    width: 40px;
+    width: 100px;
+}
+.THIS .thicker {
+    font-weight: 900;
+}
+
+.THIS h1 {
+    font-size: 24px;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1 !important;
+}
+
+.THIS p {
+    font-size: 15px;
+    font-weight: 600;
+    
+}
+.THIS .btn-selected{
+    background: #acacac;
+}
+.THIS h2 {
+    font-size: 20px;
+    font-weight: 600;
+    
+}
+.THIS .sts-selector{
+    /* margin-bottom: 15px;*/
+    margin-top: -15px;
+}
+
+@media only screen and (width: 768px){
+    .THIS table
+    {
+        table-layout: fixed !important;
+    }
+    .THIS .truncateh1 {
+        width: 600px!important;
+    }
+    .THIS .slds-form_horizontal {
+        min-width: 0px !important;
+    }
+    
+    
+}
+
+@media only screen and (width: 1024px){
+    .THIS table
+    {
+        table-layout: fixed !important;
+    }
+    
+    .THIS .slds-form_horizontal {
+        min-width: 0px !important;
+    }
+  
+}
+@media only screen and (max-width: 992px){
+    .THIS table
+    {
+      table-layout: fixed !important; 
+        
+    }
+    
+    .THIS .truncateh1 
+    {
+        width: 817px!important;
+    }
+    .THIS .slds-form_horizontal 
+    {
+        min-width: 0px !important;
+    }
+}
+
+@media only screen and (max-width: 1668px)
+    {
+      .THIS .tablelayout
+    {
+        /*max-width: 90% !important;*/
+    }
+      
+    .THIS .slds-form_horizontal {
+        min-width: 0px !important;
+    }
+      .THIS .truncateh1 {
+        width: 600px!important;
+    }
+    
+}
+@media only screen and (min-width : 768px) and (max-width : 1024px)  {
+.THIS .event_sts
+{
+    width:20% !important;
+    }
+    .THIS .slds-button-group .slds-button+.slds-button,
+    .THIS .slds-button-group .slds-button+.slds-button_last .slds-button, 
+    .THIS .slds-button-group .slds-button+.slds-button--last .slds-button,
+    .THIS .slds-button-group-list li+li .slds-button {
+    margin-left: 0px;
+}
+}

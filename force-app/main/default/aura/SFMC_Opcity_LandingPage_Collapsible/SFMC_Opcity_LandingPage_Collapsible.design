@@ -1,0 +1,13 @@
+<design:component >
+    <design:attribute name="header" label="Header" />
+    <design:attribute name="collapasibleTitle" label="Title 1" />
+    <design:attribute name="collapasibleText" label="Contents 1" />
+    <design:attribute name="collapasibleTitle2" label="Title 2" />
+    <design:attribute name="collapasibleText2" label="Contents 2" />
+    <design:attribute name="collapasibleTitle3" label="Title 3" />
+    <design:attribute name="collapasibleText3" label="Contents 3" />
+    <design:attribute name="collapasibleTitle4" label="Title 4" />
+    <design:attribute name="collapasibleText4" label="Contents 4" />
+    <design:attribute name="collapasibleTitle5" label="Title 5" />
+    <design:attribute name="collapasibleText5" label="Contents 5" />    
+</design:component>

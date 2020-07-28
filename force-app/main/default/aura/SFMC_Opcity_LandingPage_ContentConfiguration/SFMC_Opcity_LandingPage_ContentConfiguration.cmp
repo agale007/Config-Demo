@@ -1,0 +1,6 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="count" type="Integer" />
+    <aura:registerEvent name="contentLayoutEvent" type="c:SFMC_Opcity_LandingPage_ContentLayoutEvent"/>
+    <aura:handler name="render" value="{!this}" action="{!c.doInit}"/>
+
+</aura:component>

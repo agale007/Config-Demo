@@ -1,0 +1,16 @@
+.THIS .slds-icon-utility-pause{
+    display:none;
+}
+.THIS .slds-carousel__autoplay{
+    display:none;
+}
+.THIS .slds-carousel__image{
+    width:10%;
+    position: relative;
+}
+.THIS .slds-carousel__image img{
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+}

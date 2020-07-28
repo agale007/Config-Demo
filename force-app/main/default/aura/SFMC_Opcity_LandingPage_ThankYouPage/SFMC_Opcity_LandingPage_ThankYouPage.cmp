@@ -1,0 +1,20 @@
+<aura:component >
+	<aura:attribute name="firstName" type="String"/>
+    <aura:attribute name="lastName" type="String"/>
+    <aura:attribute name="emailId" type="String"/>
+    <aura:attribute name="phoneNumber" type="String"/>
+    
+    <div class="Thankyou" >
+        <div class="ThankyouTopText">
+            {!$Label.c.Landing_page_thank_you_message}<br/>
+        </div>
+        <div class="ThankyouMiddleText">
+            {!$Label.c.Landing_page_thank_you_message_content}
+        </div>
+        <div class="ThankyouBottomText">
+            Name:&nbsp;<b>{!v.firstName}&nbsp;{!v.lastName}</b><br/>
+            Email:&nbsp;<b>{!v.emailId}</b><br/>
+            Phone:&nbsp;<b>{!v.phoneNumber}</b><br/>
+        </div>
+    </div>     
+</aura:component>

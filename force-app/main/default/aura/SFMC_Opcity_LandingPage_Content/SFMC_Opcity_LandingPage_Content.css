@@ -1,0 +1,25 @@
+.THIS .imageClass{
+    width : 130px;
+}
+.THIS .richTextStyling{
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #7a7a7a;    
+    line-height: 1.25;
+    letter-spacing: .5px;
+}
+
+.THIS .ContentStyle{
+    padding : 1rem;
+}
+
+.THIS .over{
+    max-width:130px;
+    margin: 0px auto;
+}
+
+.THIS mobileImageClass{
+   display:block;
+    margin: 0px auto;
+   
+}

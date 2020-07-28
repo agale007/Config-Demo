@@ -1,0 +1,27 @@
+<aura:component  controller="SFMC_EventListPageMethods" implements="flexipage:availableForRecordHome,flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId,lightning:actionOverride" >
+	 <aura:attribute name="Eventid" type="Id" />
+     
+    <aura:registerEvent name="deleteEvent" type="c:SFMC_Delete"/> 
+    
+    
+    
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <br/>
+                    <h2 id="modal-heading-01" class=" slds-hyphenate headersize">{!$Label.c.Please_Confirm}</h2>
+                </header>
+                <body class="slds-theme_default">
+                    <div class="slds-box">
+                        <p class="textsize">{!$Label.c.Delete_message}</p>
+                    </div>   
+                </body>
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick="{!c.cancel}"> {!$Label.c.Cancel}</button>
+                    <button class="slds-button slds-button_brand" onclick="{!c.deleteEventRec}"> {!$Label.c.Ok}</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    
+</aura:component>

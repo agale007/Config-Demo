@@ -1,0 +1,83 @@
+<aura:component access="global">
+    
+    <!-- ATTRIBUTES -->
+    <!-- GLOBAL ATTRIBUTES -->   
+    <aura:attribute name="left" type="Aura.Component[]" access="global" />
+    <aura:attribute name="right" type="Aura.Component[]" access="global" />
+    <aura:attribute name="center" type="Aura.Component[]" access="global" />
+    <aura:attribute name="bottom" type="Aura.Component[]" access="global" />
+    <aura:attribute name="top" type="Aura.Component[]" access="global" />
+    <aura:attribute name="closeCrossIcon" type="Aura.Component[]" access="global" />
+    <aura:attribute name="onScrollAction" type="String" access="global" />
+    <aura:attribute name="scrollCheckIntervalId" type="String" access="global" />
+    <aura:attribute name="isDone" type="Boolean" access="global" default="false"/> 
+    <aura:attribute name="focusForKeypadScroll" type="Boolean" access="global" default="true"/>
+    <aura:attribute name="setModalContentBackground" type="boolean" default="false"/>
+    <aura:attribute name="showModalHeader" type="boolean" default="false"/>
+    
+    <!--CONTAINER RELATED ATTRIBUTES-->
+    <aura:attribute name="isContainerContext" type="Boolean" access="global" default="false"/>
+    <!--CONTAINER RELATED ATTRIBUTES END-->   
+    
+    <!-- GLOBAL ATTRIBUTES END-->
+    
+    <!-- PUBLIC ATTRIBUTES -->
+    <aura:attribute name="title" type="String" />
+    <aura:attribute name="warning" type="Boolean" default="false" />
+    <aura:attribute name="bodyAuraID" type="String" />
+    <aura:attribute name="showLargeModal" type="Boolean" default="false"/>
+    			    
+	<!-- PUBLIC ATTRIBUTES END-->	
+	
+    <!-- ATTRIBUTES END-->
+	
+    <!-- REGISTERED EVENTS  -->
+    <aura:registerEvent name="SFMC_Component_Event" 
+                        type="c:SFMC_Component_Event"
+                        description="'HIDE_MODAL', 'SEND_RESULTS'" />
+    <!-- REGISTERED EVENTS  -->
+	
+     <!-- MARK UP -->
+    <div class=" slds-fade-in-open slds-modal sfmc-custom-slds-modal__container  slds-modal__container sfmc-custom-slds-modal__container  slds-modal__container" aura:id="modaldialog">
+         
+        <div>
+            <div class="slds-modal__header">
+                
+                {!v.closeCrossIcon}
+                <div class="slds-align_absolute-center">
+                     <h2 class="{!empty(v.top) ? 
+                         'slds-text-heading_medium slds-truncate slds-truncate_container_75 sfmc-width-portrait'  
+                         : 'slds-truncate slds-truncate_container_75 
+                         slds-text-heading_medium slds-p-vertical_xx-small sfmc-width-portrait'}">
+                     {!v.title}
+                     </h2>
+                </div>
+                 
+                <div class="slds-float_right sfmc-margin-btn">
+                  <aura:iteration items="{!v.top}" var="action">
+                        <span class="slds-p-horizontal_x-small">{!action}</span>
+                  </aura:iteration>
+                </div>
+            </div>
+            
+            <div aura:id="modalContent" id="scrollHeight" 
+                 class=" slds-modal__content sfmc sfmc-modalHeight">
+                
+                <div tabindex="0" aura:id="scrollableDiv" class="sfmc_focusBorderHider">
+                    {!v.body}
+                </div>
+            </div>  
+            <div class="{!'slds-modal__footer ' + 
+                 (or(and(empty(v.left) , empty(v.right), empty(v.center))) ? 'slds-hide' : '')}">
+            <div class="slds-float_right slds-p-horizontal_xx-small">
+                    <aura:iteration items="{!v.right}" var="action">
+                        <span class="slds-p-horizontal_xx-small">{!action}</span>
+                    </aura:iteration>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slds-backdrop slds-backdrop_open sfmc_backdrop_width" 
+         aura:id="backdrop"></div>
+     <!-- MARK UP END-->
+</aura:component>

@@ -1,0 +1,9 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+	
+    
+    <div clas="containerDiv">
+        <c:SFMC_RegistrantPageHeader/>
+        <c:SFMC_RegistrantPageForm/>
+    </div>
+    
+</aura:component>

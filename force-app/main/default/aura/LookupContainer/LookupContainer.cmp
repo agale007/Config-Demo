@@ -1,0 +1,7 @@
+<aura:component access="global" controller="LookupController">
+    <aura:attribute access="private" type="List" name="selection" default="[]"/>
+    <aura:attribute access="private" type="List" name="errors" default="[]"/>
+    <aura:attribute access="private" type="Boolean" name="isMultiEntry" default="false"/>
+    <c:Lookup selection="{!v.selection}" onSearch="{!c.lookupSearch}" onSelection="{!c.clearErrorsOnChange}" errors="{!v.errors}" label="Search" placeholder="" isMultiEntry="{!v.isMultiEntry}"/>
+    <c:Picker />
+</aura:component>

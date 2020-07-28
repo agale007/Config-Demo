@@ -1,0 +1,63 @@
+.THIS .fc-state-active{
+    background-color: #494542;
+    background-image: none;
+    color: white !important;
+}
+.THIS .fc table {
+    width: 200%;
+    box-sizing: border-box;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+}
+.THIS .fc-button{
+    font-family: inherit !important;
+    text-shadow: none !important;
+    text-transform: uppercase !important;
+    color: black;
+    border-radius: inherit !important;
+    font-size: 1rem !important;
+    border: 1px solid #D7DAE2;
+    box-shadow: none!important;
+     box-sizing: content-box;
+}
+
+.THIS .fc-center{
+    font-size: 2rem !important;
+    box-sizing: content-box;
+}
+
+.THIS .fc-view-container * {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.THIS .fc-view-container *:before {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.THIS .fc-view-container *:after {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.THIS .fc-row thead tr .fc-day-header{
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    background-color: #e5e5e5;
+}
+.THIS .fc-event .fc-content {
+    position: relative;
+    z-index: 2;
+    box-sizing: content-box;
+     height: 3em; 
+     font-size: large;
+    text-align: center;
+     vertical-align: middle;
+    line-height: 50px;   
+     margin-left: auto;
+    margin-right: auto
+}

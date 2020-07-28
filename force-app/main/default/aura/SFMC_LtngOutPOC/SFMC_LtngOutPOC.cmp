@@ -1,0 +1,3 @@
+<aura:component>
+    <h1>My Simple lightning component.</h1>
+</aura:component>

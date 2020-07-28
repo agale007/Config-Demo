@@ -1,0 +1,94 @@
+<aura:component implements="forceCommunity:layout,forceCommunity:availableForAllPageTypes,forceCommunity:themeLayout" description="Custom Content Layout" access="global">
+	<aura:attribute name="header" type="Aura.Component[]" />
+    <aura:attribute name="content" type="Aura.Component[]" />
+    <aura:attribute name="contentHeader" type="Aura.Component[]" />
+    <aura:attribute name="formSection" type="Aura.Component[]"/>
+    <aura:attribute name="footerSection1" type="Aura.Component[]"/>
+    <aura:attribute name="footerSection2" type="Aura.Component[]"/>
+    <aura:attribute name="footerSection3" type="Aura.Component[]"/>
+    <aura:attribute name="configurationSection" type="Aura.Component[]"/>
+    <aura:attribute name="imageName" type="String" />
+    <aura:attribute name="prefixString" type="String" />
+    <aura:attribute name="contentImageWidth" type="String" />
+    <aura:attribute name="contentSection" type="Aura.Component[]"/>
+    <aura:attribute name="mainFooter" type="Aura.Component[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="contentCount" type="Integer[]"/>
+    
+    <div aura:id="contentLayoutId">
+    <lightning:layout>
+        <lightning:layoutItem size="12" class="headerClass">
+            {!v.header}
+        </lightning:layoutItem>
+    </lightning:layout>
+        </div>
+    <lightning:layout>
+    	<lightning:layoutItem size="12">
+            {!v.configurationSection}
+        </lightning:layoutItem>
+    </lightning:layout>
+    <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">
+    	<lightning:layout horizontalAlign="center">
+            <lightning:layoutItem size="5" padding="around-small">
+                    <ul class="ContentClass">
+                        <li>{!v.contentHeader}</li>
+                        <li>{!v.contentSection}</li>
+                    </ul>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="4" padding="around-small">
+                    <div class="ContentClass">
+                        {!v.formSection}
+                    </div>
+            </lightning:layoutItem>       
+        </lightning:layout>
+    </aura:if>
+    <aura:if isTrue="{!$Browser.formFactor == 'TABLET'}">
+    	<lightning:layout horizontalAlign="center">
+            <lightning:layoutItem size="7" padding="around-small">
+                    <ul class="ContentClass">
+                        <li>{!v.contentHeader}</li>
+                        <li>{!v.contentSection}</li>
+                    </ul>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="5" padding="around-small">
+                    <div class="ContentClass">
+                        {!v.formSection}
+                    </div>
+            </lightning:layoutItem>       
+        </lightning:layout>
+    </aura:if>
+    <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">
+		<lightning:layout>
+            <lightning:layoutItem size="12" padding="around-small">
+                    <ul class="ContentClass">
+                        <li>{!v.contentHeader}</li>
+                        <li>{!v.contentSection}</li>
+                    </ul>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <lightning:layout>
+        	<lightning:layoutItem size="12" padding="around-small">
+                    <div class="ContentClass">
+                        {!v.formSection}
+                    </div>
+            </lightning:layoutItem>
+        </lightning:layout>  	
+    </aura:if>
+    
+    <lightning:layout>
+        <lightning:layoutItem size="4" class="footerClass">
+            {!v.footerSection1}
+        </lightning:layoutItem>
+        <lightning:layoutItem size="4" class="footerClass">
+            {!v.footerSection2}
+        </lightning:layoutItem>
+        <lightning:layoutItem size="4" class="footerClass">
+            {!v.footerSection3}
+        </lightning:layoutItem>
+    </lightning:layout>
+    <lightning:layout>
+    	<lightning:layoutItem size="12">
+            {!v.mainFooter}
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

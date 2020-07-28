@@ -1,0 +1,104 @@
+article {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 15px; }
+
+
+    .slds-carousel__content {
+       
+         padding: 0rem !important; 
+           height: 0rem !important; 
+     
+    }
+    
+  
+header {
+    border-bottom: 2px solid #d9d9d9;
+    padding: 0px 0;
+    width: 100%;
+    margin: 0 auto; }
+
+    .slds-carousel__autoplay {
+       
+        display: none !important;
+    }
+
+  header .logo {
+     padding-top: 10px;
+       }
+       article .logo img {
+              max-width: 100%; 
+              padding-bottom: 10px;
+            }
+     hr
+    {
+                border-top: #00aa4d solid 3px;
+                border-top-width: 3px;
+                border-top-style: solid;
+                border-top-color: rgb(0, 170, 77);
+    }
+
+  header .logo img {
+        max-width: 178px; 
+    }
+ header .util-contact {
+      float: right;
+      color: #101d61; }
+     header .util-contact h3 {
+        font-size: 22px;
+        margin-top: 12px;
+        margin-bottom: 0; }
+        header .util-contact h3 a {
+          color: #101d61; }
+   header button.anchor {
+      background: #101d61;
+      color: #fff;
+      font-size: 16px;
+      padding: 5px 12px;
+      border: 0;
+      -webkit-border-radius: 7px;
+      -moz-border-radius: 7px;
+      -ms-border-radius: 7px;
+      border-radius: 7px; }
+   .phoneColor {
+    color: black; }
+  
+   .phoneColor:hover {
+    color: black; }
+  
+   .phonePosition .call-icon {
+    display: inline-block;
+    background: url("//success.realtor.com/cp/uploads/default/files/3579ecc7e19ae0c1b761a8d0f9f6b5de.png") center left no-repeat;
+    width: 35px;
+    height: 30px;
+    vertical-align: bottom; }
+   .phonePosition h3 {
+    display: inline-block;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 0;
+    color: #000000; }
+  
+   .phone-wrap {
+    background-color: #3c3c3b;
+    color: #fff;
+    width: 100%;
+    padding: 45px; }
+    .phone-wrap img {
+      margin-bottom: 5px; }
+    .phone-wrap h3 {
+      font-size: 40px;
+      font-weight: bold; }
+      .phone-wrap h3 a {
+        color: #fff; }
+    .phone-wrap h5 {
+      font-size: 32px;
+      font-weight: bold; }
+  
+  
+  @media (max-width: 480px){
+          .cRDC_header_main header .logo{
+              margin-left: 60px;
+          }
+          
+      }

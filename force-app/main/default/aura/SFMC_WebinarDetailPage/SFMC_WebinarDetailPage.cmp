@@ -1,0 +1,156 @@
+<aura:component controller="SFMC_WebinarDetailPageController" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+
+    <!-- Lightning Spinner -->
+    <aura:if isTrue="{!v.showSpinner}">
+    	<!-- <lightning:spinner aura:id="spinner"/> -->
+    </aura:if>
+  
+    <!-- Aura Attributes : Generic -->
+    <aura:attribute name="webinarData" type="List"/>
+    <aura:attribute name="showCreateModal" type="boolean"/>
+    <aura:attribute name="showEditModal" type="boolean"/>
+    <aura:attribute name="selectedIdForWebinar" type="String"/>
+    <aura:attribute name="selectedStartTimeForWebinar" type="String"/>
+    <aura:attribute name="pageReference" type="Object"/>
+    <aura:attribute name="url" type="String"/>
+    <aura:attribute name="showSpinner" type="boolean"/>
+    
+    <!-- Aura Attributes : Webinar registarent List-->
+    <aura:attribute name="showRegistarent" type="boolean"/>
+    <aura:attribute name="showWebinarList" type="boolean" default="true"/>
+    <aura:attribute name="webinarKey" type="String"/>
+    <aura:attribute name="webinarId" type="Id"/>
+    <aura:attribute name="webinarName" type="String"/>
+    
+    <!-- Aura Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.initData}"/>
+    <aura:handler name="componentEvent" event="c:SFMC_Component_Event" action="{!c.handleComponentEvent}"/>
+    
+    <!-- Aura Method -->
+    <aura:method name="refreshPage" action="{!c.initData}"/>
+    
+    <aura:if isTrue="{!v.showWebinarList}">
+        
+    <div class="slds-m-left_x-small slds-p-top_large headerdiv">
+        <h1>{!$Label.c.SFMC_Webinars}</h1>
+        <hr class="slds-p-left_small" ></hr>
+    </div>
+   <lightning:layout>
+<div class="slds-p-left_small slds-m-right_small slds-p-top_medium webDtls" >
+        
+ <table class="webinar-detail slds-table slds-table_cell-buffer slds-border_left slds-border_right slds-table_bordered slds-table_col-bordered slds-table_fixed-layout">
+  <thead>
+    <tr class="slds-line-height_reset">
+      <th scope="col" width="24%">
+        <div class="slds-truncate heading-text slds-size_2-of-3" title="{!$Label.c.SFMC_Webinar_Title}">{!$Label.c.SFMC_Webinar_Title}</div>
+      </th>
+      <th scope="col" width="17%">
+          <div class="slds-truncate heading-text slds-size_1-of-1" title="{!$Label.c.SFMC_Webinar_Date_Time}">{!$Label.c.SFMC_Webinar_Date_Time}</div>
+      </th>
+      <th scope="col" width="13%">
+        <div class="slds-truncate heading-text" title="{!$Label.c.SFMC_Webinar_Key}">{!$Label.c.SFMC_Webinar_Key}</div>
+      </th>
+      <th scope="col" width="10%">
+        <div class="slds-truncate heading-text" title="{!$Label.c.SFMC_Number_Of_Registrants}">{!$Label.c.SFMC_Number_Of_Registrants}</div>
+      </th>
+
+      <th scope="col" width="12%">
+        <div class="slds-truncate heading-text" title="{!$Label.c.Status}">{!$Label.c.Status}</div>
+      </th>
+      <th scope="col" width="10%">
+        <div class="slds-truncate heading-text" title="{!$Label.c.Public}">{!$Label.c.Public}</div>
+      </th>
+      <th scope="col" width="14%">
+        <div class="slds-truncate heading-text" title="{!$Label.c.Action}">{!$Label.c.Action}</div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+      <aura:iteration items="{!v.webinarData}" var="webinar">
+    <tr class="slds-hint-parent">
+		<td class="bolderFont">
+			<div class="slds-truncate heading-text" title="{!webinar.Name__c}">{!webinar.Name__c}</div>
+        </td>
+        <td>
+            <div class="slds-truncate" title="{!webinar.Start_Date_Time__c}">{!webinar.Start_Date_Time__c}
+            </div>
+        </td> 
+        <td>
+            <a href="{!webinar.Registration_Url__c}" target="_blank">
+				<div class="slds-truncate" title="{!webinar.Webinar_Key__c}">{!webinar.Webinar_Key__c}
+				</div>
+			</a>
+        </td>
+        <td>
+			<div class="slds-truncate" title="{!webinar.Number_of_Registrants__c}">{!webinar.Number_of_Registrants__c}
+			</div>
+		</td>
+
+        <td>
+			<div class="{!(webinar.Status__c==$Label.c.SFMC_Active_Status?'successclass slds-truncate': (webinar.Status__c==$Label.c.SFMC_Inactive_Status?'inactiveclass slds-truncate': (webinar.Status__c==$Label.c.SFMC_Pending_Status?'pending slds-truncate': 'successclass slds-truncate')))}" title="{!webinar.Status__c}">{!webinar.Status__c}
+			</div>
+		</td>
+        <td>
+            <div class="slds-truncate" title="{!webinar.Public__c}">
+				{!webinar.Public__c}
+			</div>
+      </td>
+	  <td>
+		<div>
+			<!--aura:if isTrue="{! ($Browser.isIPad || $Browser.isTablet || $Browser.isPhone)}">
+          		<div class="slds-align_absolute-center">
+                    <input type="hidden" value="{!webinar.Id}" class="WebinarId" />
+			<input type="hidden" value="{!webinar.Name__c}" class="WebinarName" /> 
+			
+                  <lightning:button
+                  label="{!$Label.c.Registrants}"
+                  class="{! ' slds-truncate customButton slds-size_3-of-3'}" 
+                  type="submit" onclick="{!c.viewRegistrants}" value="{!webinar.Webinar_Key__c}"/>
+            	</div>
+          
+          <div class="slds-align_absolute-center slds-p-top_xx-small">  
+          <lightning:button
+                              label="{!$Label.c.Edit}"
+                              class="{!  ' slds-truncate customButton slds-size_3-of-3'}" 
+                              type="submit" onclick="{!c.editWebinar}" value="{!webinar.Id}"/>
+          </div>
+		  
+		  <aura:set attribute="else"-->
+			
+			<div class="slds-align_absolute-center">
+			<input type="hidden" value="{!webinar.Id}" class="WebinarId" />
+			<input type="hidden" value="{!webinar.Name__c}" class="WebinarName" />
+				<lightning:button
+                  label="{!$Label.c.Registrants}"
+                  class="{! ' slds-truncate customButton'}" 
+                  type="submit" onclick="{!c.viewRegistrants}" value="{!webinar.Webinar_Key__c}"/>
+            	
+				
+				<lightning:button
+                              label="{!$Label.c.Edit}"
+                              class="slds-truncate customButton edit-btn" 
+                              type="submit" onclick="{!c.editWebinar}" value="{!webinar.Id+'#'+webinar.Start_Date_Time__c}"/>
+          </div>
+		  <!--/aura:set>
+		  
+		  </aura:if-->
+		  
+		  </div>	
+	  </td>
+    </tr>
+      </aura:iteration>
+  </tbody>
+</table>
+        </div>
+	</lightning:layout>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.showRegistarent}">
+    <c:SFMC_WebinarRegistrantsList webinarkey="{!v.webinarKey}" webinarId="{!v.webinarId}" webinarName="{!v.webinarName}"/>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.showEditModal}">
+        <c:SFMC_EditWebinar recordId="{!v.selectedIdForWebinar}" recordStartTime="{!v.selectedStartTimeForWebinar}"/>
+    </aura:if>
+    
+</aura:component>

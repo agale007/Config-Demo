@@ -1,0 +1,70 @@
+.THIS .customButton{
+   background-color: #5bc0de;
+   border-color: #46b8da;
+   color: #fff;
+   
+}
+
+.THIS .colorchange{
+ background-color: whitesmoke;
+ 
+   
+}
+.THIS .colorchanges{
+ background-color: white;
+  padding: 0px;
+ font-weight: bold; 
+   
+}
+.THIS .customButtonColor{
+   background-color: #5bc0de;
+	border-color: #46b8da;
+     color: #fff;
+    font-weight: bolder;
+    font-size: 20px;
+  }
+
+.THIS .customButtonsize{
+  height:50px; 
+  color: #fff;
+  font-weight: bolder;
+  font-size: 20px;
+   
+ 
+}
+.THIS .demo{
+  font-weight: bolder;
+  font-size: 13px;
+}
+
+
+.THIS.dots-here{
+    display: flex;
+    width: 100%;
+    border-bottom: 1.75px dotted skyblue;
+    flex: 1;
+    
+}
+.THIS.myBtn  {
+    width: 40px;
+    width: 100px;
+}
+.THIS .thicker {
+  font-weight: 900;
+}
+
+.THIS .title h1 {
+    line-height: 55px!important;
+     font-weight: bold; 
+}
+
+.THIS h1 {
+    font-size: 30px;
+    font-weight: 600;
+    
+}
+.THIS h2 {
+    font-size: 20px;
+    font-weight: 600;
+    
+}

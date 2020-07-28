@@ -1,0 +1,182 @@
+<aura:component controller="SFMC_CalendarClass" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    
+    <aura:attribute name="Objectlist" type="List" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    
+    <section>
+        <div id="calendar-stream-wrap">
+            <article class="">
+                <div class="row">
+                    <div class=" col-lg-6 order-sm-last order-lg-first">
+                    <div class="col-md-12 title">
+                        <h1>&nbsp;&nbsp;Event <br/>&nbsp;&nbsp;Registration</h1>
+                    </div>
+               
+                <div class="row tile-wrap larger-screens ">
+                    <aura:iteration items="{!v.Objectlist}" var="Events">
+                        
+                        <div class="col-md-5 calendar-tile">
+                            <div class="row evt">
+                                <div class="col-md-4 calendar-date">
+                                    <h1 class="date"> 
+                                        <lightning:formattedDateTime aura:id="dt"
+                                                                     value="{!Events.StartDateTime}"
+                                                                     month="short" 
+                                                                     
+                                                                     /><br/><lightning:formattedDateTime aura:id="dt"
+                                                                                                         value="{!Events.StartDateTime}"
+                                                                                                         day="numeric"
+                                                                                                         /></h1>
+                                    
+                                    
+                                    
+                                </div>
+                                <div class="col-md-8 calendar-location">
+                                    <h1>{!Events.Location}</h1>
+                                    <h3>
+                                        <lightning:formattedDateTime aura:id="dt"
+                                                                     value="{!Events.StartDateTime}"
+                                                                     hour="2-digit"
+                                                                     minute="2-digit"
+                                                                     hour12="true"
+                                                                     timeZone="{!$Locale.timezone}"
+                                                                     /> - 
+                                        <lightning:formattedDateTime aura:id="dt"
+                                                                     value="{!Events.EndDateTime}"
+                                                                     hour="2-digit"
+                                                                     minute="2-digit"
+                                                                     hour12="true"
+                                                                     timeZone="{!$Locale.timezone}"
+                                                                     /></h3>
+                                    <a href="/events/register/2019Q3dallas">LEARN MORE <span style="color:#EA0029;"> ▶</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </aura:iteration>
+                    
+                    
+                    
+                        </div></div>
+<div class="order-first order-sm-first order-lg-last col-lg-6">
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-lg-12 smaller-screens">
+                <ul class="">
+                  <li>
+                    <div class="calendar-tile">
+                      <div class="row">
+                        <div class="col-sm-12 calendar-date">
+                          <h1 class="">Oct  29</h1>
+                        </div>
+                        <div class="col-sm-12 calendar-location">
+                            <h1>Jamaica, <br/> New York</h1>
+                          <h3>10:00 a.m. - 1:00 p.m.</h3>
+
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+                <div class="form-side " id="larger-screens">
+              <h2 class="form-title">Please fill out the following information to register for this event:</h2>
+  <form role="form" method="POST" action="/events/register/2019Q4jamaica" name="form-send-request" id="form-send-request" novalidate="novalidate">
+      <!-- Form hidden fields -->
+      <input type="hidden" name="utm_source" id="utm_source" value="Event"/>
+      <input type="hidden" name="lead_type" id="lead_type" value="Event"/>
+      <input type="hidden" name="registered" id="registered" value="registered"/>
+      <input type="hidden" name="r" id="recipientid" value=""/>
+      <input type="hidden" name="e" id="eventid" value="2019Q4jamaica"/>
+
+      <input type="hidden" name="mlsAlias" id="mlsAlias" value=""/>
+
+      <input type="hidden" name="utm_medium" id="utm_medium" value=""/>
+      <input type="hidden" name="account_id" value=""/>
+      <input type="hidden" name="bid" value=""/>
+      <input type="hidden" name="pageurl" value="http://results.realtor.com/events/register/2019Q4jamaica" id="pageurl"/>
+
+      <!-- SFDC fields -->
+      <input type="hidden" name="sfdccampid" id="sfdccampid" value="7013a000001r19dAAA"/>
+      <input type="hidden" name="utm_campaign_id" id="utm_campaign_id" value="7013a000001r19dAAA"/>
+      <input type="hidden" name="utm_campaign" id="utm_campaign" value="2019Q4jamaica"/>
+      <input type="hidden" name="campaignname" id="campaignname" value="ev-201910-e-aq-al-jamaica-ny"/>
+      <input type="hidden" name="purl" id="purl" value=""/>
+
+      <div class="form-group-lp">
+          <input type="text" class="landing-form idleField" name="firstname" id="firstname" placeholder="FIRST NAME" value=""/>
+      </div>
+      <div class="form-group-lp">
+          <input type="text" class="landing-form idleField" name="lastname" id="lastname" placeholder="LAST NAME" value=""/>
+      </div>
+      <div class="form-group-lp">
+          <input type="text" class="landing-form idleField" name="emailaddress" id="emailaddress" placeholder="EMAIL" value=""/>
+      </div>
+
+
+      <div class="form-group-lp">
+          <input type="text" class="landing-form idleField" name="phonenumber" id="phonenumber" placeholder="PHONE" value="" data-inputmask="'mask': '(999) 999-9999'" maxlength="14" autocomplete="off"/>
+      </div>
+
+
+      <div class="well">
+      <!-- <div class="form-group-lp">
+          <input class="check" type="checkbox" name="chk_sms_optin" id="chk_sms_optin" value="1" > Remind me via Text Message<br/>
+      </div> -->
+
+      <!-- <div class="form-group-lp" id="mobilenumber_input" style="display:none;">
+          <input type="text" class="form-control" name="mobilenumber" id="mobilenumber" placeholder="MOBILE PHONE" value=""
+                 data-inputmask="'mask': '(999) 999-9999'">
+
+          <br>
+          <span class="small">
+
+              *By clicking "Register Now," you agree to the following statement: I consent to receive Event reminders, upcoming events, and other events related text messages from realtor.com® Results Series (operated by Move Inc.) at the mobile phone number I have provided above. Such text messages may include but are not limited to text messages about event updates, reminders and promotional messages regarding events. I promise that the mobile phone number provided above (and the associated phone) belongs to me and that I am at least 18 years of age. I consent to receiving such text messages by way of auto-dialers, predictive dialers, use of artificial or pre-recorded voices or messages, and other methods. I understand that message and data charges from my network provider might apply regarding these texts. I understand that I am not required to provide this consent as a condition of any purchase.You may opt out of these messages at any time by replying STOP. If you currently subscribe to lead delivery via text, those services will not be affected by these elections.
+
+          </span>
+
+      </div> -->
+
+      </div>
+
+      <input type="hidden" name="officeuse" id="officeuse" value=""/>
+      
+      <div class="form-group-lp" id="submit-pane">
+        <div class="row">
+          <div class="col-xl-6 col-lg-12">
+            <button type="submit" class="btn btn-block btn-reg waves-effect waves-light" style="">Register Now</button>
+          </div>
+          <div class="col-xl-6 col-lg-12">
+            <p class="small"><a class="privacy" href="https://marketing.move.com/privacy-policy/" target="_blank">Privacy Policy</a></p>
+          </div>
+        </div>
+      </div>
+
+      
+
+      
+      
+  </form>
+  <div class="" style="background-color: #ffffff;">
+
+  </div>
+            </div>
+<div id="video" class="col-sm-12 no-padding" style="">
+<div class="video-container youtube" data-embed="tOYAY0Qct3g">
+                  <div class="play-button"></div>
+                    <img src="https://img.youtube.com/vi/tOYAY0Qct3g/sddefault.jpg"/>
+    </div>
+                              </div>
+            
+         
+    </div>
+   
+              
+                </div>
+        </article>
+        </div>
+    </section>
+
+
+   
+</aura:component>

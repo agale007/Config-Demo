@@ -1,0 +1,25 @@
+<aura:component controller="SFMC_CalendarClass" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<ltng:require styles="{!$Resource.fullcalendar     + '/fullcalendar.css'}"
+                  scripts="{!join(',',
+                           $Resource.fullcalendar  + '/lib/jquery.min.js',
+                           $Resource.fullcalendar  + '/lib/moment.min.js',
+                           $Resource.fullcalendar  + '/fullcalendar.js'
+                           )}"
+                  afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+    
+    <ltng:require styles="/resource/fullcalendar/fullcalendar.css"/>
+    
+    <aura:attribute name='Objectlist' type='Object[]'/>
+    <aura:attribute name="recordId" type="String" access="global"/>
+	<aura:attribute name="sObjectName" type="String" access="global"/>	
+	<aura:attribute name="user_id" type="String" />
+    <aura:attribute name="Subject" type="Event[]" />
+    <aura:attribute name="recordsList" type="user[]"/>
+    
+
+    
+    <div id="calendar" style="padding: 60px;"></div>
+    <div id="listcalendar"  />
+
+     
+</aura:component>

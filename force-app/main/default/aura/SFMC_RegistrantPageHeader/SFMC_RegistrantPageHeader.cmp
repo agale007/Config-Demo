@@ -1,0 +1,33 @@
+<aura:component controller="SFMC_GetWebinarUtility" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+	
+    <!-- Public Attributes -->
+    <aura:attribute name="documentId" type="String"/>
+	<aura:attribute name="showHeader" type="Boolean" default="false"/>
+    
+    <!-- Aura Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:if isTrue="{!v.showHeader}">
+    <div class="containerDiv slds-m-left_small slds-m-top_small slds-list_horizontal">
+    
+        <div class="slds-p-left_small">
+            <a href="#"><img src="{!'/servlet/servlet.FileDownload?file='+v.documentId}" class="logo_img"/></a>
+        </div>
+        <div class="navBar slds-list_horizontal">
+        	<ul>
+  <li><a href="#home">WHY ATTEND</a></li>
+  <li><a href="#news" class="padding-li-element">SPEAKERS</a></li>
+  <li><a href="#home" class="padding-li-element">TESTIMONIALS</a></li>
+  <li><a href="#news" class="padding-li-element">RESOURCES</a></li>
+  
+</ul>
+        </div>
+   <div class="viewCalenderDiv slds-p-left_xx-large slds-p-top_large">
+        <span class="slds-p-top_small slds-p-left_Small viewCalenderDivContent">VIEW WEBINARS CALENDER</span>
+   </div>
+        
+        </div>
+    </aura:if>
+
+    
+</aura:component>

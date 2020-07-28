@@ -1,0 +1,320 @@
+.THIS table,.THIS th,.THIS td {
+    border: 1px Solid #C0C0C0;
+}
+.THIS .demo{
+    font-weight: bolder;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    white-space:normal;
+}
+.THIS .title h1 {
+    line-height: 55px!important;
+}
+.THIS h1 {
+    font-size: 30px;
+    font-weight: 600;
+    
+}
+.THIS h2 {
+    font-size: 20px;
+    
+}
+.THIS .demo1{
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    white-space:normal;
+    color:#000000;
+}
+.THIS .custom_button{
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    color: #fff;
+   }
+
+.THIS .event_date
+{
+   white-space: normal;
+}
+
+.THIS .custom_button_size{
+	display: block;
+    width: 24%;
+    float: left;
+    Padding-left: 0px;
+    padding-right: 0px;
+}
+.THIS .slds-button_neutral{
+   
+}
+.THIS .slds-table_cell-buffer tr>th:last-child,
+.THIS .slds-table_cell-buffer tr>td:last-child,
+.THIS .slds-table--cell-buffer tr>th:last-child,
+.THIS .slds-table--cell-buffer tr>td:last-child{
+    padding-right : 0.25rem;
+}
+
+.THIS tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+    background-color: #f2dede;
+}
+
+@media only screen and (min-width : 768px) and (max-width : 1024px)  {
+
+    .THIS .clone
+    {
+      margin-top:0.25rem;
+      margin-left:0px;  
+    }
+    
+     .THIS .custom_button_size
+    {
+      width:48%;
+    }
+ .THIS .delete
+    {
+         margin-top:0.25rem;
+
+     
+    }
+}
+
+/*.THIS .customButton{
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    color: #fff;
+    margin : .125rem auto;
+}
+
+.THIS .action-size
+{
+    width:37%;
+}
+.THIS .event_date
+{
+   white-space: normal;
+}
+.THIS .location-size
+{
+    width:18%;
+}
+.THIS .campaign-size
+{
+    width:19%;
+}
+.THIS .registration-size
+{
+    width:19%;
+}
+.THIS .eventdate-size
+{
+    width:19%;
+}
+.THIS .public-size
+{
+    width:12%;
+}
+
+
+
+.THIS .slds-button_destructive{
+    margin : .125rem auto;
+}
+
+.THIS .textsize
+{
+    font-size: 18px;
+}
+.THIS .headersize
+{
+    font-weight: 300;
+    font-size: 25px;
+}
+.THIS .danger{
+    background-color: #f2dede;
+    
+}
+
+.THIS .pull-right {
+    float: right!important;
+}
+.THIS .text-right {
+    text-align: right;
+}
+.THIS .well {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+}
+
+.THIS .colorchange{
+    background-color: whitesmoke;
+    
+    
+}
+.THIS .colorchanges{
+    background-color: white;
+    padding: 0px;
+    font-weight: bold; 
+    
+}
+.THIS .customButtonColor{
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.THIS .customButtonsize{
+    height:50px; 
+    color: #fff;
+    font-weight: bolder;
+    font-size: 20px;
+    
+    
+}
+
+.THIS .customsaveButtonsize{
+    color: #fff;
+}
+.THIS .demo{
+    font-weight: bolder;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    white-space:normal;
+}
+.THIS .demo1{
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    white-space:normal;
+    color:#000000;
+}
+.THIS .formfields{
+    font-weight: bolder;
+    font-size: 14px;
+    
+}
+
+.THIS hr {
+    height: 1px;
+    margin: 7px 0;
+    background: none;
+    border: 0;
+    border-bottom: 1px dotted #07A7FF;
+}
+
+.THIS.dots-here{
+    display: flex;
+    width: 100%;
+    border-bottom: 1.75px dotted skyblue;
+    flex: 1;
+    
+}
+.THIS.myBtn  {
+    width: 40px;
+    width: 100px;
+}
+.THIS .thicker {
+    font-weight: 900;
+}
+
+.THIS .title h1 {
+    line-height: 55px!important;
+}
+.THIS h1 {
+    font-size: 30px;
+    font-weight: 600;
+    
+}
+.THIS h2 {
+    font-size: 20px;
+    
+}
+
+.THIS .slds-table_cell-buffer tr > td:last-child {
+    padding-right: 0.125rem;
+    padding-top: 0.875rem;
+    padding-left: 0.1rem;
+}
+
+@media only screen and (width : 768px) {   
+    
+    .THIS .registrantbutton
+    {
+        width: 56%;
+        font-size: 0.8rem;
+    }
+    
+    .THIS .editbutton
+    {
+        width: 35%;
+        
+        font-size: 0.8rem;
+    }
+    
+    
+   .THIS .clonebutton
+    {
+        width: 35%;
+        font-size: .8rem;
+        margin-left: 0.2rem;
+        padding-left: 2.6rem;
+        padding-right: 2.6rem;
+    }
+  .THIS .deletebutton
+    {
+        width: 35%;
+        font-size: .8rem;
+        margin-left: 0.1rem;
+    }
+    .THIS .action-size
+    {
+        width:31%;
+    }
+ 
+    }
+@media only screen and (width : 1024px) 
+    {
+     .THIS .registrantbutton
+    {
+        width: 56%;
+        font-size: 0.8rem;
+    }
+    
+    .THIS .editbutton
+    {
+        width: 35%;
+        
+        font-size: 0.8rem;
+    }
+    
+    
+   .THIS .clonebutton
+    {
+        width: 35%;
+        font-size: .8rem;
+        margin-left: 0.2rem;
+        padding-left: 3.6rem;
+        padding-right: 3.6rem;
+    }
+  .THIS .deletebutton
+    {
+        width: 35%;
+        font-size: .8rem;
+        margin-left: 0.1rem;
+    }
+    .THIS .action-size
+    {
+        width:31%;
+    }
+ 
+    
+}*/

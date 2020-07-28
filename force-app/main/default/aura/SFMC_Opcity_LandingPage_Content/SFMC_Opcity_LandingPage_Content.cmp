@@ -1,0 +1,53 @@
+<aura:component implements="forceCommunity:layout,forceCommunity:availableForAllPageTypes,forceCommunity:themeLayout"
+    description="Layout for content text and image." access="global">
+    <aura:attribute name="imageName" type="String" />
+    <aura:attribute name="richText" type="String" />
+    <aura:attribute name="prefixString" type="String" />
+    <aura:attribute name="hideImage" type="Boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+
+    <lightning:layout class="slds-p-top_x-small slds-p-bottom_x-large" horizontalAlign="center">
+        <aura:if isTrue="{!or($Browser.formFactor == 'DESKTOP',$Browser.formFactor == 'TABLET')}">
+            <aura:if isTrue="{!!v.hideImage}">
+                <lightning:layoutItem size="3" padding="horizontal-medium">
+                    <img src="{!(v.prefixString + v.imageName)}" class="imageClass" />
+                </lightning:layoutItem>
+                <lightning:layoutItem size="9">
+                    <ui:outputRichText class="richTextStyling" value="{!v.richText}" linkify="true" />
+                </lightning:layoutItem>
+                <aura:set attribute="else">
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <lightning:layoutItem size="11">
+                        <ui:outputRichText class="richTextStyling" value="{!v.richText}" linkify="true" />
+                    </lightning:layoutItem>
+                </aura:set>
+            </aura:if>            
+        </aura:if>
+    </lightning:layout>
+        <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">
+            <lightning:layout horizontalAlign="center">
+                <aura:if isTrue="{!!v.hideImage}">
+                    <lightning:layoutItem size="11" padding="horizontal-medium">
+                        <div class="over">
+                        	<img src="{!(v.prefixString + v.imageName)}" class="mobileImageClass" />
+                        </div>
+                    </lightning:layoutItem>
+                    <aura:set attribute="else">
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </aura:set>
+                </aura:if>
+            </lightning:layout>
+            <lightning:layout horizontalAlign="center">
+                <lightning:layoutItem size="11">
+                    <ui:outputRichText class="richTextStyling" value="{!v.richText}" linkify="true" />
+                </lightning:layoutItem>
+            </lightning:layout>
+            
+        </aura:if>
+
+</aura:component>

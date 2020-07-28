@@ -1,0 +1,11 @@
+<template>
+    <div>
+        Id: {recordId}
+    </div>
+    <lightning-file-upload label="Upload"
+                           name="fileUploader"
+                           accept={acceptedFormats}
+                           record-id={recordId}
+                           onuploadfinished={handleUploadFinished}>
+    </lightning-file-upload>
+</template>

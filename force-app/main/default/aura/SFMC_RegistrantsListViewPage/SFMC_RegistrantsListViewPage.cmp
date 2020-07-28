@@ -1,0 +1,248 @@
+<aura:component controller="SFMC_EventListPageMethods" implements="flexipage:availableForRecordHome,flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId,lightning:actionOverride">
+    
+    <aura:if isTrue="{!v.showSpinner}">
+        
+        
+        <div class="slds-spinner_container slds-is-fixed">
+            <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+        
+    </aura:if>
+    
+    <!--Public Attributes-->
+    <aura:attribute name="Registrants" type="List" />
+    <aura:attribute name="CampMemberStatusList" type="CampaignMember[]"/>
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="campid" type="Id" />
+    <aura:attribute name="campName" type="String" />
+    <aura:attribute name="Eventid" type="Id" />
+    <aura:attribute name="EventName" type="String" />
+    <aura:attribute name="StateList" type="Form_Submission__c[]" />
+    <aura:attribute name="TotalReg" type="String" default="0"/>
+    <aura:attribute name="TotalAtten" type="String" default="0"/>
+    <aura:attribute name="TotalSent" type="String" default="0"/>
+    <aura:attribute name="displayedSection" type="string" default="section1"/>
+    <aura:attribute name="displayedbuttonandstatus" type="boolean"/>
+    <aura:attribute name="showSpinner" type="boolean"/>
+    <aura:attribute name="isMessage" type="boolean" default="false"/>
+    <aura:attribute name="isFailed" type="boolean" default="false"/>
+    <aura:attribute name="Message" type="string" />
+    <aura:attribute name="filterSelector" type="String" default="ALL"/>
+    <aura:attribute name="FormSubmissionRecord" type="Form_Submission__c"
+                    default="{'sobjectType': 'Form_Submission__c',
+                             'First_Name__c':'',
+                             'Email__c':'',
+                             'Last_Name__c':'',
+                             'State__c':'',
+                             'Phone__c':'',
+                             'Zip_Code__c':'',
+                             'City__c':''
+                             }" />
+    
+    
+    
+    <!--Initalisation methods-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:method name="updateRegistrantsList" action="{!c.doInit}" description="method for rendered list after add new Event "/>
+    
+    <!--Registrants list table -->
+    <div class="">
+        <div aura:id="firstsection" class="{!if(v.displayedSection == 'section1','slds-show','slds-hide')}">  <div class="col-md-12 title">
+            <div onclick="{!c.clearMsg}">
+                <h1>Registrations for  
+                    <strong><span>{!v.campName}</span> <span> ({!v.campid})</span></strong>
+                </h1>
+                <aura:if isTrue="{!v.isMessage}">
+                    <div class="message">
+                        <ui:message title="" severity="confirm" closable="true">
+                            {!v.Message}
+                        </ui:message>
+                    </div>
+                </aura:if>
+                
+            </div>
+            
+            <hr/>
+            <br/>
+            
+            <div class="well">
+                <p style="margin-top: 12px;">{!$Label.c.Total_Registered}  &nbsp; {!v.TotalReg} &nbsp; &nbsp; {!$Label.c.Total_Attended}&nbsp; {!v.TotalAtten} </p>  
+                <div align="right" style="margin-top: -27px;">
+                    
+                    <lightning:button label="{!$Label.c.Export}" 
+                                      class="btn btn-success pull-right left-gap-10"
+                                      variant="Success"
+                                      onclick="{!c.exportRecord}"
+                                      />
+                    <aura:if isTrue="{!v.displayedbuttonandstatus}" >  
+                        <lightning:button label="{!$Label.c.Walk_In_Registration}" 
+                                          class="btn btn-primary pull-right"
+                                          onclick="{!c.addRegistrants}"
+                                          />
+                    </aura:if>
+                </div> 
+            </div>
+            <hr/>
+            
+            <div class="col-md-12 title dots-here"></div><br/>
+            <lightning:buttonGroup class="slds-grid slds-wrap">
+                <lightning:button label="ALL" class="{!v.filterSelector == 'ALL' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.doInit }"/>
+                <lightning:button label="A" class="{!v.filterSelector == 'A' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers}"/>
+                <lightning:button label="B" class="{!v.filterSelector == 'B' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="C" class="{!v.filterSelector == 'C' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="D" class="{!v.filterSelector == 'D' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="E" class="{!v.filterSelector == 'E' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="F" class="{!v.filterSelector == 'F' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="G" class="{!v.filterSelector == 'G' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="H" class="{!v.filterSelector == 'H' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="I" class="{!v.filterSelector == 'I' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="J" class="{!v.filterSelector == 'J' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="K" class="{!v.filterSelector == 'K' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="L" class="{!v.filterSelector == 'L' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="M" class="{!v.filterSelector == 'M' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="N" class="{!v.filterSelector == 'N' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="O" class="{!v.filterSelector == 'O' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="P" class="{!v.filterSelector == 'P' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="Q" class="{!v.filterSelector == 'Q' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="R" class="{!v.filterSelector == 'R' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="S" class="{!v.filterSelector == 'S' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="T" class="{!v.filterSelector == 'T' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="U" class="{!v.filterSelector == 'U' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="V" class="{!v.filterSelector == 'V' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="W" class="{!v.filterSelector == 'W' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="X" class="{!v.filterSelector == 'X' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="Y" class="{!v.filterSelector == 'Y' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+                <lightning:button label="Z" class="{!v.filterSelector == 'Z' ? 'btn-grp btn-selected' : 'btn-grp' }" onclick="{!c.getEventMembers }"/>
+            </lightning:buttonGroup>
+            
+            
+            <table class="table slds-table slds-table_cell-buffer slds-border_top slds-table_bordered slds-table_col-bordered table-bordered tablelayout">
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col width="20%"/>
+                    <col width="15%"/>
+                    <col width="10%"/>
+                    <col />
+                <thead>
+                    <tr class="">
+                        <th scope="col" class=" slds-truncate"><div class="demo slds-truncate" title="{!$Label.c.Last_Name}">{!$Label.c.Last_Name}</div></th>
+                        <th scope="col" class=" slds-truncate"><div class="slds-truncate demo " title="{!$Label.c.First_Name}">{!$Label.c.First_Name}</div></th>
+                        <th scope="col" class=" slds-truncate"><div class="slds-truncate demo " title="{!$Label.c.Email}">{!$Label.c.Email}</div></th>
+                        <th scope="col" class=" slds-truncate"><div class="slds-truncate demo " title="{!$Label.c.Phone}">{!$Label.c.Phone}</div></th>
+                        <th scope="col" class=" slds-truncate"><div class="slds-truncate demo " title="{!$Label.c.Reg_Type}">{!$Label.c.Reg_Type}</div></th>
+                        <th scope="col" class=" slds-truncate event_sts"><div class="slds-truncate demo " title="{!$Label.c.Status}">{!$Label.c.Status}</div></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.Registrants}" var="Registrants">
+                        <tr>
+                            <th scope="row">
+                                
+                                <div class="slds-truncate demo" title="{!Registrants.Last_Name__c}">{!Registrants.Last_Name__c}</div></th>
+                            <td><div class="slds-truncate" title="{!Registrants.First_Name__c}">{!Registrants.First_Name__c}</div></td>
+                            <td><div class="slds-truncate" title="{!Registrants.Email__c}">{!Registrants.Email__c}</div></td>
+                            <td><div class="slds-truncate" title="{!Registrants.Mobile_Phone__c}">{!Registrants.Mobile_Phone__c}</div></td>
+                            <td>
+                                <div class="slds-truncate" title="{!Registrants.Registration_Type__c}">{!Registrants.Registration_Type__c}</div> 
+                            </td>
+                            <td class="status_size">
+                                <input type="hidden" value="{!Registrants.Id}" class="Registrants-Id" />
+                                <aura:if isTrue="{!v.displayedbuttonandstatus}" > 
+                                    <lightning:select aura:id="CampMemberStatus" class="sts-selector" label=" "  value="{!Registrants.Status__c}" onchange="{!c.onChangeStatus}">
+                                        <aura:iteration items="{!Registrants.statusList}" var="status">
+                                            <option value="{!status}" text="{!status}"/>   
+                                        </aura:iteration>
+                                    </lightning:select>
+                                    <aura:set attribute="else">
+                                        {!Registrants.Status__c}</aura:set>
+                                </aura:if>
+                            </td>
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+    
+    <!--WalK-IN Registration form -->
+    <div class="">
+        <div aura:id="secondsection" class="{!if(v.displayedSection == 'section2','slds-show','slds-hide')}">
+            <div class="col-md-12">
+            </div>
+            <h1 class="truncateh1">Walk-In Registration for 
+                <Strong>{!v.campid} </Strong>
+            </h1>
+            <hr/>
+            <br/>
+            <lightning:button label="{!$Label.c.Registration_Listing}" 
+                              class=" btn-primary pull-right btn-grp buttonrigh"
+                              onclick="{!c.registrationlisting}"
+                              />
+            
+            <div class="slds-form_horizontal slds-form  slds-wrap" onclick="{!c.clearMsg}">
+                
+                <aura:if isTrue="{!v.isMessage}">
+                    <div class="message">
+                        <ui:message title=" " severity="confirm" closable="true">
+                            {!v.Message}
+                        </ui:message>
+                    </div>
+                </aura:if>
+                <aura:if isTrue="{!v.isFailed}">
+                    <div class="message">
+                        <ui:message title="Error!" severity="error" closable="true">
+                            {!v.Message}
+                        </ui:message>
+                    </div>
+                </aura:if> 
+                <lightning:input aura:id="formfields" class="slds-size_1-of-2 labelsfont" type="text" value="{!v.FormSubmissionRecord.First_Name__c}" Name="First Name" label ="{!$Label.c.First_Name}" 
+                                 messageWhenValueMissing="{!$Label.c.SFMC_FirstNameValidate}" required="true"
+                                 pattern ='^[a-zA-Z\\s]+$'   
+                                 messageWhenPatternMismatch="{!$Label.c.SFMC_specialcharcternlabels}"/>
+                <lightning:input aura:id="formfields" class="slds-size_1-of-2 labelsfont" type="text" value="{!v.FormSubmissionRecord.Last_Name__c}" Name="Last Name" label ="{!$Label.c.Last_Name}" 
+                                 messageWhenValueMissing="{!$Label.c.SFMC_LastNameValidate}" required="true"
+                                 pattern ='^[a-zA-Z\\s]+$'
+                                 messageWhenPatternMismatch="{!$Label.c.SFMC_specialcharcternlabels}"/>
+                <lightning:input aura:id="formfields" class="slds-size_1-of-2 labelsfont" type="email" name="email"   value="{!v.FormSubmissionRecord.Email__c}" label="{!$Label.c.Email}" 
+                                 messageWhenValueMissing="{!$Label.c.SFMC_EmailValidate}" required="true"
+                                 messageWhenPatternMismatch="Please enter a valid Email Id"
+                                 pattern="^(([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)(\s*;\s*|\s*$))*$" />
+                <lightning:input aura:id="formfields"  class="slds-size_1-of-2 labelsfont" type="phone" name="MobilePhone"   value="{!v.FormSubmissionRecord.Phone__c}" label="{!$Label.c.Mobile_Phone}"
+                                 maxlength="10" 
+                                 messageWhenValueMissing="{!$Label.c.SFMC_PhoneValidate}" 
+                                 onblur="{!c.changePhoneNumber}"
+                                 />
+                
+                <lightning:input aura:id="CityField" class="slds-size_1-of-2 labelsfont1" type="text" value="{!v.FormSubmissionRecord.City__c}" Name=" City" label ="{!$Label.c.City}"/>
+                
+                <lightning:select aura:id="StateField" class="slds-size_1-of-2 labelsfont1" label="{!$Label.c.State}" value="{!v.FormSubmissionRecord.State__c}">
+                    <option value="" text="{!$Label.c.SFMC_None}" class="selectlabel"/>
+                    <aura:iteration items="{!v.StateList}" var="option">
+                        <option value="{!option}" text="{!option}" class="selectlabel"/>   
+                    </aura:iteration>
+                </lightning:select>
+                <lightning:input aura:id="formfields" class="slds-size_1-of-2 labelsfont1" type="text" name="ZipCode"   value="{!v.FormSubmissionRecord.Zip_Code__c}" label ="{!$Label.c.Zipcode}"
+                                 pattern="^(\s*\d\s*){5}$" maxlength="5" 
+                                 messageWhenBadInput="{!$Label.c.sfmc_zipcodevalidation}"
+                                 messageWhenPatternMismatch="{!$Label.c.sfmc_zipcodevalidation}"
+                                 />
+                
+                
+                
+                <lightning:button label="{!$Label.c.Submit_Walk_In}" 
+                                  class="slds-m-top--medium customButtonsize"
+                                  variant="Success"
+                                  onclick="{!c.walkInRegistration}"
+                                  />
+            </div>
+        </div>
+    </div>
+    
+    
+    
+</aura:component>

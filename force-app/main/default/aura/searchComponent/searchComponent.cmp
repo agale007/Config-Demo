@@ -1,0 +1,16 @@
+<aura:component controller="InventoryDataService"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes">
+    <aura:attribute type="String" name="selectedValue" />
+	<!--<aura:attribute name="searchKeyword" type="String"/>
+    <aura:attribute name="searchResult" type="List"/>
+    <lightning:input value="{!v.searchKeyword}"
+                                 placeholder="search Accounts.."
+                                 aura:id="searchField"
+                                 label="Inventory Data Name"
+                                 onchange="{!c.onSearch}"/>-->
+    <c:AutoComplete aura:id="account-record" 
+                    label="ZIP Code" 
+                    objectApiName="Inventory_Data__c" 
+                    idFieldApiName="Id" 
+                    valueFieldApiName="Name" />
+</aura:component>

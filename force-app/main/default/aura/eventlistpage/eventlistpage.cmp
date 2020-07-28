@@ -1,0 +1,179 @@
+<aura:component controller="SFMC_EventClass">
+    <aura:attribute name="Events" type="List" />
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="eventRecord" type="Event"
+                    default="{ 'sobjectType': 'Event',
+                             'Name':'',
+                             'Subject':'',
+                             'OwnerId':'',
+                             'CreatedById':'',
+                             'EndDateTime':'',
+                             'StartDateTime':'',
+                             'CreatedById':'',
+                             'ActivityDate':''
+                             }"
+                    />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    
+    <div class="col-md-12 title dots-here">
+        <h1>Current Events/Workshops</h1>
+    </div>
+    <div align="right">
+        <lightning:button label="Add Event" 
+                          class="slds-m-top--medium customButtonsize"
+                          iconName="utility:add" 
+                          variant="Success"
+                          onclick="{!c.addevent}"
+                          />
+        <lightning:button label="Add Other Event" 
+                          class="slds-m-top--medium customButtonsize customButtonColor "
+                          iconName="utility:add"
+                          onclick="{!c.addotherevent}"
+                          /></div>
+    
+    
+    <div class="col-md-12 title">
+        <h2>Active Event</h2>
+    </div><br/>
+    
+    <!-- Use a data table from the Lightning Design System: https://www.lightningdesignsystem.com/components/data-tables/ -->
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+        <thead>
+            <tr class="slds-text-heading_label">
+                <th scope="col"><div class="slds-truncate demo" title="ID">Event Location</div></th>
+                <th scope="col"><div class="slds-truncate demo" title="Name">Campaign Name/ID</div></th>
+                <th scope="col"><div class="slds-truncate demo" title="Type">Registration Page</div></th>
+                <th scope="col"><div class="slds-truncate demo" title="Number Of Employees">Event Date</div></th>
+                <th scope="col"><div class="slds-truncate demo" title="Ticker Symbol">Public?</div></th>
+                <th scope="col"><div class="slds-truncate demo" title="Delete">Action</div></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Use the Apex model and controller to fetch server side data -->
+            <aura:iteration items="{!v.Events}" var="Events">
+                <tr>
+                    <th scope="row"><div class="slds-truncate demo" title="{!Events.Subject}">{!Events.Subject}</div></th>
+                    <td><div class="slds-truncate" title="{!Events.Name}">{!Events.Name}</div></td>
+                    <td><div class="slds-truncate" title="{!Events.Type}">{!Events.Id}</div></td>
+                    <td><div class="slds-truncate" title="{!Events.NumberOfEmployees}">{!Events.StartDateTime}</div></td>
+                    <td><div class="slds-truncate" title="{!Events.TickerSymbol}">{!Events.TickerSymbol}</div></td>
+                    <td>
+                        <input type="hidden" value="{!Events.Subject}" class="Event-name" />
+                        <!-- Use a Lightning Base Component To display an icon next to the label -->
+                        <lightning:button
+                                          label="Registrants"
+                                          iconPosition="left"
+                                          class="customButton" 
+                                          type="submit"
+                                          />
+                        <lightning:button
+                                          label="Edit"
+                                          iconPosition="left"
+                                          class="customButton" 
+                                          type="submit"
+                                          />
+                        <lightning:button
+                                          label="Delete"
+                                          iconPosition="left"
+                                          variant="destructive"
+                                          type="submit"
+                                          onclick="{! c.deleteEvent }"
+                                          />
+                        
+                    </td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+    
+    
+    
+    
+    <aura:if isTrue="{!v.isOpen}" >
+        
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                        
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Add Event / Workshop</h1>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1"> 
+                    <div aria-labelledby="newexpenseform ">
+                        <!-- BOXED AREA -->
+                        
+                        <form name="demo" class="slds-form--stacked">
+                            <fieldset class="slds-box slds-theme--default slds-container--large colorchange">
+                                <legend id="newexpenseform" class="slds-text-heading--medium 
+                                                                   slds-p-vertical--medium colorchanges">
+                                    Event Information
+                                </legend>
+                                <lightning:input aura:id="Name" type="Text" name="input1" label="Event Name" value="{!v.eventRecord.Subject}" required="true" /><br/>
+                                <lightning:input aura:id="EventId" type="Id" name="input1" label="Event Id" value="{!v.eventRecord.Id}" required="true" /><br/>
+                                <lightning:input aura:id="EventDate" type="datetime" name="input1" label="Event Date / Time" value="{!v.eventRecord.ActivityDate}" required="true" /><br/>
+                                <lightning:input aura:id="Start" type="datetime" name="input1" label="Publish Start Date" value="{!v.eventRecord.StartDateTime}" required="true" /><br/>
+                                <lightning:input aura:id="End" type="datetime" name="input1" label="Publish End Date" value="{!v.eventRecord.EndDateTime}" required="true" /><br/>
+                                <lightning:input type="url" label="Image Url" name="input1" value=" " /><br/>
+                                <lightning:input type="url" label="Video Url" name="input1" value=" " /><br/>
+                                 <lightning:select aura:id="User" label="Public Event" value="{!v.eventRecord.OwnerId}" required="true"  >
+                                                    <option value="" text="- None -" />
+                                                    <aura:iteration items="{!v.recordsList}" var="record">
+                                                        <option value="{!record.Id}" text="{!record.Name}" />   
+                                                    </aura:iteration>
+                                </lightning:select><br/>
+                                <lightning:input  type="checkbox" label="Event Status" name="input1" checked=" " required="true"/><br/>
+                                
+                                <lightning:textarea name="input2" label="Description(optional)" 
+                                                    value=" " /><br/>
+                                <lightning:textarea name="input2" label="Event Speakers" 
+                                                    value=" " required="true"/><br/>
+                                <lightning:input aura:id="Hotelname" type="Text" name="input1" label="Venue / Hotel Name" value="{!v.eventRecord.Subject}" required="true" /><br/>
+                                <lightning:input aura:id="HotelAddress" type="Id" name="input1" label="Venue / Hotel Address" value="{!v.eventRecord.Id}" required="true" /><br/>
+                                <lightning:input aura:id="HotelCity" type="Text" name="input1" label="Venue / Hotel City" value="{!v.eventRecord.Subject}" required="true" /><br/>
+                                <lightning:input aura:id="HotelTerritory" type="Id" name="input1" label="Venue / Hotel Territory" value="{!v.eventRecord.Id}" required="true" /><br/>  
+                                <lightning:input aura:id="HotelState" type="Text" name="input1" label="Venue / Hotel State" value="{!v.eventRecord.Subject}" required="true" /><br/>
+                                <lightning:input aura:id="HotelzipCode" type="Id" name="input1" label="Venue / Hotel Zip Code" value="{!v.eventRecord.Id}" required="true" /><br/>  
+                                
+                            </fieldset><br/>
+                            
+                            <fieldset class="slds-box slds-theme--default slds-container--large colorchange">
+                                <legend id="newexpenseform" class="slds-text-heading--medium 
+                                                                   slds-p-vertical--medium colorchanges">
+                                    Campaign details
+                                </legend>
+                                <lightning:input aura:id="campName" type="Text" name="input1" label="Campaign Name" value="" required="true" /><br/>
+                                <lightning:input aura:id="campId" type="Id" name="input1" label="Product Code" value=" " required="true" /><br/>
+                                <lightning:textarea name="input2" label="Description(optional)" 
+                                                    value=" " /><br/> 
+                                <lightning:select aura:id="User" label="Event Type" value="{!v.eventRecord.OwnerId}" required="true"  >
+                                    <option value="" text="- None -" />
+                                    <aura:iteration items="{!v.recordsList}" var="record">
+                                        <option value="{!record.Id}" text="{!record.Name}" />   
+                                    </aura:iteration>
+                                </lightning:select>
+                                <lightning:select aura:id="User" label="Account Type" value="{!v.eventRecord.OwnerId}" required="true"  >
+                                    <option value="" text="- None -" />
+                                    <aura:iteration items="{!v.recordsList}" var="record">
+                                        <option value="{!record.Id}" text="{!record.Name}" />   
+                                    </aura:iteration>
+                                </lightning:select>
+                            </fieldset>
+                            
+                        </form>
+                    </div>
+                    
+                </div>
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick="{!c.cancel}">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick="{!c.save}">Save</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+</aura:component>

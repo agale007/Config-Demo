@@ -1,0 +1,12 @@
+<aura:event type="COMPONENT" description="Event template">
+
+    <!-- Aura Attribute -->
+    <aura:attribute name="Hideevent" type="string"/>
+    <aura:attribute name="campid" type="Id" />
+    <aura:attribute name="campName" type="String" />
+    <aura:attribute name="Eventid" type="Id" />
+    <aura:attribute name="displayedbuttonandstatus" type="boolean"/>
+    <aura:attribute name="isRegistered" type="boolean"/>
+    
+    
+</aura:event>

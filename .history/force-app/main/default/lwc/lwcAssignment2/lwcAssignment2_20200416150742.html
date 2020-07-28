@@ -1,0 +1,22 @@
+<template>
+    <!--<p>{activeSectionsMessage}</p>-->
+
+    <lightning-accordion allow-multiple-sections-open
+                         onsectiontoggle={handleSectionToggle}
+                         >
+        <lightning-accordion-section name="A" label="Contact Names">
+            <div class="slds-m-around_medium">
+                <template if:true={contacts.data}>
+                    <template for:each={contacts.data} for:item="contact">
+                          <p key={contact.Id}>
+                            <a target="blank" data-record-id={contact.Id} onclick={navigateToViewRecordPage}>{contact.Name}</a>
+                          </p>
+                  
+                    </template>
+                </template>
+            </div>
+     
+        </lightning-accordion-section>
+
+    </lightning-accordion>
+</template>

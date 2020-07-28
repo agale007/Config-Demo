@@ -1,0 +1,129 @@
+<aura:component controller="SFMC_WebinarRegistarantsListController" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+    <!-- Lightning Spinner -->
+    <aura:if isTrue="{!v.showSpinner}">
+    	<!-- <lightning:spinner aura:id="spinner"/> -->
+        <div class="demo-only demo-only demo-only_viewport demo--inverse" style="height:6rem">
+            <div class="slds-spinner_container slds-is-fixed">
+                <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </div>
+    </aura:if>
+    
+    <aura:attribute name="webinarkey" type="String" />
+    <aura:attribute name="webinarId" type="Id" />
+    <aura:attribute name="webinarName" type="String" />
+    <aura:attribute name="activeRegistarents" type="Event__c[]" default=""/>
+    <aura:attribute name="allRegistarents" type="Event__c[]" default=""/>
+    <aura:attribute name="TotalReg" type="Integer" default="0"/>
+    <aura:attribute name="TotalAtten" type="Integer" default="0"/>
+    <aura:attribute name="TotalSent" type="Integer" default="0"/>
+    <aura:attribute name="showSpinner" type="boolean" />
+    <aura:attribute name="filterSelector" type="String" default="all"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    
+	<div class="webRegcontainer">
+         <div class="slds-m-left_small title">
+        <br/>
+        	<h1 class="">{!$Label.c.SFMC_Registrant_For}&nbsp;   
+                <strong>{!v.webinarName}</strong>
+            </h1>
+             
+            <hr/>
+			<br/>
+        </div>
+    <div class="slds-m-left_small slds-m-right_small">
+            <div class="well">
+                <div class="slds-grid slds-gutters">
+                  <div class="slds-col" style="padding-top: 7px;">
+                    <p>{!$Label.c.Total_Registered} &nbsp; {!v.TotalReg} &nbsp; &nbsp; {!$Label.c.Total_Attended} &nbsp; {!v.TotalAtten} </p>  
+                  </div>
+                  <div class="slds-col">
+                    <div class="slds-float_right export-button">
+                        <lightning:button label="{!$Label.c.Export}" 
+                                          class="slds-m-top--medium customButtonsize"
+                                          variant="Success"
+                                          onclick="{!c.exportRecord}"
+                                          />
+                   </div> 
+                  </div>
+                </div>
+              
+                
+            </div>
+            <hr style="width: 100%;"/>
+            <div class="col-md-12 title dots-here"></div><br/>
+        
+            <lightning:buttonGroup class="slds-grid slds-wrap">
+                <lightning:button label="ALL" class="{!v.filterSelector == 'all' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.doInit }"/> 
+                <lightning:button label="A" class="{!v.filterSelector == 'A' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers}"/>
+                <lightning:button label="B" class="{!v.filterSelector == 'B' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="C" class="{!v.filterSelector == 'C' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="D" class="{!v.filterSelector == 'D' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="E" class="{!v.filterSelector == 'E' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="F" class="{!v.filterSelector == 'F' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="G" class="{!v.filterSelector == 'G' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="H" class="{!v.filterSelector == 'H' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="I" class="{!v.filterSelector == 'I' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="J" class="{!v.filterSelector == 'J' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="K" class="{!v.filterSelector == 'K' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="L" class="{!v.filterSelector == 'L' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="M" class="{!v.filterSelector == 'M' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="N" class="{!v.filterSelector == 'N' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="O" class="{!v.filterSelector == 'O' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="P" class="{!v.filterSelector == 'P' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="Q" class="{!v.filterSelector == 'Q' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="R" class="{!v.filterSelector == 'R' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="S" class="{!v.filterSelector == 'S' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="T" class="{!v.filterSelector == 'T' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="U" class="{!v.filterSelector == 'U' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="V" class="{!v.filterSelector == 'V' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="W" class="{!v.filterSelector == 'W' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="X" class="{!v.filterSelector == 'X' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="Y" class="{!v.filterSelector == 'Y' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+                <lightning:button label="Z" class="{!v.filterSelector == 'Z' ? 'btn-grp btn-padding btn-selected' : 'btn-grp btn-padding' }" onclick="{!c.getWebinarMembers }"/>
+            </lightning:buttonGroup>  
+        <table class="slds-table slds-table_cell-buffer slds-border_left slds-border_right slds-table_bordered slds-table_col-bordered" style="table-layout:fixed;">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col" style="width:18%;">
+                        <div class="slds-truncate" title="{!$Label.c.Last_Name}"><h3>{!$Label.c.Last_Name}</h3></div>
+                    </th>
+                    <th class="" scope="col" style="width:18%;">
+                        <div class="slds-truncate" title="{!$Label.c.First_Name}"><h3>{!$Label.c.First_Name}</h3></div>
+                    </th>
+                    <th class="" scope="col" style="width:46%;">
+                        <div class="slds-truncate" title="{!$Label.c.Email}"><h3>{!$Label.c.Email}</h3></div>
+                    </th>
+                    <th class="" scope="col" style="width:18%;">
+                        <div class="slds-truncate" title="{!$Label.c.Status}"><h3>{!$Label.c.Status}</h3></div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody> 
+                <aura:iteration items="{!v.activeRegistarents}" var="reg">
+                     <tr class="slds-hint-parent">
+                        <td class="bolderFont">
+                            <div class="slds-truncate tableData" title="{!reg.Last_Name__c}">{!reg.Last_Name__c}</div>
+                        </td>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate tableData" title="{!reg.First_Name__c}">{!reg.First_Name__c}</div>
+                        </td>    
+                        <td data-label="Account Name">
+                            <div class="slds-truncate tableData" title="{!reg.Email__c}">{!reg.Email__c}</div>
+                        </td>
+                         <td data-label="Account Name">
+                            <div class="slds-truncate tableData" title="{!reg.Status__c}">{!reg.Status__c}</div>
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+ 
+    </div>
+  </div>
+</aura:component>

@@ -1,0 +1,23 @@
+<design:component>
+	<design:attribute name="contentHeader" label="Content Header" />
+    <design:attribute name="contentHeaderFontSize" label="Content Header Font Size" />
+    <design:attribute name="contentHeaderFont" label="Content Header Font" />
+    <design:attribute name="contentHeaderFontColor" label="Content Header Font Color" />
+    <design:attribute name="formTopText" label="Form Title" />
+    <design:attribute name="formTopTextSize" label="Form Title Font Size" />
+    <design:attribute name="formTopTextFont" label="Form Title Font" />
+    <design:attribute name="formTopTextFontColor" label="Form Title Font Color" />
+    <design:attribute name="formBottomText" label="Form Footer" />
+    <design:attribute name="formBottomTextFontSize" label="Form Footer Font Size" />
+    <design:attribute name="formBottomTextFont" label="Form Footer Font" />
+    <design:attribute name="formImage" label="Form Image" datasource = "contentImage1.jpg, contentImage2.jpg,contentImage3.jpg, xmas.jpg"/>
+    <design:attribute name="formImageSize" label="Form Image Size" />
+    <design:attribute name="sideImage" label="Side Image" datasource="'',text-alert1.gif"/>
+    <design:attribute name="sideImageSize" label="Side Image Size"/>
+    
+    <design:attribute name="imageHeaderText" label="Image Header Text" />
+    <design:attribute name="imageBottomText" label="Image Bottom Text" />
+    <design:attribute name="imageTextColor" label="Image Text Color"/>
+    <design:attribute name="imageTextFontSize" label="Image Text Font Size" />
+    <design:attribute name="imageTextFont" label="Image Text Font" />
+</design:component>

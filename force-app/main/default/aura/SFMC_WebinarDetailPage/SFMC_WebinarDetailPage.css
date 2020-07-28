@@ -1,0 +1,97 @@
+.THIS.headerdiv h1{
+    line-height: 1.1;
+    font-size: 1.5rem;
+}
+.THIS .slds-table_cell-buffer tr > th:first-child,
+.THIS .slds-table_cell-buffer tr > td:first-child,
+.THIS .slds-table--cell-buffer tr > th:first-child,
+.THIS .slds-table--cell-buffer tr > td:first-child 
+{
+    padding-left: 0.5rem !important;
+}
+.THIS .slds-truncate
+{
+    white-space:normal;
+}
+
+@media only screen and (min-width : 768px) and (max-width : 1024px)  {
+   
+     .THIS .webinar-detail .slds-button
+    {
+      width:95%;
+      float: left;
+      margin-left: 0px;
+    }
+    .THIS .webinar-detail .edit-btn{
+       margin-top:0.25rem; 
+    }
+    .THIS .webinar-detail .slds-align_absolute-center{
+        display:block;
+    }
+}
+.THIS .customButton{
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    color: #fff;
+    font-size: 0.7rem;
+ }
+
+.THIS .successclass
+{
+    border: 1px solid #988e8e;
+    background: #5cb85c;
+    border-radius: 0.25rem;
+    text-align: center;
+}
+
+.THIS .inactiveclass
+{
+    border: 1px solid #988e8e;
+    background: #FF4B4B;
+    border-radius: 0.25rem;
+    text-align: center;
+}
+
+.THIS .pending
+{
+    border: 1px solid #988e8e;
+    background: #f0ad4e;
+    border-radius: 0.25rem;
+    text-align: center;
+}
+
+.THIS .bolderFont
+{
+    font-weight: bolder;
+}
+
+.THIS.headerdiv hr
+{
+    border-bottom: 1px dotted #07A7FF;
+    border-top: 0px;
+    margin-top:7px;
+    margin-bottom:7px;
+    margin-right: 0.9rem;
+    margin-left: 0.3rem;
+}
+.THIS.headerdiv h1{
+    line-height: 30px!important;
+}
+
+.THIS .table-bordered{
+    border: 1px solid #ddd; 
+}
+
+.THIS .heading-text{
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    color:#000000;
+    font-weight: bolder;
+}
+
+.THIS .slds-table_cell-buffer tr>th:last-child,
+.THIS .slds-table_cell-buffer tr>td:last-child,
+.THIS .slds-table--cell-buffer tr>th:last-child,
+.THIS .slds-table--cell-buffer tr>td:last-child{
+    padding-right: 0.5rem;
+}

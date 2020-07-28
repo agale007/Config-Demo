@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title="Calling Lightning Web Components From Visualforce Page" icon-name="standard:account">
+        <template if:true={accData}>
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+                <thead>
+                    <tr class="slds-text-title_caps">
+                        <th scope="col">
+                            <div title="Key">Account Name</div>
+                        </th>
+                        <th scope="col">
+                            <div title="Value">Industry</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={accData} for:item="acc">
+                        <tr key={acc.key}>
+                            <th scope="col">
+                                <div>{acc.Name}</div>
+                            </th>
+                            <th scope="col">
+                                <div>{acc.Industry}</div>
+                            </th>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+
+        <lightning-button-group>
+            <lightning-button label="Show Success" onclick={handleSuccess}></lightning-button>
+            <lightning-button label="Show Error" onclick={handleError}></lightning-button>
+            <lightning-button label="Show Warning" onclick={handleWarning}></lightning-button>
+            <lightning-button label="Show Info" onclick={handleInfo}></lightning-button>
+        </lightning-button-group>
+    </lightning-card>
+</template>

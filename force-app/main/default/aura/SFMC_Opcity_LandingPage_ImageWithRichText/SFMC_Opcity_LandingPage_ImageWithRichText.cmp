@@ -1,0 +1,13 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,forceCommunity:layout,forceCommunity:themeLayout" access="global" >
+    <aura:attribute name="imageContainer" type="Aura.Component"/>
+    <aura:attribute name="richTextContainer" type="Aura.Component"/>
+    
+    <lightning:layout>
+    	<lightning:layoutItem>
+            {!v.imageContainer}
+        </lightning:layoutItem>
+        <lightning:layoutItem>
+            {!v.richTextContainer}
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

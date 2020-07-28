@@ -1,0 +1,134 @@
+.THIS.sfmc-modal-mobile {
+  top: 0rem;
+}
+
+.THIS.slds-modal__container
+{
+    position:absolute !important;
+    width:100%;
+    flex-direction: unset;
+}
+
+.THIS .sfmc-modal-mobile__container {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.THIS .sfmc {
+    min-height: 70%;
+}
+
+.THIS .sfmc-ipad {
+    min-height: 90%;
+}
+
+.THIS .sfmc-modalHeight {
+    min-height: 91% !important;
+    border-top-right-radius:.25rem;
+    border-top-left-radius:.25rem;
+}
+.THIS .reConcile {
+    min-height: 70%;
+}
+
+.THIS .sfmc_con_position_static{
+	position: static !important;
+	animation-name: slideInDown !important; 
+	
+} 
+
+.THIS .sfmc_hide_header{
+	display:none !important;
+}
+
+.THIS .sfmc-modal-content-container {
+    height: 70vh;
+    border-radius: 1px;
+}
+
+.THIS .sfmc-custom-slds-modal__container  {
+  width: 80%;
+  min-width: 80%;
+  max-width: 70rem;
+}
+
+.THIS .slds-modal__container_default {
+  width: 50%;
+  min-width: 50%;
+  max-width: 50rem;
+}
+
+.THIS .sfmc-top-notifications{
+    width:100%;
+    background:#ffb75d;
+    bottom:0px;
+}
+
+
+.THIS .sfmc-top{
+    bottom:0px;
+}
+
+.THIS .sfmc-slds-modal__header {
+    position: relative;
+    border-top-right-radius:.25rem;
+    border-top-left-radius:.25rem;
+    text-align: center;
+}
+
+.THIS.slds-modal_sfmc-container {
+    height: 95vh;
+    top: 0rem;
+    bottom: 3rem;
+}
+
+.THIS.slds-modal_sfmc-container_top2 {
+	  top: 2rem;
+}
+
+.THIS .sfmc-modal_container-styles{
+    bottom: 0rem !important;
+	  min-width: 98vw;
+	  margin-top: 0em;
+    height: 100vh;
+}
+
+.THIS .sfmc-container-minHeight{
+	min-height: 95vh;
+	border-radius: 0.25rem;
+}
+
+.THIS .sfmc-container-minHeight_scrollTop{
+  min-height: 995vh;  
+  border-radius: 0.25rem;
+}
+
+.THIS .sfmc_backdrop_width{
+  width: 200rem;
+  left: -50rem;
+}
+
+.THIS .sfmc-margin-btn{
+  margin-top:-2rem;	
+}
+
+.THIS .sfmc_focusBorderHider{
+	outline: none;
+}
+
+.THIS .slds-modal__footer
+{
+    height:4rem;
+}
+
+@media only screen and (min-width : 768px) and (max-width : 1024px)  {
+
+    .THIS.slds-modal__container
+	{
+        position:absolute !important;
+        width:100%;
+        display: block;
+	}
+    
+}

@@ -1,0 +1,79 @@
+<template>
+    <label class="slds-form-element__label" for="select-01">Contact List</label>
+    <table class="slds-table slds-table_col-bordered slds-border_top slds-table_cell-buffer slds-table_bordered slds-m-top_small slds-border_left slds-border_right">
+       
+        
+        <thead>
+           <tr class="slds-line-height_reset slds-border_left slds-border_right">
+              <th class="" scope="col">
+                 <div class="slds-truncate" title="First Name">First Name</div>
+              </th>
+              <th class="" scope="col">
+                 <div class="slds-truncate" title="Last Name">Last Name</div>
+              </th>
+              <th class="" scope="col">
+                 <div class="slds-truncate" title="Phone">Phone</div>
+              </th>
+              <th class="" scope="col">
+                 <div class="slds-truncate" title="Email">Email</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate" title="Action">Action</div>
+             </th>
+           </tr>
+        </thead>
+        
+        <tbody>
+            <template for:each={contacts.data} for:item="contact">
+                <tr class="slds-hint-parent slds-border_left slds-border_right" key={contact.Id}>
+                   <td>
+                      <div class="slds-truncate">{contact.FirstName}</div>
+                   </td>
+                   <td>
+                      <div class="slds-truncate">{contact.LastName}</div>
+                   </td>
+                   <td>
+                      <div class="slds-truncate">
+                         <lightning-formatted-phone value={contact.Phone} ></lightning-formatted-phone>
+                      </div>
+                   </td>
+                   <td>
+                      <div class="slds-truncate">
+                         <lightning-formatted-email value={contact.Email} ></lightning-formatted-email>
+                      </div>
+                   </td>
+                   <td>
+                    <div class="slds-truncate">
+                       
+                        <lightning-button
+                        label="Registrants"
+                        class="slds-m-right_x-small"
+                        type="submit"
+                        
+                        ></lightning-button>
+      <lightning-button
+                        label="Edit"
+                        class="slds-m-right_x-small" 
+                        type="submit">
+    </lightning-button>
+      <lightning-button
+                        label="Clone"
+                        class="slds-m-right_x-small" 
+                        type="submit"
+                        
+                        
+      ></lightning-button>    
+      <lightning-button
+                        label="Delete"
+                        class="" 
+                        variant="destructive"
+                        type="submit"
+                       
+      ></lightning-button>
+                    </div>
+                 </td>
+                </tr>
+             </template>
+        </tbody>
+    </table>
+</template>

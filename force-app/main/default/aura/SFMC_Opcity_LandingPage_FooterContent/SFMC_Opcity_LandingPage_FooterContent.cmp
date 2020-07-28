@@ -1,0 +1,19 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="footerText" type="String"/>
+    <aura:attribute name="imageName" type="String" />
+    <aura:attribute name="prefixString" type="String" />
+    <aura:attribute name="imageQuote" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <lightning:layout>
+    	<lightning:layoutItem size="4" padding="around-small">
+        	<img src="{!(v.prefixString + v.imageName)}"/>
+            <lightning:layoutItem  padding="around-small">
+            	<p>{!v.imageQuote}</p>
+            </lightning:layoutItem>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="8" class="slds-wrap" padding="around-small">
+        	<ui:outputText value="{!v.footerText}"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

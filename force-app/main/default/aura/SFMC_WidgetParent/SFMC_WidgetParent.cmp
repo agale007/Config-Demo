@@ -1,0 +1,9 @@
+<aura:component controller="EventDateSelector"
+                implements="forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="urlParamMap" type="string"/>
+    <aura:attribute name="event" type="object"/>
+    <aura:attribute name="htmlString" type="string"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <c:SFMC_EventWidget event="{!v.event}"/>
+    <c:SFMC_UnEscapedHTMLWidget htmlString="{!v.htmlString}"/>
+</aura:component>

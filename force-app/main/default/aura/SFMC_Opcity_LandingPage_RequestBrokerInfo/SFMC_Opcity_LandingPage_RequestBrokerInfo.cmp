@@ -1,0 +1,214 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" controller="SFMC_LandingPageController" access="global">
+    <aura:attribute name="uiList" type="String" />
+    <aura:attribute name="formSubmissionObj" type="Object"/>
+    <aura:attribute name="fSError" type="String"/>
+    <aura:attribute name="newFSRecord" type="Object"/>
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="objInfo" type="Form_Submission__c" default="{sobjectType : 'Form_Submission__c'}" />
+    <aura:attribute name="showBrokerFields" type="Boolean" default="false" />
+    <aura:attribute name="showAgentFields" type="Boolean" default="false" />
+    <aura:attribute name="showAdditionalZip" type="Boolean" default="false" />
+    <aura:attribute name="showLeadValues" type="Boolean" default="false" />
+    <aura:attribute name="phoneNumerString" type="String" default=""/>
+    <aura:attribute name="productType" type="String" />
+    <aura:attribute name="submissionType" type="String" />
+    <aura:attribute name="campaignId" type="String" />
+    <aura:attribute name="stateMap" type="Map"/>
+    <aura:attribute name="agentMap" type="Map"/>
+    <aura:attribute name="urlParamMap" type="String" />
+    <aura:handler event="c:ConfigurationEvent" action="{!c.saveConfiguration}"/>
+    <aura:attribute name="generatingLeads" type="List" default="[
+    {'label': 'Yes', 'value': 'Yes'},
+    {'label': 'No', 'value': 'No'}
+    ]" />
+    <aura:attribute name="value" type="String" default="" />
+    <aura:attribute name="showThankYou" type="Boolean" default="false"/>
+    <aura:attribute name="generatingLeadValues" type="List" default="[
+    {'label': '50-100', 'value': '50-100'},
+    {'label': '101-200', 'value': '101-200'},
+    {'label': '201-400', 'value': '201-400'},
+    {'label': '401-600', 'value': '401-600'},
+    {'label': '600+', 'value': '600+'}                                                                
+    ]" />
+    <aura:attribute name="headerConfigurable" type="String"/>
+    <force:recordData aura:id="formSubmissionRecordCreator"
+                      layoutType="FULL"
+                      targetRecord="{!v.newFSRecord}"
+                      recordId="{!v.recordId}"
+                      targetFields ="{!v.formSubmissionObj}"
+                      targetError="{!v.fSError}"
+                      />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="value1" type="String" default="" />
+    <aura:attribute name="options" type="String[]"/> 
+    <div>
+        <lightning:card title="" class="formStyle">
+            <div>
+                
+				<aura:if isTrue="{!!v.showThankYou}">
+                    <div class="formTitle">
+                    	<h1>{!v.headerConfigurable}</h1>
+                    </div>
+    
+                    <div>
+                        {!v.uiList}
+                    </div>
+                    
+                    <lightning:input aura:id="stId"  label="Submission Type" value="{!v.formSubmissionObj.Form_Type__c}"  class="slds-hide" style="display : none;"/>
+                    <lightning:input aura:id="prodTypeId"  label="Product Type" value="{!v.formSubmissionObj.Product_Type__c}"  class="slds-hide" style="display : none;"/>
+                    <lightning:input aura:id="camId"  label="Campaign Id" value="{!v.formSubmissionObj.Campaign_Id__c}"  class="slds-hide" style="display : none;"/>                        
+                    
+                <lightning:layout>
+                    <lightning:layoutItem size="6" padding="around-small">
+                        <lightning:input aura:id="contactField" value="{!v.formSubmissionObj.First_Name__c}" label="First Name" required="true" pattern="^[a-zA-Z ]+$"
+                        messageWhenPatternMismatch="{!$Label.c.SFMC_Name_Validation}"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="6" padding="around-small">
+                        <lightning:input aura:id="contactField" value="{!v.formSubmissionObj.Last_Name__c}" label="Last Name" required="true" pattern="^[a-zA-Z ]+$"
+                        messageWhenPatternMismatch="{!$Label.c.SFMC_Name_Validation}"/>
+                    </lightning:layoutItem>
+                </lightning:layout>
+                <lightning:layout>
+                    <lightning:layoutItem size="12" padding="around-small">
+                        <lightning:input aura:id="contactField" value="{!v.formSubmissionObj.Email__c}" required="true" label="Business Email" 
+                         pattern="^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$"
+                         messageWhenPatternMismatch="{!$Label.c.SFMC_Email_Address_Validation}" messageWhenValueMissing="{!$Label.c.SFMC_Email_Validation}"                
+                                         />
+                    </lightning:layoutItem>
+                </lightning:layout>
+                <lightning:layout>
+                    <lightning:layoutItem size="12" padding="around-small">
+                        <lightning:input aura:id="contactField" value="{!v.formSubmissionObj.Phone__c}" required="true" label="Mobile Phone Number" 
+                         maxlength="10" 
+                                 messageWhenValueMissing="{!$Label.c.SFMC_Phone_Validation}" 
+                                 onblur="{!c.changePhoneNumber}"                 
+                                         />
+                    </lightning:layoutItem>
+                </lightning:layout>
+                <lightning:layout>
+                    <lightning:layoutItem size="12" padding="around-small">
+                        <lightning:input aura:id="contactField" value="{!v.formSubmissionObj.Broker_Name__c}" required="true" label="Name of Brokerage" />
+                    </lightning:layoutItem>
+                </lightning:layout>
+                <lightning:layout>
+                    <lightning:layoutItem size="12" padding="around-small">
+                        <lightning:select aura:id="contactField" name="select1" label="Role" value="{!v.formSubmissionObj.Role__c}" required="true"
+                            onchange="{!c.handelRoleChnage}">
+                            <option value="">Please Select</option>
+                            <option value="Managing Broker">Managing Broker</option>
+                            <option value="Broker">Broker</option>
+                            <option value="Agent">Agent</option>
+                            <option value="Team Lead">Team Lead</option>
+                            <option value="Other">Other</option>
+                            <option value="Attorney">Attorney</option>
+                        </lightning:select>
+                    </lightning:layoutItem>
+                </lightning:layout>
+                <aura:if isTrue="{!v.showAgentFields}">
+                    <lightning:layout>
+                        <lightning:layoutItem size="12" padding="around-small">
+                            <lightning:select value="{!v.formSubmissionObj.Already_Using_Opcity__c}" required="false" label="Broker Already Using Opcity?" >
+                                <option value="">Please Select</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </lightning:select>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </aura:if>
+                <aura:if isTrue="{!or(v.showBrokerFields,v.showAgentFields)}">
+                    <lightning:layout>
+                        <lightning:layoutItem size="12" padding="around-small">
+                            <lightning:input value="{!v.formSubmissionObj.Managing_Broker__c}" required="false" label="Name of Managing Broker" />
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                    <lightning:layout>
+                        <lightning:layoutItem size="12" padding="around-small">
+                            <lightning:input value="{!v.formSubmissionObj.Managing_Broker_Email__c}" required="false" label="Email of Managing Broker" 
+                                             pattern="^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$"
+                         						messageWhenPatternMismatch="{!$Label.c.SFMC_Email_Address_Validation}"
+                                             />
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </aura:if>
+                <lightning:layout>
+                	<lightning:layoutItem size="12" padding="around-small">
+                        <lightning:select label="Number of Agents in Brokerage" value="{!v.formSubmissionObj.No_Of_Agents__c}" required="true">
+                        	<option value="" selected="{!equals(v.formSubmissionObj.No_Of_Agents__c,'')}">Please Select</option>
+                                <option value="&lt;15">&lt;15</option>
+                                <option value="15-50">15-50</option>
+                            	<option value="50-100">50-100</option>
+                            	<option value="100+">100+</option>
+                        </lightning:select>
+                    </lightning:layoutItem>    
+                </lightning:layout>
+                <lightning:layout>
+                    <lightning:layoutItem size="12" padding="around-small">
+                            <lightning:select aura:id="contactField" name="select1" label="State" value="{!v.formSubmissionObj.State__c}" required="true">
+                                <option value="" selected="{!equals(v.formSubmissionObj.State__c,'')}">Please Select</option>
+                           		<aura:iteration items="{!v.stateMap}" var="option">
+                                    <option text="{!option.label}" value="{!option.value}"/>
+                                </aura:iteration>
+                            </lightning:select>
+                        </lightning:layoutItem>
+                </lightning:layout>
+                <lightning:layout>
+                    <lightning:layoutItem size="12" padding="around-small">
+                        <lightning:input label="Primary Zip Code" pattern="[0-9]{5}" value="{!v.formSubmissionObj.Zip_Code__c}" required="true" aura:id="contactField"
+                            messageWhenPatternMismatch="Enter valid zip code" onblur="{!c.handleZipChange}" />
+                    </lightning:layoutItem>
+                </lightning:layout>
+                <aura:if isTrue="{!v.showAdditionalZip}">
+                    <lightning:layout>
+                        <lightning:layoutItem size="12" padding="around-small">
+                            <lightning:input label="Additional Zip Code" pattern="[0-9]{5}" messageWhenPatternMismatch="Enter valid zip code" value="{!v.formSubmissionObj.Additional_Zip_Code__c}" required="false" />
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </aura:if>
+                <lightning:layout>
+                    <lightning:layoutItem size="12" padding="around-small">
+                        <lightning:input label="Cities / Markets Covered" value="{!v.formSubmissionObj.Market__c}" required="false" />
+                    </lightning:layoutItem>
+                </lightning:layout>
+                <lightning:layout>
+                    <lightning:layoutItem size="12" padding="around-small">
+                        <lightning:radioGroup name="buyingLeads" label="Are you buying and/or generating leads?"
+                            options="{! v.generatingLeads }" value="" type="radio" aura:id="leadGenId"
+                            onchange="{!c.handleLeadGen}" required="true"/>
+
+                    </lightning:layoutItem>
+                </lightning:layout>
+                <aura:if isTrue="{!v.showLeadValues}">
+                    <lightning:layout>
+                        <lightning:layoutItem size="12" padding="around-small">
+                            <lightning:radioGroup name="leadBuyingOptions"
+                                label="How many leads are you generating monthly?" options="{! v.generatingLeadValues }"
+                                value="{!v.formSubmissionObj.Number_of_leads_generating_monthly__c}" type="radio" />
+
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </aura:if>
+
+                
+                <lightning:layout>
+                    <lightning:layoutItem size="12" padding="around-small">
+                        <lightning:input aura:id="contactField" value="{!v.formSubmissionObj.Other__c}"
+                            label="Anything else we should know to serve you better (Optional)" />
+                    </lightning:layoutItem>
+                </lightning:layout>
+                <lightning:layout>
+                    <lightning:layoutItem padding="around-small">
+                            <lightning:button variant="success" label="SUBMIT" title="SUBMIT" onclick="{!c.saveFormSubmission}"/>
+                    </lightning:layoutItem>
+                </lightning:layout>
+               </aura:if>
+                <aura:if isTrue="{!v.showThankYou}">                	
+                    <lightning:layout>
+                        <lightning:layoutItem>
+                            <c:SFMC_Opcity_LandingPage_ThankYouPage firstName="{!v.formSubmissionObj.First_Name__c}" lastName="{!v.formSubmissionObj.Last_Name__c}" emailId="{!v.formSubmissionObj.Email__c}" phoneNumber="{!v.formSubmissionObj.Phone__c}"/>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </aura:if>
+            </div>
+        </lightning:card>
+    </div>
+</aura:component>

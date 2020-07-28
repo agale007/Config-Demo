@@ -1,0 +1,22 @@
+.THIS {
+}
+@media only screen and (max-device-width : 480px) {
+	.THIS .slds-grid{
+        display:block;
+    }
+    
+    .THIS .content-layout{
+        Width: 100%
+    }
+    .THIS .empty-content-layout{
+        Width: 0%
+    }
+}
+@media only screen and (min-device-width : 480px) and (max-device-width : 1024px) {
+	.THIS .content-layout{
+        Width: 46.5%
+    }
+    .THIS .empty-content-layout{
+        Width: 0%
+    }
+}

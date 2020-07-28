@@ -1,0 +1,28 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="prefixString" type="String"/>
+    <aura:attribute name="imageName" type="String"/>
+	<lightning:carousel disableAutoRefresh="false" disableAutoScroll="true">
+        <lightning:carouselImage
+            src="{!(v.prefixString + v.imageName)}"
+            header = "First Card"
+            description = "First card description."
+            alternativeText = "First card accessible description."
+            href = "https://www.salesforce.com">
+        </lightning:carouselImage>
+        <lightning:carouselImage
+            src="{!(v.prefixString + v.imageName)}"
+            header = "Second Card"
+            description = "Second card description."
+            alternativeText = "Second card accessible description."
+            href = "https://www.salesforce.com">
+        </lightning:carouselImage>
+        <lightning:carouselImage
+            src="{!(v.prefixString + v.imageName)}"
+            header = "Third Card"
+            description = "Third card description."
+            alternativeText = "Third card accessible description."
+            href = "https://www.salesforce.com">
+        </lightning:carouselImage>
+    </lightning:carousel>
+</aura:component>

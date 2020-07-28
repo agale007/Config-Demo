@@ -1,0 +1,32 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+	<!--Video Design attributes -->
+    <aura:attribute name="videoURL" type="String" default="https://www.youtube.com/embed/rZCOwjwFLjQ"/>
+    <aura:attribute name="videoPluginHeight" type="String"/>
+    <aura:attribute name="videoPluginWidth" type="String"/>
+    <!--Video attributes -->
+    <aura:attribute name="videoHTMLContent" type="String" />
+    
+    <div class="c-content">
+    	<lightning:layout>
+            <lightning:layoutItem size="2" padding="around-small" class="empty-content-layout">
+            </lightning:layoutItem>
+            <lightning:layoutItem size="5" padding="around-small" class="content-layout">
+                <c:SFMC_LandingPageVideoPlugin videoPluginHeight="{!v.videoPluginHeight}"
+                                               videoPluginWidth="{!v.videoPluginWidth}"
+                                               videoURL="{!v.videoURL}"
+                                               />
+                <div class="imageTextStyle" style="{!'font-size:' + v.imageTextFontSize + ';color:' + v.imageTextColor + ';'}">
+                    {!v.imageText}
+                </div>
+                <div class="imageTextStyle" style="{!'font-size:' + v.imageTextFontSize + ';color:' + v.imageTextColor + ';'}">
+                    {!v.imageQuoteWriter}
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="3" padding="around-small" class="content-layout">
+                <lightning:formattedRichText value="{!v.videoHTMLContent}" />
+            </lightning:layoutItem>
+            <lightning:layoutItem size="2" padding="around-small" class="empty-content-layout">
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+</aura:component>

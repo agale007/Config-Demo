@@ -1,0 +1,29 @@
+<aura:component controller="SFMC_CalendarClass" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <!-- Used standard calendar.io javascript file-->
+    <ltng:require styles="{!$Resource.fullcalendar     + '/fullcalendar.css'}"
+                  scripts="{!join(',',
+                           $Resource.fullcalendar  + '/lib/jquery.min.js',
+                           $Resource.fullcalendar  + '/lib/moment.min.js',
+                           $Resource.fullcalendar  + '/fullcalendar.js'
+                           )}"
+                  afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+    <ltng:require styles="/resource/fullcalendar/fullcalendar.css"
+                  />
+    
+    
+    <!--             Public attributes             -->
+    <aura:attribute name='Objectlist' type='Object[]'/>
+    
+    
+    <div class="col-md-12 title">
+        <div align='left' class="alignname" ><br/><h1> {!$Label.c.SFMC_DashboardHeader}</h1><hr style="margin-top:5px;"/></div>
+    </div>
+    
+    
+    <!--              body             -->
+    <div id="calendar" class="calendars slds-p-left_small slds-p-right_small" style="width:100%;" ></div>
+    <div id="listcalendar"  />
+    
+    
+    
+</aura:component>

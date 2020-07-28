@@ -1,0 +1,73 @@
+import { LightningElement, wire, track } from 'lwc';
+import getContactList from '@salesforce/apex/ContactController.getContactList';
+import { updateRecord } from 'lightning/uiRecordApi';
+import { refreshApex } from '@salesforce/apex';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+/*import FIRSTNAME_FIELD from '@salesforce/schema/Contact.FirstName';
+import LASTNAME_FIELD from '@salesforce/schema/Contact.LastName';
+import ID_FIELD from '@salesforce/schema/Contact.Id';*/
+
+import ID_FIELD from '@salesforce/schema/Contact.Id'
+import Phone_FIELD from '@salesforce/schema/Contact.Phone';
+import Email_FIELD from '@salesforce/schema/Contact.Email';
+import MailingAddress_FIELD from '@salesforce/schema/Contact.MailingAddress';
+
+
+
+const COLS = [
+    { label: 'First Name', fieldName: 'FirstName'},
+    { label: 'Last Name', fieldName: 'LastName'},
+    { label: 'Account Name', fieldName: 'AccountId' },
+    { label: 'Phone', fieldName: 'Phone',type: 'phone', editable: true },
+    { label: 'Email', fieldName: 'Email', type: 'email', editable: true},
+    { label: 'MailingAddress', fieldName: 'MailingAddress', type: 'Address' , editable: true }, 
+    { label: 'Owner Name', fieldName: 'OwnerId' },  
+
+];
+export default class LwcAssignment8 extends LightningElement {
+
+    @track error;
+    @track columns = COLS;
+    @track draftValues = [];
+
+    @wire(getContactList)
+    contact;
+
+    handleSave(event) {
+
+        const fields = {};
+       /* fields[ID_FIELD.fieldApiName] = event.detail.draftValues[0].Id;
+        fields[FIRSTNAME_FIELD.fieldApiName] = event.detail.draftValues[0].FirstName;
+        fields[LASTNAME_FIELD.fieldApiName] = event.detail.draftValues[0].LastName;*/
+        fields[ID_FIELD.fieldApiName] = event.detail.draftValues[0].Id;
+        fields[Phone_FIELD.fieldApiName] = event.detail.draftValues[0].Phone;
+        fields[Email_FIELD.fieldApiName] = event.detail.draftValues[0].Email;
+        fields[MailingAddress_FIELD.fieldApiName] = event.detail.draftValues[0].MailingAddress;
+
+        const recordInput = {fields};
+
+        updateRecord(recordInput)
+        .then(() => {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Success',
+                    message: 'Contact updated',
+                    variant: 'success'
+                })
+            );
+            // Clear all draft values
+            this.draftValues = [];
+
+            // Display fresh data in the datatable
+            return refreshApex(this.contact);
+        }).catch(error => {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error creating record',
+                    message: error.body.message,
+                    variant: 'error'
+                })
+            );
+        });
+    }
+}

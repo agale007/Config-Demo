@@ -1,0 +1,114 @@
+.THIS.p{
+    width:100%;
+    color:red;
+    box-sizing: border-box;
+}
+.THIS.html{
+    width:100%;
+    color:green;
+}
+.THIS .why-attend{
+    margin:50px;
+}
+.THIS .body-title{
+    margin-top: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    color: green;
+}
+.THIS .why-reasons{
+    padding: 10px 20px 0 0px;
+    list-style-type: none;
+}
+.THIS .reg-info{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 28px;
+}
+.THIS .li{
+    font-family: 'Roboto', sans-serif;
+    font-size: 19px;
+    color: #494542;
+}
+.THIS .dis-table-cell {
+    display: table-cell;
+    color: #494542;
+}
+.THIS .row{
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.THIS .col-md-4{
+    -webkit-box-flex: 0;
+    flex: 0 0 88.333333%;
+    max-width: 35.333333%;
+}
+.THIS .calendar-date{
+        text-align: center;
+        padding: 62px;
+    	color: #ffffff;
+    	font-size: 32px;
+    	line-height: 40px!important;    
+        background-color: #EA0029;        
+}
+.THIS .calendar-tile {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-right: 5%;
+}
+@media (min-width: 768px){
+.THIS .col-md-8 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 60.666667%;
+    max-width: 86.666667%;
+  }
+}
+.THIS .calendar-location {
+    border: 1px solid #707070;
+    border-left: none;
+    padding: 30px 0 30px 30px;
+}
+.THIS .calendar-location h3{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    color: #494542;
+}   
+.THIS .calendar-location h1{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    line-height: 36px!important;
+    text-transform: none;
+    color: #707070;  
+}
+.THIS .larger-screens{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+}
+@media (min-width: 768px){
+ .THIS .col-md-12 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+.THIS .title {
+    /*margin-top: 60px;
+    margin-bottom: 60px;*/
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    color: #494542;
+    font-weight: 600;
+
+}

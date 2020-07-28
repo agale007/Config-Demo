@@ -1,0 +1,7 @@
+<design:component>
+	<design:attribute name="videoURL" label="Video URL" />
+    <design:attribute name="videoPluginHeight" label="Video Height" placeholder="Example 200"/>
+    <design:attribute name="videoPluginWidth" label="Video Width" placeholder="Example 200"/>
+    
+    <design:attribute name="videoHTMLContent" label="Video Content in HTML"/>
+</design:component>

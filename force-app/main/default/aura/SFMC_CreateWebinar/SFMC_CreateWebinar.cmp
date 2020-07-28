@@ -1,0 +1,114 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+	
+    <!-- Public Attribute -->
+    <aura:attribute name="selectedWebinarType" type="string"/>
+    <aura:attribute name="selectedOccurance" type="string"/>
+    <aura:attribute name="selectedWebinarTimeZone" type="string"/>
+    <aura:attribute name="description" type="String"/>
+    <aura:attribute name="subject" type="String"/>
+    <aura:attribute name="startDate" type="Date"/>
+    <aura:attribute name="endDate" type="Date"/>
+    <aura:attribute name="startTime" type="dateTime"/>
+    <aura:attribute name="endTime" type="dateTime"/>
+    <aura:attribute name="showModal" type="boolean" default="false"/>
+    
+	<!-- Aura Handler -->
+    <aura:handler name="SFMC_Component_Event" event="c:SFMC_Component_Event" action="{!c.handleComponentEvent}"/>
+    <aura:if isTrue="{!v.showModal}">
+    <c:SFMC_GenericModal title="Create Webinar" setModalContentBackground='true'>
+        
+        <!-- Setting Attributes -->
+        <aura:set attribute="closeCrossIcon">
+	    <lightning:buttonIcon alternativeText="Close"
+	          class="{!'slds-button slds-modal__close slds-button_icon-inverse' + ($Browser.isTablet ? ' slds-hide' : ' slds-show')}"
+	          variant="bare" size="large" iconName="utility:close" value="addEstimate" onclick="{!c.hideModal}"/>
+    	</aura:set>
+            <aura:set attribute="right">
+	        	<lightning:button variant="neutral" label="Close" value="addEstimateModal" 
+       									onclick="{!c.hideModal}" class="{!$Browser.isIPad ? 'slds-hide' : 'slds-m-right_x-small'}"/>
+            </aura:set>
+            
+         <!-- Setting Modal Body -->
+           <div class="slds-align_center slds-grid slds-grid_vertical slds-m-around_small containerDiv">
+  				<!-- Type Select List -->
+               
+               <div class="slds-col slds-size_4-of-6 slds-p-left_small">
+    				<label class="labels"><span class="requirdField">*</span>Type</label>
+                    <lightning:select name="Type" aura:id="webinarType" label="" value="{!v.selectedWebinarType}" onchange="{!c.revaluateMeetingDetails}" messageWhenValueMissing="Please select an appropriate program category" class="fieldMargins">
+                 		<option text="One Session" value="One Session"/>
+                        <option text="Series" value="Series"/>
+                        <option text="Sequence" value="Sequence"/>
+            			<aura:iteration items="{!v.categoryOptions}" var="categoryOption">
+            				<option text="{!categoryOption.label}" value="{!categoryOption.value}" selected="{!(v.selctedCategoryOption == categoryOption.value ? true : false)}"/>
+           				 </aura:iteration>
+      				</lightning:select>
+      			</div>
+               <hr></hr>
+                <!-- Occurs Select List -->
+                <div class="slds-col slds-size_4-of-6 slds-p-left_small">
+                    <label class="labels"><span class="requirdField">*</span>Occurs</label>
+    				<lightning:select name="Occurs" aura:id="occuranceFrequency" label ="" value="{!v.selectedOccurance}" onchange="{!c.revaluateMeetingDetails}" messageWhenValueMissing="Please select an appropriate program category" class="fieldMargins">
+                 		<option text="Daily" value="One Session"/>
+                        <option text="Monthly" value="Series"/>
+                        <option text="Quarterly" value="Sequence"/>
+            			<aura:iteration items="{!v.categoryOptions}" var="categoryOption">
+            				<option text="{!categoryOption.label}" value="{!categoryOption.value}" selected="{!(v.selctedCategoryOption == categoryOption.value ? true : false)}"/>
+           				 </aura:iteration>
+      				</lightning:select>
+      			</div>
+               
+               <div class="slds-col slds-col slds-size_4-of-6 slds-p-top_large">
+                   <label class="labels slds-p-left_small"><span class="requirdField">*</span>Start Date</label>
+                    <lightning:input type="date" name="startDate" label="" class="slds-p-left_small fieldMargins"/>
+                </div>
+               <div class="slds-col slds-col slds-size_4-of-6 slds-p-top_small slds-list_horizontal slds-p-top_large">
+                   <div>
+                   <label class="labels slds-p-left_small slds-p-top_small"><span class="requirdField">*</span>Start Time</label>
+                    <lightning:input type="time" name="startTime" label="" class="slds-p-left_small slds-p-top_small timeFieldMargins timeFieldWidths"/>
+                   </div>
+                   	<div>
+                    <label class="labels slds-p-left_small slds-p-top_small"><span class="requirdField">*</span>End Time</label>
+               		<lightning:input type="time" name="endTime" label="" class="slds-p-left_small slds-p-top_small timeFieldMargins timeFieldWidths"/> 
+               		</div>
+                   </div>
+               <hr></hr>
+               <div class="slds-col slds-col slds-size_4-of-6 slds-p-top_small">
+                   <label class="labels slds-p-left_small"><span class="requirdField">*</span>End Date</label>
+                    <lightning:input type="date" name="endDate" label="" class="slds-p-left_small fieldMargins"/>
+                </div>
+               
+               <div class="slds-col slds-size_4-of-6 slds-p-top_large">
+                   <label class="labels slds-p-left_small"><span class="requirdField">*</span>Webinar TimeZone</label>
+    				<lightning:select name="timezone" aura:id="webinarTimeZone" label ="" value="{!v.selectedWebinarTimeZone}" onchange="{!c.revaluateMeetingDetails}" messageWhenValueMissing="Please select an appropriate program category" class="slds-p-left_small fieldMargins">
+                 		<option text="(GMT-08:00) Pacific Time (US and Canada) : New York" value="One Session"/>
+                        <option text="Monthly" value="Series"/>
+                        <option text="Quarterly" value="Sequence"/>
+            			<aura:iteration items="{!v.categoryOptions}" var="categoryOption">
+            				<option text="{!categoryOption.label}" value="{!categoryOption.value}" selected="{!(v.selctedCategoryOption == categoryOption.value ? true : false)}"/>
+           				 </aura:iteration>
+      				</lightning:select>
+      			</div>
+               
+               <!-- Subject of the webinar -->
+               <div class="slds-col slds-col slds-size_4-of-6 slds-p-top_large">
+                   <label class="labels slds-p-left_small"><span class="requirdField">*</span>Subject</label>
+                   <lightning:textArea name="subject" label="" class="slds-p-left_small fieldMargins"/>
+                </div>
+               
+               <!-- Description of the webinar -->
+               <div class="slds-col slds-col slds-size_4-of-6 slds-p-top_medium"> 
+                   <label class="labels slds-p-left_small"><span class="requirdField">*</span>Description</label>
+                   <lightning:textArea name="subject" label="" class="slds-p-left_small fieldMargins"/>
+                </div>
+               
+               <div class="saveBtnDiv slds-p-top_x-large">
+               		<lightning:button iconName="utility:save" variant="neutral" label="Save" value="addEstimateModal" 
+       									onclick="{!c.handleCloseModal}" class="saveBtn"/>
+               </div>
+               
+</div>
+    </c:SFMC_GenericModal>
+    </aura:if>  
+        <!-- Modal Code for Creating Webinar -->
+    
+</aura:component>

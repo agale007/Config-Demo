@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="contentHeaderText" type="String"/>
+    <aura:attribute name="contentHeaderTextSize" type="String"/>
+	<aura:attribute name="contentHeaderColor" type="String"/>    
+    <lightning:layout horizontalAlign="center">
+    	<lightning:layoutItem size="10" padding="around-small">
+            <div style="{!'font-size:'+v.contentHeaderTextSize+'rem; color:'+v.contentHeaderColor}" class="ContentHeader"><b>{!v.contentHeaderText}</b></div>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

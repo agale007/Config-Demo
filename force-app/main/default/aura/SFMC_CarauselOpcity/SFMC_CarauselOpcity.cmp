@@ -1,0 +1,69 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+	<aura:attribute name="header" type="String"/>
+    <aura:attribute name="src1" type="String"/> 
+    <aura:attribute name="description1" type="String"/> 
+    <aura:attribute name="author1" type="String"/> 
+    <aura:attribute name="altText1" type="String"/> 
+    <aura:attribute name="href1" type="String"/> 
+    <aura:attribute name="src2" type="String"/> 
+    <aura:attribute name="description2" type="String"/> 
+    <aura:attribute name="author2" type="String"/> 
+    <aura:attribute name="altText2" type="String"/> 
+    <aura:attribute name="href2" type="String"/>
+    <aura:attribute name="src3" type="String"/> 
+    <aura:attribute name="description3" type="String"/> 
+    <aura:attribute name="author3" type="String"/> 
+    <aura:attribute name="altText3" type="String"/> 
+    <aura:attribute name="href3" type="String"/>
+    <aura:attribute name="prefixString" type="String" />
+    <aura:attribute name="imageName" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div class="c-carausel">
+    	<h3 class="header">{!v.header}</h3>
+    
+        <lightning:carousel disableAutoRefresh="true" disableAutoScroll="false">
+            <lightning:carouselImage  
+                src = "{!(v.prefixString + v.src1)}"
+                header = "{!v.description1}"
+                description = "{!v.author1}"
+                alternativeText = "{!v.altText1}"
+                href = "{!v.href1}">
+                
+				
+            </lightning:carouselImage>
+            <aura:if isTrue="{!not(empty(v.src2))}">
+                <lightning:carouselImage  
+                    src = "{!(v.prefixString + v.src2)}"
+                    header = "{!v.description2}"
+                    description = "{!v.author2}"
+                    alternativeText = "{!v.altText2}"
+                    href = "{!v.href2}">
+                </lightning:carouselImage>
+            </aura:if>
+            <aura:if isTrue="{!not(empty(v.src3))}">
+                <lightning:carouselImage  
+                    src = "{!(v.prefixString + v.src3)}"
+                    header = "{!v.description3}"
+                    description = "{!v.author3}"
+                    alternativeText = "{!v.altText3}"
+                    href = "{!v.href3}">
+                </lightning:carouselImage>
+            </aura:if>
+            <!-- 
+            <lightning:carouselImage  
+                src = "https://www.opcity.com/hubfs/Arthur-Cervantes-150x150px.png"
+                header = "Opcity provides leads of value. It’s all business that I didn’t have before. All other lead generation sources are second to Opcity. I love the fantastic communication they provide. I can always call or email and get my questions answered. I am so THANKFUL for the opportunities provided by Opcity."
+                description = "—  Arthur Cervantes, Schultz Elite Financial Services "
+                alternativeText = "Arthur Cervantes"
+                href = "https://www.opcity.com/arthur-cervantes-customer-story">
+            </lightning:carouselImage>
+            <lightning:carouselImage 
+                src = "https://www.opcity.com/hubfs/Jarred-Parton-150x150px.png"
+                header = "I’m a systems guy, and Opcity is a system. If you know how to work and trust the system, then this is a successful program. There are a lot of different directions you can head in real estate, and this is the most successful lead system that I’ve seen."
+                description = "—  Jarred Parton, Agent, RE/MAX Direct "
+                alternativeText = "Jarred Parton"
+                href = "https://www.opcity.com/partner-success-stories">
+            </lightning:carouselImage>-->
+        </lightning:carousel>
+    </div>
+</aura:component>

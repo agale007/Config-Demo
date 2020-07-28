@@ -1,0 +1,7 @@
+<aura:component
+                implements="forceCommunity:availableForAllPageTypes">
+	<aura:attribute name="htmlString" type="string"/>	
+    <div>
+        <aura:unescapedHtml value="{!v.htmlString}"/>
+    </div>
+</aura:component>

@@ -1,0 +1,13 @@
+<aura:component access="global">
+    <aura:attribute name="baseUrl"  type="String"  access="global"/>
+     <aura:attribute name="scripts" type="String" access="global"/>
+     <aura:attribute name="deps"
+        type="String"
+        access="global"/>
+     <aura:attribute name="styles"
+        type="String"
+        access="global"/>
+     <aura:attribute name="requiresReady"
+        type="String"
+        access="global"/>
+</aura:component>

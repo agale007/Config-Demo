@@ -1,0 +1,18 @@
+<design:component>
+	<design:attribute name="header" label="Carousal Header"/>
+    <design:attribute name="src1" label="Image Source 1" datasource="carousel1.jpg, carousel2.jpg, carousel3.jpg"/>
+    <design:attribute name="description1" label="Description 1"/>
+    <design:attribute name="author1" label="Author Name 1"/>
+    <design:attribute name="altText1" label="Alternative Text 1"/>
+    <design:attribute name="href1" label="Redirect URL 1"/>
+    <design:attribute name="src2" label="Image Source 2" datasource="carousel1.jpg, carousel2.jpg, carousel3.jpg"/>
+    <design:attribute name="description2" label="Description 2"/>
+    <design:attribute name="author2" label="Author Name 2"/>
+    <design:attribute name="altText2" label="Alternative Text 2"/>
+    <design:attribute name="href2" label="Redirect URL 2"/>
+    <design:attribute name="src3" label="Image Source 3" datasource="carousel1.jpg, carousel2.jpg, carousel3.jpg"/>
+    <design:attribute name="description3" label="Description 3"/>
+    <design:attribute name="author3" label="Author Name 3"/>
+    <design:attribute name="altText3" label="Alternative Text 3"/>
+    <design:attribute name="href3" label="Redirect URL 3"/>
+</design:component>

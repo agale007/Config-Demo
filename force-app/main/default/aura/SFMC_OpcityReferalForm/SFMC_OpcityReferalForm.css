@@ -1,0 +1,8 @@
+.THIS.formStyle{
+   background-color: #e2f3ff;
+}
+.THIS .slds-form-element__label{
+    font-size : 15px;
+    font-weight: 500;
+    padding-top: 0.5em;
+}

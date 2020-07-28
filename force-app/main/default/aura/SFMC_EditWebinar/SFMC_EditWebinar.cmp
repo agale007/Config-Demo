@@ -1,0 +1,114 @@
+<aura:component controller="SFMC_EditWebinarController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:if isTrue="{!v.showSpinner}">
+    	<!-- <lightning:spinner aura:id="spinner"/> -->
+        <div class="demo-only demo-only demo-only_viewport demo--inverse" style="height:6rem">
+            <div class="slds-spinner_container slds-is-fixed">
+                <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </div>
+    </aura:if>
+    <!-- Public Attributes -->
+    <aura:attribute name="showModal" type="boolean" default="false"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="recordStartTime" type="String"/>
+    <aura:attribute name="webinarRecord" type="Object"/>
+    <aura:attribute name="selectedWebinarStatus" type="String"/>
+    <aura:attribute name="selectedIsPublic" type="String"/>
+    <aura:attribute name="selectedWebinarSeries" type="String"/>
+    <aura:attribute name="showSpinner" type="boolean"/>
+    <aura:attribute name="statusPicklistLst" type="List"/>
+    <aura:attribute name="publicPicklistLst" type="List"/>
+    
+    <!-- Aura Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.getRecord}"/>
+    
+    <!-- Register Event -->
+    <aura:registerEvent name="componentEvent" type="c:SFMC_Component_Event"/>
+    
+    <!-- Lightning Spinner -->
+    <aura:If isTrue="{!v.showSpinner}">
+        <lightning:spinner aura:id="lightningSpinner"/>
+    </aura:If>
+    
+	<aura:if isTrue="{!v.showModal}">    
+    <c:SFMC_GenericModal title="{!$Label.c.SFMC_Edit_Webinar}">
+        
+        <!-- Setting Attributes -->
+        <aura:set attribute="closeCrossIcon">
+	    <lightning:buttonIcon alternativeText="Close"
+	         class="slds-button slds-modal__close slds-button_icon-inverse"
+	          variant="bare" size="large" iconName="utility:close" value="close" onclick="{!c.hideModal}"/>
+            </aura:set>
+        <aura:set attribute="right">
+              <lightning:button variant="neutral" label="{!$Label.c.Close}" value="close" 
+       									onclick="{!c.hideModal}" class="slds-m-right_x-small"/>
+            </aura:set>
+        
+        <!-- Setting Modal Body -->
+           <div class="containerDiv slds-p-bottom_xxx-small slds-m-around_small">
+  			<div class="headerDiv slds-p-top_small">
+               <h2>{!$Label.c.SFMC_Edit_Webinar}</h2>	
+           </div>
+                <div class="webinarDetailDiv slds-m-bottom_small">
+                  <div class="slds-p-left_large slds-p-top_small">
+                  	<b>{!$Label.c.SFMC_Webinar_Time}:&nbsp;&nbsp;</b> {!v.recordStartTime}<BR></BR>
+                         <b>{!$Label.c.Webinar_Id}:&nbsp;&nbsp;</b>  {!v.webinarRecord.Webinar_Id__c}<BR></BR>
+                      <b>{!$Label.c.Webinar_Key}:&nbsp;&nbsp;</b> {!v.webinarRecord.Webinar_Key__c}<BR></BR>
+                      <a href="{!v.webinarRecord.Registration_Url__c}" target="_blank"><lightning:icon size="x-small" iconName="utility:link" alternativeText="{!$Label.c.SFMC_Registration_Url}" /><span class="slds-p-left_xx-small">{!$Label.c.SFMC_Registration_Url}</span></a>
+                  </div>
+            </div>  
+               
+               <div class="statusDiv slds-m-bottom_small slds-wrap">
+                  <div class="slds-p-left_small slds-p-top_small">
+                        <div class="slds-grid slds-list_horizontal">
+                            <div class="slds-col slds-size_3-of-6 slds-p-left_small slds-p-right_medium">
+    				<label class="labels">{!$Label.c.SFMC_Webinar_Status}</label>
+                    <lightning:select name="Status" aura:id="webinarStatus" label="" value="{!v.selectedWebinarStatus}" class="fieldMargins">
+                 		<aura:iteration items="{!v.statusPicklistLst}" var="statusValue">
+            				<option text="{!statusValue.label}" value="{!statusValue.value}" selected="{!(v.selectedWebinarStatus == statusValue.value ? true : false)}"/>
+           				 </aura:iteration>
+      				</lightning:select>
+      			</div>
+                            
+                    <div class="slds-col slds-size_3-of-6 slds-p-left_small slds-p-right_small">
+    					<label class="labels">{!$Label.c.SFMC_Public_Webinar}</label>
+                    <lightning:select name="isPublic" aura:id="isPublic" label="" value="{!v.selectedIsPublic}" class="fieldMargins">
+                 		<aura:iteration items="{!v.publicPicklistLst}" var="publicValue">
+            				<option text="{!publicValue.label}" value="{!publicValue.value}" selected="{!(v.selectedIsPublic == publicValue.value ? true : false)}"/>
+           				 </aura:iteration>
+      				</lightning:select>
+      			</div>
+                            
+                      </div>
+                  </div>
+            </div>  
+               
+            <div class="descriptionDiv slds-m-bottom_small slds-wrap">
+                  <div class="slds-p-left_small slds-p-top_small">
+                        <div class="slds-grid slds-grid_vertical">
+                            <div class="slds-col slds-size_6-of-6 slds-p-left_small slds-p-right_medium">
+                                <label class="labels">{!$Label.c.Webinar_Description}</label>
+                                <lightning:textArea value="{!v.webinarRecord.Description__c}" name="description" aura:id="webinarDescription" label="" class="fieldMargins" disabled="true">
+                                	
+                                </lightning:textArea>
+      						</div>
+                        </div>
+                  </div>
+            </div>
+              <div class="saveBtnDiv slds-m-bottom_small">
+               		<lightning:button iconName="utility:save" variant="neutral" label="{!$Label.c.SFMC_Save}" value="addEstimateModal" 
+       									onclick="{!c.saveWebinar}" class="saveBtn"/>
+               </div>
+              
+		   </div>
+    </c:SFMC_GenericModal>
+        </aura:if>
+        <!-- Modal Code for Creating Webinar -->
+        
+
+    
+</aura:component>

@@ -1,0 +1,163 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="bgColour" type="String"/> 
+    <div class="c-container" style="{!'background: ' + v.bgColour + ';'}">
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem padding="around-small" size="12" largeDeviceSize="12">
+                <div class="page-section page-header">
+                    <h3>About Opcity</h3>
+                </div>
+            </lightning:layoutItem>
+            <!-- Row #1 start here -->
+            <lightning:layoutItem padding="around-small" size="12" largeDeviceSize="12">
+                <lightning:layout>
+                    <lightning:layoutItem class="empty-layout-item" size="2" largeDeviceSize="2">
+                    </lightning:layoutItem> 
+                    <lightning:layoutItem class="layout-item" padding="around-small" size="3" largeDeviceSize="3">
+                        <div class="page-section page-Left">
+                            <!-- Container div start here -->
+                            <div class="bc-icon-module">
+                                <div class="bc-icon-module-icon">    
+                                    <img src="https://www.opcity.com/hubfs/Lead%20Buyer.svg" alt="Lead Buyer Icon" width="70" height="70" />
+                                </div>
+                              	<div class="bc-icon-module-text">
+                                    <div class="hs_cos_wrapper_module">
+                                        <p class="bc-text-para">#1</p>
+                                        <div class="bc-text-text">Lead buyer in the U.S.
+                                        </div>
+                                        <br/><br/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Container div end here -->
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem class="layout-item" padding="around-small" size="2" largeDeviceSize="2">
+                        <div class="page-section page-main">
+                            <!-- Container div start here -->
+                            <div class="bc-icon-module">
+                                <div class="bc-icon-module-icon">    
+                                    <img src="https://www.opcity.com/hubfs/Partners.svg" alt="Partners" width="70" height="70" />
+                                </div>
+                              	<div class="bc-icon-module-text">
+                                    <div class="hs_cos_wrapper_module">
+                                        <p class="bc-text-para">10,000</p>
+                                        <div class="bc-text-text">Brokers choose to partner with Opcity
+                                        </div>
+                                        <br/><br/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Container div end here -->
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem class="layout-item" padding="around-small" size="3" largeDeviceSize="3" >
+                        <div class="page-section page-right">
+                            <!-- Container div start here -->
+                            <div class="bc-icon-module">
+                                <div class="bc-icon-module-icon">    
+                                    <img src="https://www.opcity.com/hubfs/Call%20Center%20Person.svg" alt="Call Center Person Icon" width="70" height="70" />
+                                </div>
+                              	<div class="bc-icon-module-text">
+                                    <div class="hs_cos_wrapper_module">
+                                        <p class="bc-text-para">1.2M+</p>
+                                        <div class="bc-text-text">Calls per month from our 400+ fulltime ISAs
+                                        </div>
+                                        <br/><br/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Container div end here -->
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem class="empty-layout-item" size="2" largeDeviceSize="2">
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </lightning:layoutItem>
+            <!-- Row #1 end here -->
+            <!-- Row #2 start here -->
+            <lightning:layoutItem padding="around-small" size="12">
+                <lightning:layout>
+                    <lightning:layoutItem class="empty-layout-item" size="2">
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small" class="layout-item" size="3">
+                        <div class="page-section page-Left">
+                            <!-- Container div start here -->
+                            <div class="bc-icon-module">
+                                <div class="bc-icon-module-icon">    
+                                    <img src="https://www.opcity.com/hubfs/Real%20Estate-1.svg" alt="Closed  Transactions Icon" width="70" height="70" />
+                                </div>
+                              	<div class="bc-icon-module-text">
+                                    <div class="hs_cos_wrapper_module">
+                                        <p class="bc-text-para">39,615</p>
+                                        <div class="bc-text-text">Closed transactions
+                                        </div>
+                                        <br/><br/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Container div end here -->
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small" class="layout-item" size="2">
+                        <div class="page-section page-main">
+                            <!-- Container div start here -->
+                            <div class="bc-icon-module">
+                                <div class="bc-icon-module-icon">    
+                                    <img src="https://www.opcity.com/hubfs/Agents.svg" alt="Agents Icons" width="70" height="70" />
+                                </div>
+                              	<div class="bc-icon-module-text">
+                                    <div class="hs_cos_wrapper_module">
+                                        <p class="bc-text-para">90,000</p>
+                                        <div class="bc-text-text">Agents choose to use Opcity
+                                        </div>
+                                        <br/><br/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Container div end here -->
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small" class="layout-item" size="3">
+                        <div class="page-section page-right">
+                            <!-- Container div start here -->
+                            <div class="bc-icon-module">
+                                <div class="bc-icon-module-icon">    
+                                    <img src="https://www.opcity.com/hubfs/Transaction%20Volume-01.svg" alt="Transaction Volume-01" width="70" height="70" />
+                                </div>
+                              	<div class="bc-icon-module-text">
+                                    <div class="hs_cos_wrapper_module">
+                                        <p class="bc-text-para">$7.4B</p>
+                                        <div class="bc-text-text">In transaction volume
+                                        </div>
+                                        <br/><br/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Container div end here -->
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem class="empty-layout-item" size="2">
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </lightning:layoutItem>
+            <!-- Row #2 end here -->
+            
+        </lightning:layout>
+    </div>
+    <div class="page-footer page-section">
+        <lightning:layout>
+            <lightning:layoutItem class="empty-layout-item" size="2" largeDeviceSize="2">
+            </lightning:layoutItem> 
+            <lightning:layoutItem class="footer-layout-item" padding="around-small" size="8" largeDeviceSize="8">
+                <p class="footer-param">
+                    <strong>1.</strong> 
+                    2018 NAR Profile of Home Buyers and Sellers&nbsp; &nbsp; |&nbsp; &nbsp;&nbsp;
+                    <strong>2.</strong> Real estate portals' internal data, 2018&nbsp; &nbsp; |&nbsp; &nbsp;&nbsp;
+                    <strong>3.</strong> Opcity internal report, December 2018
+                </p>
+            </lightning:layoutItem>                        
+            <lightning:layoutItem class="empty-layout-item" size="2" largeDeviceSize="2">
+            </lightning:layoutItem> 
+        </lightning:layout>
+    </div>
+</aura:component>

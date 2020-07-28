@@ -1,0 +1,22 @@
+<aura:component implements="forceCommunity:layout,forceCommunity:availableForAllPageTypes,forceCommunity:themeLayout" description="Custom Content Layout" access="global">
+	<aura:attribute name="header" type="Aura.Component[]" />
+    <aura:attribute name="content" type="Aura.Component[]" />
+    <aura:attribute name="mainFooter" type="Aura.Component[]"/>
+    <div aura:id="contentLayoutId">
+    <lightning:layout>
+        <lightning:layoutItem size="12" class="headerClass">
+            {!v.header}
+        </lightning:layoutItem>
+    </lightning:layout>
+        </div>
+    <lightning:layout horizontalAlign="center">
+        <lightning:layoutItem size="12" padding="around-small">
+			{!v.content}
+        </lightning:layoutItem>
+    </lightning:layout>
+    <lightning:layout>
+    	<lightning:layoutItem size="12">
+            {!v.mainFooter}
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

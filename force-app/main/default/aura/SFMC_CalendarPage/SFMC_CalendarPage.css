@@ -1,0 +1,187 @@
+.THIS .fc-state-active{
+    background-color: #494542;
+    background-image: none;
+    color: white !important;
+}
+ .THIS hr {
+    
+    margin-left: 2px !important;
+}
+.THIS .fc-event,.THIS .fc-event:hover {
+    color: #fff;
+}
+
+/*.THIS .fc-list-item{
+background-color: white !important;
+    border-color: white !important;;
+   
+}*/
+
+.THIS .fc-center{
+    width : 30%;
+}
+
+.THIS .fc-right{
+    width : 25%;
+}
+
+.THIS .fc-left{
+    width : 30%;
+}
+
+
+
+.THIS .fc-right .fc-button-group{
+    float : right;
+}
+
+.THIS .fc-toolbar .fc-center {
+    display: inline-block;
+}
+.THIS .alignname {
+    padding-left: 10px;
+    
+}
+.THIS .fc-state-disabled{
+    background:#000000;
+    color: white !important;
+}
+.THIS hr {
+    height: 1px;
+    margin: 7px 7px;
+    background: none;
+    border: 0;
+    border-bottom: 1px dotted #07A7FF;
+}
+.THIS .title h1 {
+    color: #494542;
+    line-height: 0;
+    margin-bottom: 0px;
+    margin-top: -10px;
+}
+.THIS h1 {
+    font-size: 24px;
+    font-weight:100;
+    text-transform: uppercase;
+}
+
+.THIS .fc table {
+    width: 200%;
+    box-sizing: border-box;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+}
+.THIS .fc-button{
+    font-family: inherit !important;
+    text-shadow: none !important;
+    text-transform: uppercase !important;
+    color: black;
+    border-radius: inherit !important;
+    font-size: 1rem !important;
+    border: 1px solid #D7DAE2;
+    box-shadow: none!important;
+    box-sizing: content-box;
+}
+.THIS .fc-toolbar.fc-header-toolbar{
+    
+   /* width: 79vw;*/
+    width: 100%;
+}
+.THIS .fc-toolbar .fc-right{
+    /*margin-right:-25px;*/
+}
+.THIS .fc-center{
+    font-size: 1.5rem !important;
+    box-sizing: content-box;
+    font-weight: 100;
+}
+
+.THIS .fc-view-container * {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    
+}
+.THIS .fc-view-container *:before {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.THIS .fc-view-container *:after {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.THIS .fc-row thead tr .fc-day-header{
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    background-color: #e5e5e5;
+}
+.THIS .fc-event .fc-content {
+    position: relative;
+    z-index: 2;
+    box-sizing: content-box; 
+    font-size: large;
+    text-align: left;
+    vertical-align: middle;  
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2px;
+}
+.THIS .fc-list-table{
+    /*width: 79vw;*/
+    width: 100%;
+}
+.THIS .fc-today {
+    background-color: #E5E5E5!important;
+}
+
+
+.THIS .fc-list-empty {
+    display: table-cell;
+    vertical-align:baseline !important; 
+    text-align: center;
+}
+.THIS .fc-title{
+    font-size: 15px;
+}
+.THIS .fc-event-container{
+    margin: 0px;
+}
+@media only screen and (width: 1024px ){
+    .THIS .fc-toolbar.fc-header-toolbar {
+        width: 100% !important;
+    }
+     .THIS .fc-toolbar.fc-header-toolbar{
+    
+    width: 73vw !important;
+}
+}
+@media only screen and (width : 768px) {   
+     .THIS .fc-button {
+        font-size: 0.8rem!important;
+    }
+   .THIS  .fc-button-group > * {
+    float: left;
+    margin: 0 0 0 1px;
+}
+   .THIS .slds-nav-vertical__action {
+   
+    padding: 0.5rem 3.5rem 0.5rem 0.5rem!important;
+    
+    }
+    .THIS .fc-toolbar.fc-header-toolbar{
+    
+    width: 76vw !important;
+}
+}
+.THIS .fc-today {
+    /*background: white !important;*/
+}
+.THIS .calendars{
+    padding: 20px;
+    width:100%;
+}

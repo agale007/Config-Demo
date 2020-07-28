@@ -1,0 +1,40 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+	
+    <div class="formContainerDiv">
+        <div class="slds-p-left_large formInstructionDiv">
+        	Please fill out the following information to register for this webinar:
+        </div>
+        <div class="slds-align_center slds-grid slds-grid_vertical slds-m-around_small">
+             <div class="slds-col slds-col slds-size_4-of-6 slds-p-top_small">
+                    <lightning:input type="text" name="firstName" label="" class="slds-p-left_small fieldMargins" placeholder="FIRST NAME"/>
+              </div>
+            <div class="slds-col slds-col slds-size_4-of-6 slds-p-top_x-large">
+                    <lightning:input type="text" name="lastName" label="" class="slds-p-left_small fieldMargins" placeholder="LAST NAME"/>
+              </div>
+            <div class="slds-col slds-col slds-size_4-of-6 slds-p-top_x-large">
+                    <lightning:input type="text" name="email" label="" class="slds-p-left_small fieldMargins" placeholder="EMAIL"/>
+              </div>
+            <div class="slds-col slds-col slds-size_4-of-6 slds-p-top_x-large">
+                    <lightning:input type="text" name="company" label="" class="slds-p-left_small fieldMargins" placeholder="COMPANY"/>
+              </div>
+            <div class="slds-col slds-col slds-size_4-of-6 slds-p-top_x-large">
+                    <lightning:input type="text" name="city" label="" class="slds-p-left_small fieldMargins" placeholder="CITY"/>
+              </div>
+            <div class="slds-col slds-col slds-size_4-of-6 slds-p-top_x-large">
+                    <lightning:input type="text" name="state" label="" class="slds-p-left_small fieldMargins" placeholder="STATE"/>
+              </div>
+            <div class="slds-col slds-col slds-size_4-of-6 slds-p-top_x-large">
+                    <lightning:input type="text" name="zip" label="" class="slds-p-left_small fieldMargins" placeholder="ZIP"/>
+              </div>
+            <div class="slds-col slds-col slds-size_4-of-6 slds-p-top_x-large">
+                    <lightning:input type="text" name="phone" label="" class="slds-p-left_small fieldMargins" placeholder="PHONE"/>
+              </div>
+            
+			<div class="slds-col slds-col slds-size_4-of-6 slds-p-top_x-large">
+                <button name="Register" type="submit" class="slds-m-left_x-small fieldMargins registerBtn">Register</button>
+              </div>
+            
+        </div>
+    </div>
+    
+</aura:component>

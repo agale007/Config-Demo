@@ -1,0 +1,5 @@
+<design:component>
+    <design:attribute name="contentHeaderText" label="Content Header Text"/>
+    <design:attribute name="contentHeaderTextSize" label="Content Header Text Size(in rem)" Placeholder="1 , 1.5 or 2"/>
+    <design:attribute name="contentHeaderColor" label="Content Header Text Color"/>    
+</design:component>

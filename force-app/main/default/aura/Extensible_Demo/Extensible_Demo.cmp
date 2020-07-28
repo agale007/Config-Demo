@@ -1,0 +1,3 @@
+<aura:component extends="c:SFMC_Opcity_LandingPage_Utility" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes">
+	{!v.showThankYou}
+</aura:component>

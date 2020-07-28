@@ -1,0 +1,52 @@
+.THIS .slds-carousel__image{
+	margin: 0 auto;
+    width: 150px;
+    padding: 1rem;
+}
+.THIS .slds-carousel__content{
+    padding: 1rem;
+    height: auto;
+    background-color: #f0f8fc;
+}
+.THIS .slds-carousel__content-title{
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;    
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-weight: Normal;
+    font-family: Lato;
+}
+.THIS .slds-carousel__content p{
+    color: #4f4f4f;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: bold;
+    font-style: italic;
+    text-align: right;
+    padding: 1rem;    
+}
+.THIS .slds-carousel__panel-action{
+    border: none;
+}
+.THIS .header{
+    padding-top: 3rem; 
+    text-align: center; 
+    line-height: 1.25; 
+    color: #1c1c1c; 
+    font-size: 1.5rem;
+}
+.THIS.c-carausel{
+    background-color: #f0f8fc;
+    letter-spacing: .5px;    
+}
+.THIS .slds-carousel__autoplay{
+    display : none;
+}
+@media only screen and (max-device-width : 480px) {
+	.THIS .slds-carousel__content-title{
+        padding-left: 0.5rem;
+    	padding-right: 0.5rem;
+    }    
+    
+}

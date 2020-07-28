@@ -1,0 +1,80 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/comboboxdemo": [
+                "comboboxdemo/comboboxdemo.js"
+            ],
+            "c/customizeddatatable": [
+                "customizeddatatable/customizeddatatable.js"
+            ],
+            "c/footerpage": [
+                "footerpage/footerpage.js"
+            ],
+            "c/fortis_PatientHistoryPage": [
+                "fortis_PatientHistoryPage/fortis_PatientHistoryPage.js"
+            ],
+            "c/hello": [
+                "hello/hello.js"
+            ],
+            "c/homePage": [
+                "homePage/homePage.js"
+            ],
+            "c/lwcAssignment2": [
+                "lwcAssignment2/lwcAssignment2.js"
+            ],
+            "c/lwcAssignment3": [
+                "lwcAssignment3/lwcAssignment3.js"
+            ],
+            "c/lwcAssignment4": [
+                "lwcAssignment4/lwcAssignment4.js"
+            ],
+            "c/lwcAssignment5": [
+                "lwcAssignment5/lwcAssignment5.js"
+            ],
+            "c/lwcAssignment7": [
+                "lwcAssignment7/lwcAssignment7.js"
+            ],
+            "c/lwcAssignment8": [
+                "lwcAssignment8/lwcAssignment8.js"
+            ],
+            "c/lwcAssignmnetNo6": [
+                "lwcAssignmnetNo6/lwcAssignmnetNo6.js"
+            ],
+            "c/lwcDemo": [
+                "lwcDemo/lwcDemo.js"
+            ],
+            "c/lwcInVisualforceDemo": [
+                "lwcInVisualforceDemo/lwcInVisualforceDemo.js"
+            ],
+            "c/opportunityAssignmentNumber1": [
+                "opportunityAssignmentNumber1/opportunityAssignmentNumber1.js"
+            ],
+            "c/pocCustomComp": [
+                "pocCustomComp/pocCustomComp.js"
+            ],
+            "c/pocLightningDatatable": [
+                "pocLightningDatatable/pocLightningDatatable.js"
+            ],
+            "c/tableLwc": [
+                "tableLwc/tableLwc.js"
+            ],
+            "c/todoItem": [
+                "todoItem/todoItem.js"
+            ],
+            "c/wireFunction": [
+                "wireFunction/wireFunction.js"
+            ]
+        }
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts"
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
+}

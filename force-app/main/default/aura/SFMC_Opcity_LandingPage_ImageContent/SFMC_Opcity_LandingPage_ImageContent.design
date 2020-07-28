@@ -1,0 +1,4 @@
+<design:component>
+	<design:attribute name="imageName" label="Content Image" datasource="Drive revenue.svg, Fill your pipeline 2.svg, icon-funnel.svg, icon-funnel-1-1.svg, icon-spp.svg, icon-unmatchedspeed.svg, Meeting-01.svg"/>
+    <design:attribute name="contentImageWidth" label="Conent Image Width" />
+</design:component>

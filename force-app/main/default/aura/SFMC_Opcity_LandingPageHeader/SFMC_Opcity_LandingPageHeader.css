@@ -1,0 +1,80 @@
+.THIS.fixed{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 9;
+}
+.THIS.height{
+    height: 6.7rem;
+}
+.THIS.page-center{
+    /*float: none;
+    max-width: 950px;
+    margin: 0 auto;
+    padding-top: 20px;*/
+    background-color: #0086e1;
+    padding-top: 20px;
+}
+.THIS .h1{
+    color: white;
+    font-size: 36px;
+    margin-left: 375px;
+    font-family: Circular Book;
+    font-weight: 400;
+}
+.THIS .p{
+    color: white;
+    margin-left: 375px;
+    font-family: Circular Book;
+    letter-spacing: .5px;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 1rem;
+    padding-bottom: 45px;
+    font-weight: 814px !important;
+}
+.THIS .marginClass{
+    margin-left: 19rem;
+}
+.THIS .marginTabClass{
+    margin-left: 5rem;
+}
+.THIS .alignRight{
+    text-align: right;
+}
+@media (max-width: 1340px){
+    .THIS .leftPaddingDesktop {
+        padding-left: none !important;
+        min-width: 200px !important;
+    }  
+}
+@media (min-width: 1340px){
+    .THIS .leftPaddingDesktop{
+        margin-left: 25%;
+        /*min-width: 200px !important;*/
+    }
+}
+.THIS .alignLogo{
+    margin :36px auto;
+}
+
+.THIS .sticky1 {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 36px;
+}
+/*.THIS .h1{
+    font-size: 36px;
+    line-height: 1.4;
+    margin: .67em 0;
+}*/
+.THIS .custom-banner{
+    /*font-size: 16px!important;*/
+    color: #fff;
+    letter-spacing: .5px;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: Circular Book;
+    font-weight: 400;
+}

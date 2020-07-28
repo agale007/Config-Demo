@@ -1,0 +1,114 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="SFMC_OpcityReferalController">    
+  	<aura:attribute name="newFormSubmission" type="Object"/>
+    <aura:attribute name="simpleNewFormSubmission" type="Object" />
+    <aura:attribute name="newFormSubmissionError" type="String"/>
+    
+    <aura:attribute name="productType" type="String" default="coreBLA"/>
+    <aura:attribute name="Spinner" type="boolean" default="false"/>
+    <aura:attribute name="generatingLeadValues" type="List" default="[                                                                   
+    ]" />
+    <aura:attribute name="showThankYou" type="Boolean" default="false"/>
+    
+    <force:recordData aura:id="formSubmissionRecordCreator"
+                      layoutType="FULL"
+                      targetRecord="{!v.newFormSubmission}"
+                      targetFields ="{!v.simpleNewFormSubmission}"
+                      targetError="{!v.newFormSubmissionError}"
+                      />
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>  
+    
+    
+    <lightning:card title="" class="formStyle">
+       <div class="spacing-horizontal-large slds-p-around_small">
+        
+       	<div class="formTitle">
+            <h1></h1>
+        </div>
+           
+        <lightning:input aura:id="contactField"  label="Form Type" value="{!v.simpleNewFormSubmission.Form_Type__c}"  class="slds-hide" style="display : none;"/>
+           
+       	<aura:if isTrue="{!!v.showThankYou}">
+            <aura:if isTrue="{!or(v.productType == 'Title',v.productType == 'Lender')}">
+            <!-- FORM FIELD for Lender and Title -->    
+            <lightning:input aura:id="contactField"
+                             value="{!v.simpleNewFormSubmission.Friend_Company_Name_1__c}"
+                             label="Company Name" required="true" />
+            
+            <lightning:input aura:id="contactField"
+                             value="{!v.simpleNewFormSubmission.Friend_First_Name_1__c}"
+                             label="First Name" pattern="^[a-zA-Z ]+$"
+                             messageWhenPatternMismatch="{!$Label.c.SFMC_Name_Validation}"
+                             messageWhenValueMissing = "{!$Label.c.SFMC_First_Name_Validation}"/>
+            
+            <lightning:input aura:id="contactField"
+                             value="{!v.simpleNewFormSubmission.Friend_Last_Name_1__c}"
+                             label="Last Name" pattern="^[a-zA-Z ]+$"
+                             messageWhenPatternMismatch="{!$Label.c.SFMC_Name_Validation}"
+                             messageWhenValueMissing = "{!$Label.c.SFMC_Last_Name_Validation}"/>
+            
+             
+            <lightning:input aura:id="contactField"
+                             type="email" value="{!v.simpleNewFormSubmission.Friend_Email_1__c}"
+                             label="Email" pattern="^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$"
+                             required="true" 
+                             messageWhenPatternMismatch="{!$Label.c.SFMC_Email_Address_Validation}" 
+                             messageWhenValueMissing="{!$Label.c.SFMC_Email_Validation}" />
+            
+        
+            <lightning:input aura:id="contactField" type=
+                         "phone" value="{!v.simpleNewFormSubmission.Friend_Phone_1__c}"
+                         label="Phone Number" 
+                         maxlength="10" messageWhenValueMissing="{!$Label.c.SFMC_Phone_Validation}" 
+                         onblur="{!c.changePhoneNumber}"
+                         />
+            <lightning:input aura:id="contactField"  label="Message" value="{!v.simpleNewFormSubmission.Friend_Message_1__c}"  class="slds-hide" style="display : none;"/>
+             
+            <aura:set attribute="else">
+            
+            <!-- FORM FIELD for Core & BLA -->     
+            <lightning:textarea aura:id="contactField"
+                             value="{!v.simpleNewFormSubmission.Friend_Top_3_Lead_Source_1__c}"
+                             label="What are your top 3 online lead sources?" required="true" />
+            
+            <lightning:radioGroup aura:id="contactField" type="radio"
+                             value="{!v.simpleNewFormSubmission.Friend_Monthly_Lead_Investment_1__c}"
+                             label="What is your approximate monthly lead generation budget?" required="true"
+                             options="{! v.generatingLeadValues }"></lightning:radioGroup>	    
+            
+            
+            <lightning:textarea aura:id="contactField"
+                             value="{!v.simpleNewFormSubmission.Friend_Lead_Distributed_1__c}"
+                             label="How are your leads currently distributed (direct to agent, ISA, etc.)?"  required="true"/>
+            
+             
+            <lightning:input aura:id="contactField"
+                             type="email" value="{!v.simpleNewFormSubmission.Friend_Email_1__c}"
+                             label="Preferred Email" pattern="^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$"
+                             required="true" 
+                             messageWhenPatternMismatch="{!$Label.c.SFMC_Email_Address_Validation}" 
+                             messageWhenValueMissing="{!$Label.c.SFMC_Email_Validation}" />
+            
+        
+            <lightning:input aura:id="contactField" type=
+                         "phone" value="{!v.simpleNewFormSubmission.Friend_Phone_1__c}"
+                         label="Preferred Contact Number" required="true"
+                         maxlength="10" messageWhenValueMissing="{!$Label.c.SFMC_Phone_Validation}" 
+                         onblur="{!c.changePhoneNumber}"
+                         />
+            <lightning:input aura:id="contactField"  label="Message" value="{!v.simpleNewFormSubmission.Friend_Message_1__c}"  class="slds-hide" style="display : none;"/>
+             
+            </aura:set>
+            </aura:if>
+            <br/>   
+            <lightning:button aura:id="button"                        
+                            class="button" 
+                            onclick="{!c.saveFormSubmission}" variant="success">Submit</lightning:button>
+            </aura:if>
+            <aura:if isTrue="{!v.showThankYou}">
+                <c:SFMC_Opcity_LandingPage_ThankYouPage/>
+           </aura:if>
+    	</div>
+    </lightning:card>
+</aura:component>

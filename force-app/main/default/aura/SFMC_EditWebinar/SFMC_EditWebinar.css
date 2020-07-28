@@ -1,0 +1,140 @@
+.THIS .containerDiv hr{
+	border-top: 1px solid rgb(198, 202, 206);
+    margin-top: 0.5 rem;
+    margin-bottom: 0.5rem;
+    background-color:red;
+}
+
+.THIS .labels
+{
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.THIS .requirdField
+{
+ color:rgb(194, 57, 52);   
+}
+
+.THIS .fieldMargins
+{
+    margin-top: -1rem;
+    margin-bottom: -1rem;
+}
+
+.THIS .timeFieldMargins
+{
+    margin-top: -1.8rem;
+    margin-bottom: -1rem;
+}
+
+.THIS .timeFieldWidths
+{
+    width: 8rem;
+}
+
+.THIS .saveBtn
+{
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+
+.THIS .saveBtnDiv
+{
+    align: right;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    padding: 19px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 5rem;
+}
+
+.THIS .headerDiv
+{
+    margin-left: 5rem;
+    font-size: 1.8rem;
+}
+
+.THIS .webinarDetailDiv
+{   
+    margin-left: 5rem;
+    border: 1px solid #e3e3e3;
+    border-color: #d6d2d2;
+    height: 7.5rem;
+    background-color: whitesmoke;
+    line-height: 1.4rem;
+    margin-right: 5rem;
+    border-radius: 4px;
+}
+
+.THIS .statusDiv
+{   
+    margin-left: 5rem;
+    border: 1px solid #e3e3e3;
+    border-color: #d6d2d2;
+    height: 6rem;
+    background-color: whitesmoke;
+    line-height: 1.4rem;
+    margin-right: 5rem;
+    border-radius: 4px;
+}
+
+.THIS .descriptionDiv
+{   
+    margin-left: 5rem;
+    border: 1px solid #e3e3e3;
+    border-color: #d6d2d2;
+    background-color: whitesmoke;
+    line-height: 1.4rem;
+    margin-right: 5rem;
+    height:16.5rem;
+    border-radius: 4px;
+}
+
+.THIS .slds-textarea
+{
+	height: 12rem;
+	background-color: white;    
+}
+
+.THIS .fieldMargins
+{
+    margin-top: -1.3rem;
+    margin-bottom: -1rem;
+}
+
+.THIS .requirdField
+{
+ color:rgb(194, 57, 52);   
+}
+
+.THIS .saveBtnDiv
+{
+   margin-left: 38rem;
+}
+
+.THIS .iconSpecs
+{
+    height:1rem;
+    fill: rgb(0, 109, 204);
+}
+
+.THIS .containerDiv
+{
+    background-color : #ebebeb;
+}
+
+
+
+@media only screen and (min-width : 768px) and (max-width : 1024px)  {
+
+    .THIS .saveBtnDiv
+	{
+   		margin-left: 25rem;
+	}
+
+    
+}

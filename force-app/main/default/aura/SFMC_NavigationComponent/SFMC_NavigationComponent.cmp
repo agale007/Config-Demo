@@ -1,0 +1,121 @@
+<aura:component controller="SFMC_CalendarClass" implements="flexipage:availableForRecordHome,flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,forceCommunity:availableForAllPageTypes,force:hasRecordId,lightning:actionOverride" access="global">
+    
+    <!-- Public attributes                    -->
+    <aura:attribute name="demoevent" type="String"/>
+    <aura:attribute name="username" type="String"/>
+    <aura:attribute name="isHomeStyling" type="boolean" default="true"/>
+    <aura:attribute name="iseventStyling" type="boolean" default="false"/>
+    <aura:attribute name="iswebinarStyling" type="boolean" default="false"/>
+    <aura:attribute name="issignOutStyling" type="boolean" default="false"/>
+    <aura:attribute name="isHomeCalling" type="boolean" default="true"/>
+    <aura:attribute name="isEventCalling" type="boolean" default="false"/>
+    <aura:attribute name="isWebinarCalling" type="boolean" default="false"/>
+    <aura:attribute name="navigationStatus" type="boolean" default=" "/>
+    
+    
+    <!-- Initalisation methods -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:registerEvent name="comsetEvent" type="c:SFMC_HomePageCompSet"/>
+    <aura:handler name="componentEvent" event="c:EditEvent" action="{!c.handleEditEvent}"/> 
+    <aura:handler name="deleteEvent" event="c:SFMC_Delete" action="{!c.handleDeleteEvent}"/> 
+   
+    
+   
+    <!-- Header of b2b portal -->
+    <div class="container all-container">
+    <div class="navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <div class="row navbar-inverse">
+                <div class="col-md-5">
+                    <div class="logo">
+                        <h1>
+                            <img src="http://success.realtor.com/_LP_ASSETS/img/rdc-logo-white.png" alt="" style="height: 25px; vertical-align: baseline;"/>
+                        </h1>
+                    </div>
+                    <div class="col-md-5 pull-right text-right top-gap-10 right-gap-10">
+                        
+                        <strong>               {!v.username}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <lightning:layout>
+        <!-- Vertical panel menu item (right side)-->
+        <lightning:layoutItem class="nav-layout">
+            <div class="demo-only dd">
+                <lightning:verticalNavigation selectedItem="home" aura:id="navService">
+                    
+                    <div onclick="{!c.home}">
+                        <div class="{!v.isHomeStyling ? 'home' : '' }" aura:id="home">
+                            <div class="slds-m-top_large">
+                                <lightning:verticalNavigationItemIcon
+                                                                      label="{!$Label.c.Dashboard}"
+                                                                      name="home"
+                                                                      iconName="utility:home"
+                                                                      class="nav-menu"
+                                                                      />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="{!v.iseventStyling ? 'home' : '' }" aura:id="eve">
+                        <div class="slds-m-top_large">
+                            <div onclick="{!c.callevent}" name="test" data-value="123456">
+                                
+                                <lightning:verticalNavigationItemIcon
+                                                                      label="{!$Label.c.Live_Workshop_Events}"
+                                                                      name="Events"
+                                                                      iconName="utility:weeklyview"
+                                                                      class="nav-menu"
+                                                                      />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="{!v.iswebinarStyling ? 'home' : ''}" aura:id="web">
+                        
+                        <div class="slds-m-top_large">
+                            <div onclick="{!c.webinars}">
+                                <lightning:verticalNavigationItemIcon
+                                                                      label="{!$Label.c.RDC_Webinars}"
+                                                                      name="Webinars"
+                                                                      iconName="utility:lock"
+                                                                      class="nav-menu"
+                                                                      />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="{!v.issignOutStyling ? 'home' : ''}">
+                        <div class="slds-m-top_large">
+                            <div onclick="{!c.signout}">
+                                <lightning:verticalNavigationItemIcon
+                                                                      label="{!$Label.c.Signout}"
+                                                                      name="signout"
+                                                                      iconName="utility:push"
+                                                                      class="nav-menu"
+                                                                      />
+                            </div>
+                        </div>
+                    </div>
+                </lightning:verticalNavigation>
+            </div>
+            
+        </lightning:layoutItem>
+        
+        <!-- Vertical panel component call (left side) -->
+        <lightning:layoutItem class="body-layout">
+            <aura:if isTrue="{!v.isHomeCalling}" >
+                <c:SFMC_CalendarPage/> 
+            </aura:if>
+            <aura:if isTrue="{!v.isEventCalling}" >
+                <c:SFMC_EventListPage/>
+            </aura:if>
+            <aura:if isTrue="{!v.isWebinarCalling}" >
+                <c:SFMC_WebinarDetailPage/> 
+            </aura:if>
+        </lightning:layoutItem>
+    </lightning:layout>
+        
+    </div>
+    
+</aura:component>
