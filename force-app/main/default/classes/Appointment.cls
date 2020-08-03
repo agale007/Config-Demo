@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 //demo
+=======
+//prashant
+>>>>>>> b11bd2e9755f13c96d937f840ed7df812128c001
 public with sharing class Appointment {
     public Appointment() {
 
